@@ -1,0 +1,65 @@
+import { Service } from '@/types';
+
+export const services: Service[] = [
+  {
+    id: 'standard',
+    title: 'Standard Cleaning',
+    description: 'A thorough cleaning of your entire home, perfect for regular upkeep and maintaining a fresh, tidy space.',
+    includes: [
+      'Dusting all surfaces and furniture',
+      'Vacuuming and mopping all floors',
+      'Kitchen counters and sink cleaning',
+      'Bathroom cleaning and sanitizing',
+      'Trash removal',
+      'Making beds and tidying up',
+    ],
+    startingPrice: 80,
+    icon: '✨',
+  },
+  {
+    id: 'deep',
+    title: 'Deep Cleaning',
+    description: 'An intensive, top-to-bottom cleaning that reaches every corner. Ideal for homes that need extra attention.',
+    includes: [
+      'Everything in Standard Cleaning',
+      'Baseboards and door frames',
+      'Light fixtures and ceiling fans',
+      'Inside cabinets and drawers',
+      'Behind and under furniture',
+      'Detailed scrubbing of kitchen and bathrooms',
+      'Window sills and tracks',
+    ],
+    startingPrice: 120,
+    icon: '🧹',
+  },
+  {
+    id: 'move',
+    title: 'Move-In / Move-Out',
+    description: 'Get your home spotless for new tenants or leave it pristine when you move. Covers every inch of the space.',
+    includes: [
+      'Everything in Deep Cleaning',
+      'Inside all closets and storage areas',
+      'Inside oven and refrigerator',
+      'All appliances cleaned inside and out',
+      'Garage sweep (if applicable)',
+      'Wall spot cleaning',
+    ],
+    startingPrice: 140,
+    icon: '📦',
+  },
+  {
+    id: 'airbnb',
+    title: 'Airbnb / Short-Term Rental',
+    description: 'Quick turnaround cleaning between guests. Keep your ratings high with a consistently spotless space.',
+    includes: [
+      'Full standard cleaning',
+      'Linen change and bed making',
+      'Restocking essentials check',
+      'Trash and recycling removal',
+      'Kitchen reset and dish washing',
+      'Bathroom deep sanitize',
+    ],
+    startingPrice: 100,
+    icon: '🏠',
+  },
+];
