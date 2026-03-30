@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Container from '@/components/ui/Container';
 import MobileMenu from './MobileMenu';
+import { Leaf } from 'lucide-react';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -20,10 +21,13 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-stone-100 shadow-sm">
         <Container>
           <div className="flex items-center justify-between h-16 md:h-20">
-            <Link href="/" className="text-xl md:text-2xl font-bold tracking-[0.1em] uppercase text-slate-800">
+            <Link href="/" className="flex items-center gap-2 text-xl md:text-2xl font-bold text-stone-800">
+              <div className="bg-teal-100 rounded-lg p-1.5">
+                <Leaf className="w-5 h-5 text-teal-600" />
+              </div>
               Inna Cleaning
             </Link>
 
@@ -32,7 +36,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-sm uppercase tracking-widest text-gray-600 hover:text-slate-800 transition-colors duration-300 font-medium"
+                  className="text-sm text-stone-600 hover:text-teal-600 transition-colors duration-300 font-medium"
                 >
                   {link.label}
                 </Link>
@@ -42,7 +46,7 @@ export default function Navbar() {
             <div className="hidden md:block">
               <Link
                 href="/booking"
-                className="inline-block border-2 border-sky-600 bg-sky-600 text-white px-5 py-2 text-xs uppercase tracking-widest font-bold hover:bg-sky-700 hover:border-sky-700 transition-all duration-300"
+                className="inline-block bg-teal-600 text-white px-5 py-2.5 text-sm font-semibold rounded-full hover:bg-teal-700 transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5"
               >
                 Book Now
               </Link>
@@ -50,7 +54,7 @@ export default function Navbar() {
 
             <button
               onClick={() => setMobileOpen(true)}
-              className="md:hidden p-2 text-slate-800"
+              className="md:hidden p-2 text-stone-800"
               aria-label="Open menu"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

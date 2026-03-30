@@ -3,51 +3,51 @@ import Button from '@/components/ui/Button';
 
 export default function IntroSection() {
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-16 md:py-24 bg-stone-50">
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          {/* Photo placeholder */}
+          {/* Photo */}
           <div className="order-1 md:order-2">
-            <div className="aspect-[4/5] bg-gradient-to-br from-sky-100 to-sky-200 flex items-center justify-center">
-              <div className="text-center text-sky-400">
-                <svg className="w-16 h-16 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-                <p className="text-sm uppercase tracking-widest font-medium">Photo Coming Soon</p>
-              </div>
+            <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-xl">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=800&auto=format&fit=crop&q=80"
+                alt="Professional cleaner at work in a bright kitchen"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
 
           {/* Text content */}
           <div className="order-2 md:order-1">
-            <p className="text-sky-600 text-sm uppercase tracking-[0.2em] font-bold mb-3">
+            <p className="text-teal-600 text-sm font-semibold uppercase tracking-widest mb-3">
               Welcome
             </p>
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-800 mb-6 leading-snug">
+            <h2 className="text-2xl md:text-3xl font-bold text-stone-800 mb-6 leading-snug">
               Hi, I&apos;m Inna — and I love making homes sparkle.
             </h2>
-            <p className="text-gray-600 leading-relaxed mb-4">
+            <p className="text-stone-600 leading-relaxed mb-4">
               With years of professional cleaning experience, I treat every home
               as if it were my own. I understand that inviting someone into your
               space requires trust, and I take that responsibility seriously.
             </p>
-            <p className="text-gray-600 leading-relaxed mb-8">
+            <p className="text-stone-600 leading-relaxed mb-8">
               Whether you need a regular cleaning to maintain your space, a deep
               clean for that fresh start, or help preparing for a move — I&apos;m here
               to deliver results that exceed your expectations. Every time.
             </p>
-            <div className="flex flex-wrap gap-6 mb-8">
+            <div className="flex flex-wrap gap-8 mb-8">
               <div>
-                <p className="text-3xl font-bold text-sky-600">5+</p>
-                <p className="text-xs uppercase tracking-widest text-gray-500">Years Experience</p>
+                <p className="text-3xl font-bold text-teal-600">5+</p>
+                <p className="text-xs uppercase tracking-widest text-stone-500 mt-1">Years Experience</p>
               </div>
               <div>
-                <p className="text-3xl font-bold text-sky-600">200+</p>
-                <p className="text-xs uppercase tracking-widest text-gray-500">Happy Clients</p>
+                <p className="text-3xl font-bold text-teal-600">200+</p>
+                <p className="text-xs uppercase tracking-widest text-stone-500 mt-1">Happy Clients</p>
               </div>
               <div>
-                <p className="text-3xl font-bold text-sky-600">100%</p>
-                <p className="text-xs uppercase tracking-widest text-gray-500">Satisfaction</p>
+                <p className="text-3xl font-bold text-teal-600">100%</p>
+                <p className="text-xs uppercase tracking-widest text-stone-500 mt-1">Satisfaction</p>
               </div>
             </div>
             <Button href="/about" variant="outline" size="md">
