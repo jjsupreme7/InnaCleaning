@@ -2,12 +2,15 @@ import { Review } from '@/types';
 
 export default function ReviewCard({ review }: { review: Review }) {
   return (
-    <div className="bg-white border border-gray-100 p-6">
-      <div className="flex gap-1 mb-3">
+    <div className="bg-white rounded-sm border border-gray-100 p-7 hover:shadow-lg hover:shadow-gray-100 transition-all duration-300 relative">
+      {/* Quote mark */}
+      <div className="absolute top-4 right-5 text-sky-100 text-5xl font-serif leading-none select-none">&ldquo;</div>
+
+      <div className="flex gap-1 mb-4">
         {Array.from({ length: 5 }).map((_, i) => (
           <svg
             key={i}
-            className={`w-4 h-4 ${i < review.rating ? 'text-yellow-400' : 'text-gray-200'}`}
+            className={`w-4 h-4 ${i < review.rating ? 'text-amber-400' : 'text-gray-200'}`}
             fill="currentColor"
             viewBox="0 0 20 20"
           >
@@ -15,12 +18,17 @@ export default function ReviewCard({ review }: { review: Review }) {
           </svg>
         ))}
       </div>
-      <p className="text-gray-600 text-sm leading-relaxed mb-4 italic">
+      <p className="text-gray-600 text-sm leading-relaxed mb-5 italic relative z-10">
         &ldquo;{review.text}&rdquo;
       </p>
-      <div>
-        <p className="font-bold text-slate-800 text-sm">{review.name}</p>
-        <p className="text-gray-400 text-xs uppercase tracking-widest">{review.service}</p>
+      <div className="flex items-center gap-3">
+        <div className="w-9 h-9 rounded-full bg-gradient-to-br from-sky-400 to-sky-600 flex items-center justify-center text-white text-xs font-bold">
+          {review.name.charAt(0)}
+        </div>
+        <div>
+          <p className="font-bold text-slate-800 text-sm">{review.name}</p>
+          <p className="text-gray-400 text-xs uppercase tracking-widest">{review.service}</p>
+        </div>
       </div>
     </div>
   );

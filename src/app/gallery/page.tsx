@@ -20,7 +20,7 @@ const galleryItems = [
 export default function GalleryPage() {
   return (
     <>
-      <section className="py-16 md:py-24">
+      <section className="py-20 md:py-28">
         <Container>
           <SectionHeading
             title="Before & After"
@@ -33,13 +33,15 @@ export default function GalleryPage() {
             ))}
           </div>
 
-          <div className="text-center mt-12">
-            <p className="text-gray-500 text-sm mb-6">
-              Real photos coming soon! Want to see your home transformed?
-            </p>
-            <Button href="/quote" variant="primary" size="lg">
-              Get Your Free Quote
-            </Button>
+          <div className="text-center mt-14">
+            <div className="inline-block bg-gray-50 rounded-sm px-8 py-6 border border-gray-100">
+              <p className="text-gray-500 text-sm mb-5">
+                Real photos coming soon! Want to see your home transformed?
+              </p>
+              <Button href="/quote" variant="primary" size="lg">
+                Get Your Free Quote
+              </Button>
+            </div>
           </div>
         </Container>
       </section>

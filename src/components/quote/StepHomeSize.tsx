@@ -8,6 +8,14 @@ interface Props {
 
 const sizes: HomeSize[] = ['studio', '1bed', '2bed', '3bed', '4bed_plus'];
 
+const sizeIcons: Record<HomeSize, string> = {
+  studio: '🏢',
+  '1bed': '🛏️',
+  '2bed': '🏠',
+  '3bed': '🏡',
+  '4bed_plus': '🏘️',
+};
+
 export default function StepHomeSize({ value, onChange }: Props) {
   return (
     <div>
@@ -19,12 +27,13 @@ export default function StepHomeSize({ value, onChange }: Props) {
           <button
             key={size}
             onClick={() => onChange(size)}
-            className={`p-4 border-2 text-left transition-all duration-300 hover:-translate-y-0.5 ${
+            className={`p-5 border-2 text-left transition-all duration-300 rounded-sm hover:-translate-y-0.5 group ${
               value === size
-                ? 'border-sky-600 bg-sky-50'
-                : 'border-gray-200 hover:border-gray-300'
+                ? 'border-sky-600 bg-sky-50 shadow-md shadow-sky-100'
+                : 'border-gray-200 hover:border-sky-300 hover:bg-sky-50/50'
             }`}
           >
+            <span className="text-xl mb-2 block">{sizeIcons[size]}</span>
             <span className="block text-sm font-bold text-slate-800">
               {HOME_SIZE_LABELS[size]}
             </span>

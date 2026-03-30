@@ -6,11 +6,11 @@ interface Props {
   onChange: (type: CleaningType) => void;
 }
 
-const types: { id: CleaningType; desc: string }[] = [
-  { id: 'standard', desc: 'Regular upkeep cleaning' },
-  { id: 'deep', desc: 'Intensive top-to-bottom cleaning' },
-  { id: 'move_in_out', desc: 'Complete cleaning for moving' },
-  { id: 'airbnb', desc: 'Quick turnaround for rentals' },
+const types: { id: CleaningType; desc: string; icon: string }[] = [
+  { id: 'standard', desc: 'Regular upkeep cleaning', icon: '✨' },
+  { id: 'deep', desc: 'Intensive top-to-bottom cleaning', icon: '🧹' },
+  { id: 'move_in_out', desc: 'Complete cleaning for moving', icon: '📦' },
+  { id: 'airbnb', desc: 'Quick turnaround for rentals', icon: '🏠' },
 ];
 
 export default function StepCleaningType({ value, onChange }: Props) {
@@ -24,12 +24,13 @@ export default function StepCleaningType({ value, onChange }: Props) {
           <button
             key={type.id}
             onClick={() => onChange(type.id)}
-            className={`p-4 border-2 text-left transition-all duration-300 hover:-translate-y-0.5 ${
+            className={`p-5 border-2 text-left transition-all duration-300 rounded-sm hover:-translate-y-0.5 ${
               value === type.id
-                ? 'border-sky-600 bg-sky-50'
-                : 'border-gray-200 hover:border-gray-300'
+                ? 'border-sky-600 bg-sky-50 shadow-md shadow-sky-100'
+                : 'border-gray-200 hover:border-sky-300 hover:bg-sky-50/50'
             }`}
           >
+            <span className="text-xl mb-2 block">{type.icon}</span>
             <span className="block text-sm font-bold text-slate-800">
               {CLEANING_TYPE_LABELS[type.id]}
             </span>

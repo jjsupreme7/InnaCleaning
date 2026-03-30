@@ -8,6 +8,14 @@ interface Props {
 
 const addonKeys = Object.keys(ADDON_PRICES) as (keyof Addons)[];
 
+const addonIcons: Record<keyof Addons, string> = {
+  fridge: '🧊',
+  oven: '🍳',
+  windows: '🪟',
+  laundry: '👕',
+  petHair: '🐾',
+};
+
 export default function StepAddons({ value, onChange }: Props) {
   const toggle = (key: keyof Addons) => {
     onChange({ ...value, [key]: !value[key] });
@@ -23,15 +31,15 @@ export default function StepAddons({ value, onChange }: Props) {
           <button
             key={key}
             onClick={() => toggle(key)}
-            className={`p-4 border-2 text-left transition-all duration-300 flex items-center justify-between ${
+            className={`p-4 border-2 text-left transition-all duration-300 rounded-sm flex items-center justify-between ${
               value[key]
-                ? 'border-sky-600 bg-sky-50'
-                : 'border-gray-200 hover:border-gray-300'
+                ? 'border-sky-600 bg-sky-50 shadow-sm shadow-sky-100'
+                : 'border-gray-200 hover:border-sky-300 hover:bg-sky-50/50'
             }`}
           >
             <div className="flex items-center gap-3">
               <div
-                className={`w-5 h-5 border-2 flex items-center justify-center transition-all ${
+                className={`w-5 h-5 border-2 rounded-sm flex items-center justify-center transition-all ${
                   value[key] ? 'bg-sky-600 border-sky-600' : 'border-gray-300'
                 }`}
               >
@@ -41,6 +49,7 @@ export default function StepAddons({ value, onChange }: Props) {
                   </svg>
                 )}
               </div>
+              <span className="text-base mr-2">{addonIcons[key]}</span>
               <span className="text-sm font-bold text-slate-800">
                 {ADDON_LABELS[key]}
               </span>

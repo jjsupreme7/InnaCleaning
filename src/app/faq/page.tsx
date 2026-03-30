@@ -11,7 +11,7 @@ export const metadata = {
 
 export default function FAQPage() {
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-20 md:py-28">
       <Container>
         <SectionHeading
           title="Frequently Asked Questions"
@@ -27,8 +27,8 @@ export default function FAQPage() {
             />
           ))}
 
-          <div className="text-center mt-12">
-            <p className="text-gray-500 text-sm mb-4">
+          <div className="text-center mt-14 bg-gray-50 rounded-sm p-8 border border-gray-100">
+            <p className="text-gray-500 text-sm mb-5">
               Still have questions?
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

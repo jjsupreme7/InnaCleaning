@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function QuotePage() {
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-20 md:py-28 bg-gradient-to-b from-gray-50/50 to-white">
       <Container>
         <SectionHeading
           title="Get Your Free Estimate"

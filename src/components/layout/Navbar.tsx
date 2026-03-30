@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Container from '@/components/ui/Container';
 import MobileMenu from './MobileMenu';
@@ -17,13 +17,24 @@ const navLinks = [
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <>
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+      <header className={`sticky top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-white/95 backdrop-blur-md shadow-sm shadow-gray-100'
+          : 'bg-white/95 backdrop-blur-sm'
+      }`}>
         <Container>
           <div className="flex items-center justify-between h-16 md:h-20">
-            <Link href="/" className="text-xl md:text-2xl font-bold tracking-[0.1em] uppercase text-slate-800">
+            <Link href="/" className="text-xl md:text-2xl font-bold tracking-[0.1em] uppercase text-slate-800 hover:text-sky-600 transition-colors duration-300">
               Inna Cleaning
             </Link>
 
@@ -32,7 +43,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-sm uppercase tracking-widest text-gray-600 hover:text-slate-800 transition-colors duration-300 font-medium"
+                  className="text-sm uppercase tracking-widest text-gray-500 hover:text-sky-600 transition-colors duration-300 font-medium relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-sky-500 after:transition-all after:duration-300 hover:after:w-full"
                 >
                   {link.label}
                 </Link>
@@ -42,7 +53,7 @@ export default function Navbar() {
             <div className="hidden md:block">
               <Link
                 href="/booking"
-                className="inline-block border-2 border-sky-600 bg-sky-600 text-white px-5 py-2 text-xs uppercase tracking-widest font-bold hover:bg-sky-700 hover:border-sky-700 transition-all duration-300"
+                className="inline-block border-2 border-sky-600 bg-sky-600 text-white px-5 py-2 text-xs uppercase tracking-widest font-bold rounded-sm hover:bg-sky-700 hover:border-sky-700 hover:shadow-md hover:shadow-sky-600/20 transition-all duration-300"
               >
                 Book Now
               </Link>
@@ -50,7 +61,7 @@ export default function Navbar() {
 
             <button
               onClick={() => setMobileOpen(true)}
-              className="md:hidden p-2 text-slate-800"
+              className="md:hidden p-2 text-slate-800 hover:text-sky-600 transition-colors"
               aria-label="Open menu"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

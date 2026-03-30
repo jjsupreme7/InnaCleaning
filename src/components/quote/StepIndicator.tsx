@@ -12,12 +12,12 @@ export default function StepIndicator({ currentStep }: { currentStep: number }) 
           <div key={label} className="flex items-center">
             <div className="flex flex-col items-center">
               <div
-                className={`w-8 h-8 flex items-center justify-center text-xs font-bold border-2 transition-all duration-300 ${
+                className={`w-9 h-9 flex items-center justify-center text-xs font-bold rounded-full border-2 transition-all duration-300 ${
                   isCompleted
-                    ? 'bg-sky-600 border-sky-600 text-white'
+                    ? 'bg-sky-600 border-sky-600 text-white shadow-md shadow-sky-600/20'
                     : isActive
-                    ? 'border-sky-600 text-sky-600'
-                    : 'border-gray-200 text-gray-400'
+                    ? 'border-sky-600 text-sky-600 bg-sky-50'
+                    : 'border-gray-200 text-gray-400 bg-white'
                 }`}
               >
                 {isCompleted ? (
@@ -29,8 +29,8 @@ export default function StepIndicator({ currentStep }: { currentStep: number }) 
                 )}
               </div>
               <span
-                className={`mt-1 text-[10px] uppercase tracking-widest font-medium hidden sm:block ${
-                  isActive ? 'text-sky-600' : 'text-gray-400'
+                className={`mt-1.5 text-[10px] uppercase tracking-widest font-medium hidden sm:block ${
+                  isActive ? 'text-sky-600' : isCompleted ? 'text-sky-600' : 'text-gray-400'
                 }`}
               >
                 {label}
@@ -39,8 +39,8 @@ export default function StepIndicator({ currentStep }: { currentStep: number }) 
 
             {i < steps.length - 1 && (
               <div
-                className={`w-8 sm:w-16 h-0.5 mx-1 ${
-                  isCompleted ? 'bg-sky-600' : 'bg-gray-200'
+                className={`w-8 sm:w-16 h-0.5 mx-1 rounded-full transition-all duration-500 ${
+                  isCompleted ? 'bg-sky-500' : 'bg-gray-200'
                 }`}
               />
             )}

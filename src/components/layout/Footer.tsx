@@ -3,24 +3,34 @@ import Container from '@/components/ui/Container';
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-800 text-white py-16">
+    <footer className="bg-slate-900 text-white py-16">
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
             <h3 className="text-lg font-bold uppercase tracking-[0.1em] mb-4">
               Inna Cleaning
             </h3>
-            <p className="text-gray-400 text-sm leading-relaxed">
+            <p className="text-gray-400 text-sm leading-relaxed mb-6">
               Professional home cleaning services in the greater Seattle area.
               Reliable, thorough, and always with a personal touch.
             </p>
+            <div className="flex items-center gap-4">
+              <span className="flex items-center gap-1.5 text-xs uppercase tracking-widest text-gray-500">
+                <svg className="w-3.5 h-3.5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
+                Insured
+              </span>
+              <span className="flex items-center gap-1.5 text-xs uppercase tracking-widest text-gray-500">
+                <svg className="w-3.5 h-3.5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
+                Eco-Friendly
+              </span>
+            </div>
           </div>
 
           <div>
-            <h4 className="text-sm font-bold uppercase tracking-widest mb-4">
+            <h4 className="text-sm font-bold uppercase tracking-widest mb-5 text-gray-300">
               Quick Links
             </h4>
-            <nav className="flex flex-col gap-2">
+            <nav className="flex flex-col gap-2.5">
               {[
                 { href: '/services', label: 'Services' },
                 { href: '/quote', label: 'Free Quote' },
@@ -32,7 +42,7 @@ export default function Footer() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-gray-400 text-sm hover:text-white transition-colors duration-300"
+                  className="text-gray-400 text-sm hover:text-sky-400 transition-colors duration-300"
                 >
                   {link.label}
                 </Link>
@@ -41,22 +51,34 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm font-bold uppercase tracking-widest mb-4">
+            <h4 className="text-sm font-bold uppercase tracking-widest mb-5 text-gray-300">
               Contact
             </h4>
-            <div className="flex flex-col gap-2 text-gray-400 text-sm">
-              <a href="tel:+12065551234" className="hover:text-white transition-colors duration-300">
+            <div className="flex flex-col gap-3 text-sm">
+              <a href="tel:+12065551234" className="text-gray-400 hover:text-sky-400 transition-colors duration-300 flex items-center gap-2">
+                <svg className="w-4 h-4 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
                 (206) 555-1234
               </a>
-              <a href="mailto:inna@innacleaning.com" className="hover:text-white transition-colors duration-300">
+              <a href="mailto:inna@innacleaning.com" className="text-gray-400 hover:text-sky-400 transition-colors duration-300 flex items-center gap-2">
+                <svg className="w-4 h-4 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
                 inna@innacleaning.com
               </a>
-              <p className="mt-2">Serving Seattle, Bellevue, Tacoma & surrounding areas</p>
+              <p className="text-gray-500 mt-2 flex items-start gap-2">
+                <svg className="w-4 h-4 text-sky-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                Serving Seattle, Bellevue, Tacoma & surrounding areas
+              </p>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-slate-700 mt-12 pt-8 text-center text-gray-500 text-xs uppercase tracking-widest">
+        <div className="border-t border-slate-800 mt-12 pt-8 text-center text-gray-600 text-xs uppercase tracking-widest">
           &copy; {new Date().getFullYear()} Inna Cleaning. All rights reserved.
         </div>
       </Container>

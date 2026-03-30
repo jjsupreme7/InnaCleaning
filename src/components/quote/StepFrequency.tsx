@@ -6,11 +6,11 @@ interface Props {
   onChange: (frequency: Frequency) => void;
 }
 
-const frequencies: { id: Frequency; desc: string }[] = [
-  { id: 'one_time', desc: 'Single cleaning session' },
-  { id: 'weekly', desc: 'Save 10% with weekly cleanings' },
-  { id: 'biweekly', desc: 'Save 5% with bi-weekly cleanings' },
-  { id: 'monthly', desc: 'Once a month cleaning' },
+const frequencies: { id: Frequency; desc: string; icon: string }[] = [
+  { id: 'one_time', desc: 'Single cleaning session', icon: '1️⃣' },
+  { id: 'weekly', desc: 'Save 10% with weekly cleanings', icon: '📅' },
+  { id: 'biweekly', desc: 'Save 5% with bi-weekly cleanings', icon: '🗓️' },
+  { id: 'monthly', desc: 'Once a month cleaning', icon: '📆' },
 ];
 
 export default function StepFrequency({ value, onChange }: Props) {
@@ -24,17 +24,18 @@ export default function StepFrequency({ value, onChange }: Props) {
           <button
             key={freq.id}
             onClick={() => onChange(freq.id)}
-            className={`p-4 border-2 text-left transition-all duration-300 hover:-translate-y-0.5 relative ${
+            className={`p-5 border-2 text-left transition-all duration-300 rounded-sm hover:-translate-y-0.5 relative ${
               value === freq.id
-                ? 'border-sky-600 bg-sky-50'
-                : 'border-gray-200 hover:border-gray-300'
+                ? 'border-sky-600 bg-sky-50 shadow-md shadow-sky-100'
+                : 'border-gray-200 hover:border-sky-300 hover:bg-sky-50/50'
             }`}
           >
             {freq.id === 'weekly' && (
-              <span className="absolute -top-2 right-3 bg-green-500 text-white text-[10px] uppercase tracking-widest font-bold px-2 py-0.5">
+              <span className="absolute -top-2.5 right-3 bg-green-500 text-white text-[10px] uppercase tracking-widest font-bold px-2.5 py-0.5 rounded-sm shadow-sm">
                 Best Value
               </span>
             )}
+            <span className="text-xl mb-2 block">{freq.icon}</span>
             <span className="block text-sm font-bold text-slate-800">
               {FREQUENCY_LABELS[freq.id]}
             </span>
