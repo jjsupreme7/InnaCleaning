@@ -12,9 +12,9 @@ interface ButtonProps {
 }
 
 const variants = {
-  primary: 'bg-sky-600 text-white border-sky-600 hover:bg-sky-700 hover:border-sky-700',
-  secondary: 'bg-slate-800 text-white border-slate-800 hover:bg-slate-900',
-  outline: 'bg-transparent text-slate-800 border-slate-800 hover:bg-slate-800 hover:text-white',
+  primary: 'bg-teal-600 text-white border-teal-600 hover:bg-teal-700 hover:border-teal-700 shadow-md hover:shadow-lg',
+  secondary: 'bg-stone-800 text-white border-stone-800 hover:bg-stone-900',
+  outline: 'bg-transparent text-teal-700 border-teal-600 hover:bg-teal-600 hover:text-white',
 };
 
 const sizes = {
@@ -33,7 +33,7 @@ export default function Button({
   disabled = false,
   className = '',
 }: ButtonProps) {
-  const baseStyles = `inline-block border-2 uppercase tracking-widest font-bold transition-all duration-300 hover:-translate-y-0.5 text-center ${variants[variant]} ${sizes[size]} ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'} ${className}`;
+  const baseStyles = `inline-block border-2 rounded-full font-semibold tracking-wide transition-all duration-300 hover:-translate-y-0.5 text-center ${variants[variant]} ${sizes[size]} ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'} ${className}`;
 
   if (href) {
     return (
