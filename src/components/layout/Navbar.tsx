@@ -45,7 +45,7 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-50 w-[92vw] max-w-4xl"
+        className="fixed top-4 md:top-6 left-1/2 z-50 w-[92vw] max-w-4xl"
         style={{
           transition: hasLoaded ? 'all 0.4s ease-out' : 'opacity 0.8s ease-out, transform 0.8s ease-out',
           opacity: hasLoaded ? 1 : 0,
