@@ -1,58 +1,56 @@
+import Image from 'next/image';
 import Button from '@/components/ui/Button';
-import Aurora from '@/components/ui/Aurora';
 import RotatingText from '@/components/ui/RotatingText';
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center bg-black overflow-hidden">
-      {/* Aurora animated background */}
-      <div className="absolute inset-0">
-        <Aurora
-          colorStops={["#dc2626", "#450a0a", "#dc2626"]}
-          amplitude={1.2}
-          blend={0.4}
-          speed={0.8}
-        />
-      </div>
+    <section className="relative flex min-h-[90vh] items-end overflow-hidden pb-16 pt-24 lg:min-h-screen lg:items-center lg:pb-0 lg:pt-0">
+      <Image
+        src="/images/mansion.jpg"
+        alt="Luxury home"
+        fill
+        className="object-cover object-center"
+        priority
+        quality={85}
+      />
+      <div className="absolute inset-0 bg-black/60" />
+      <div className="absolute inset-0 bg-gradient-to-t from-red-950/30 via-transparent to-transparent" />
 
-      {/* Dark overlay to keep text readable */}
-      <div className="absolute inset-0 bg-black/50" />
-
-      {/* Decorative border pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-10 w-40 h-40 border border-red-600" />
-        <div className="absolute bottom-20 right-10 w-60 h-60 border border-red-600" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 border border-red-600" />
-      </div>
-
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        <p className="text-red-400 text-sm uppercase tracking-[0.3em] font-bold mb-6">
-          Professional Home Cleaning
-        </p>
-        <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl text-white mb-6 leading-tight">
-          A Spotless Home,
-          <br />
-          <span className="italic inline-flex overflow-hidden">
-            <RotatingText
-              texts={["Every Time", "Every Visit", "Guaranteed", "Always"]}
-              rotationInterval={2500}
-              staggerDuration={0.03}
-              staggerFrom="first"
-              mainClassName="italic"
-            />
-          </span>
-        </h1>
-        <p className="text-zinc-400 text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
-          Reliable, detailed, and personally delivered cleaning services
-          in the greater Seattle area. Your home deserves the best.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button href="/quote" variant="primary" size="lg">
-            Get Free Quote
-          </Button>
-          <Button href="/booking" variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-black">
-            Book Now
-          </Button>
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-6">
+        <div className="max-w-2xl">
+          <p className="mb-4 text-sm font-bold uppercase tracking-[0.3em] text-red-400">
+            Professional Home Cleaning
+          </p>
+          <h1 className="text-4xl font-bold leading-tight text-white md:text-6xl lg:text-7xl">
+            A Spotless Home,
+            <br />
+            <span className="italic inline-flex overflow-hidden">
+              <RotatingText
+                texts={['Every Time', 'Every Visit', 'Guaranteed', 'Always']}
+                rotationInterval={2500}
+                staggerDuration={0.03}
+                staggerFrom="first"
+                mainClassName="italic"
+              />
+            </span>
+          </h1>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/70 lg:text-xl">
+            Reliable, detailed, and personally delivered cleaning services
+            for homes that deserve the very best.
+          </p>
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+            <Button href="/quote" variant="primary" size="lg">
+              Get Free Quote
+            </Button>
+            <Button
+              href="/booking"
+              variant="outline"
+              size="lg"
+              className="border-white/30 text-white hover:bg-white/10"
+            >
+              Book Now
+            </Button>
+          </div>
         </div>
       </div>
     </section>

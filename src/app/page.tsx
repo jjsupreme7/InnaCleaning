@@ -1,5 +1,6 @@
 import HeroSection from '@/components/home/HeroSection';
 import IntroSection from '@/components/home/IntroSection';
+import FeaturesSection from '@/components/home/FeaturesSection';
 import ServicesPreview from '@/components/home/ServicesPreview';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
 import ServiceAreaSection from '@/components/home/ServiceAreaSection';
@@ -10,6 +11,7 @@ export default function Home() {
     <>
       <HeroSection />
       <IntroSection />
+      <FeaturesSection />
       <ServicesPreview />
       <TestimonialsSection />
       <ServiceAreaSection />
