@@ -5,14 +5,11 @@ import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 
 const navLinks = [
-  { href: '/', label: 'Home' },
   { href: '/services', label: 'Services' },
-  { href: '/quote', label: 'Free Quote' },
-  { href: '/gallery', label: 'Gallery' },
   { href: '/about', label: 'About' },
+  { href: '/gallery', label: 'Gallery' },
   { href: '/faq', label: 'FAQ' },
   { href: '/contact', label: 'Contact' },
-  { href: '/portal', label: 'My Portal' },
 ];
 
 export default function Navbar() {
@@ -57,7 +54,7 @@ export default function Navbar() {
       >
         {/* Main pill */}
         <div className="bg-black/40 backdrop-blur-md border border-white/10 rounded-full px-4 py-2 md:px-6 md:py-2.5">
-          <div className="flex items-center justify-between">
+          <div className="flex w-full items-center justify-between">
             {/* Logo */}
             <Link href="/" className="text-base md:text-lg font-bold tracking-[0.1em] uppercase text-white hover:text-red-400 transition-colors duration-300">
               Inna Cleaning
@@ -77,7 +74,13 @@ export default function Navbar() {
             </div>
 
             {/* Desktop CTA */}
-            <div className="hidden md:block">
+            <div className="hidden md:flex items-center gap-3">
+              <Link
+                href="/portal"
+                className="text-xs uppercase tracking-widest text-white/70 hover:text-white transition-colors duration-200 font-medium"
+              >
+                My Portal
+              </Link>
               <Link
                 href="/booking"
                 className="bg-red-600 hover:bg-red-700 text-white font-bold px-5 py-2 rounded-full text-xs uppercase tracking-widest transition-all duration-300 hover:scale-105"
