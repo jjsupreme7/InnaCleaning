@@ -7,6 +7,35 @@ import Button from '@/components/ui/Button';
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error || 'Something went wrong. Please try again.');
+      } else {
+        setSubmitted(true);
+      }
+    } catch {
+      setError('Network error. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <section className="py-16 md:py-24">
@@ -26,30 +55,21 @@ export default function ContactPage() {
             <div className="space-y-6">
               <div>
                 <p className="text-xs uppercase tracking-widest font-bold text-zinc-500 mb-1">Phone</p>
-                <a
-                  href="tel:+12065551234"
-                  className="text-lg font-bold text-white hover:text-red-400 transition-colors"
-                >
+                <a href="tel:+12065551234" className="text-lg font-bold text-white hover:text-red-400 transition-colors">
                   (206) 555-1234
                 </a>
               </div>
-
               <div>
                 <p className="text-xs uppercase tracking-widest font-bold text-zinc-500 mb-1">Email</p>
-                <a
-                  href="mailto:inna@innacleaning.com"
-                  className="text-lg font-bold text-white hover:text-red-400 transition-colors"
-                >
+                <a href="mailto:inna@innacleaning.com" className="text-lg font-bold text-white hover:text-red-400 transition-colors">
                   inna@innacleaning.com
                 </a>
               </div>
-
               <div>
                 <p className="text-xs uppercase tracking-widest font-bold text-zinc-500 mb-1">Hours</p>
                 <p className="text-zinc-400 text-sm">Monday – Saturday: 8am – 7pm</p>
                 <p className="text-zinc-400 text-sm">Sunday: Closed</p>
               </div>
-
               <div>
                 <p className="text-xs uppercase tracking-widest font-bold text-zinc-500 mb-1">Service Area</p>
                 <p className="text-zinc-400 text-sm">Seattle, Bellevue, Tacoma & surrounding cities</p>
@@ -73,23 +93,22 @@ export default function ContactPage() {
           <div>
             {submitted ? (
               <div className="text-center py-12 border border-zinc-800 bg-zinc-900">
-                <div className="text-3xl mb-3">&#10003;</div>
+                <div className="text-3xl mb-3 text-red-500">&#10003;</div>
                 <h3 className="text-lg font-bold text-white mb-2">Message Sent!</h3>
                 <p className="text-zinc-400 text-sm mb-4">I&apos;ll get back to you as soon as possible.</p>
-                <Button onClick={() => setSubmitted(false)} variant="outline" size="sm">
+                <Button onClick={() => { setSubmitted(false); setName(''); setEmail(''); setMessage(''); }} variant="outline" size="sm">
                   Send Another
                 </Button>
               </div>
             ) : (
-              <form
-                onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
-                className="space-y-5"
-              >
+              <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
                   <label className="block text-xs uppercase tracking-widest font-bold text-zinc-500 mb-2">Name</label>
                   <input
                     type="text"
                     required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     className="w-full border-2 border-zinc-700 bg-zinc-900 text-white px-4 py-3 text-sm focus:border-red-600 focus:outline-none transition-colors"
                     placeholder="Your name"
                   />
@@ -99,6 +118,8 @@ export default function ContactPage() {
                   <input
                     type="email"
                     required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     className="w-full border-2 border-zinc-700 bg-zinc-900 text-white px-4 py-3 text-sm focus:border-red-600 focus:outline-none transition-colors"
                     placeholder="your@email.com"
                   />
@@ -108,12 +129,15 @@ export default function ContactPage() {
                   <textarea
                     rows={5}
                     required
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
                     className="w-full border-2 border-zinc-700 bg-zinc-900 text-white px-4 py-3 text-sm focus:border-red-600 focus:outline-none transition-colors resize-none"
                     placeholder="How can I help you?"
                   />
                 </div>
-                <Button type="submit" variant="primary" size="lg" className="w-full text-center">
-                  Send Message
+                {error && <p className="text-red-400 text-sm">{error}</p>}
+                <Button type="submit" variant="primary" size="lg" className="w-full text-center" disabled={loading}>
+                  {loading ? 'Sending…' : 'Send Message'}
                 </Button>
               </form>
             )}

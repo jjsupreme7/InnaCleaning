@@ -1,4 +1,4 @@
-const steps = ['Size', 'Type', 'Condition', 'Add-ons', 'Frequency'];
+const steps = ['Size', 'Type', 'Condition', 'Add-ons', 'Frequency', 'Contact'];
 
 export default function StepIndicator({ currentStep }: { currentStep: number }) {
   return (

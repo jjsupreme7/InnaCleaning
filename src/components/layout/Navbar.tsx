@@ -12,6 +12,7 @@ const navLinks = [
   { href: '/about', label: 'About' },
   { href: '/faq', label: 'FAQ' },
   { href: '/contact', label: 'Contact' },
+  { href: '/portal', label: 'My Portal' },
 ];
 
 export default function Navbar() {

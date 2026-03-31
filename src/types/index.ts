@@ -18,6 +18,8 @@ export interface QuoteState {
   condition: Condition | null;
   addons: Addons;
   frequency: Frequency | null;
+  name: string;
+  email: string;
 }
 
 export interface PriceBreakdown {
