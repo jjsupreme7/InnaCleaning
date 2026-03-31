@@ -11,7 +11,7 @@ export const metadata = {
 export default function ServicesPage() {
   return (
     <>
-      <section className="py-16 md:py-24 bg-gray-50">
+      <section className="py-16 md:py-24 bg-zinc-900">
         <Container>
           <SectionHeading
             title="Our Services"
@@ -23,34 +23,34 @@ export default function ServicesPage() {
       {services.map((service, i) => (
         <section
           key={service.id}
-          className={`py-16 md:py-20 ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}
+          className={`py-16 md:py-20 ${i % 2 === 0 ? 'bg-zinc-950' : 'bg-zinc-900'}`}
         >
           <Container>
             <div className="max-w-3xl mx-auto">
               <div className="flex items-center gap-4 mb-6">
                 <span className="text-3xl">{service.icon}</span>
                 <div>
-                  <h2 className="text-xl font-bold text-slate-800 uppercase tracking-widest">
+                  <h2 className="text-xl font-bold text-white uppercase tracking-widest">
                     {service.title}
                   </h2>
-                  <p className="text-sky-600 font-bold text-sm mt-1">
+                  <p className="text-red-500 font-bold text-sm mt-1">
                     Starting at ${service.startingPrice}
                   </p>
                 </div>
               </div>
 
-              <p className="text-gray-600 leading-relaxed mb-6">
+              <p className="text-zinc-400 leading-relaxed mb-6">
                 {service.description}
               </p>
 
               <div className="mb-8">
-                <h3 className="text-xs uppercase tracking-widest font-bold text-gray-400 mb-3">
+                <h3 className="text-xs uppercase tracking-widest font-bold text-zinc-500 mb-3">
                   What&apos;s Included
                 </h3>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {service.includes.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-sm text-gray-600">
-                      <svg className="w-4 h-4 text-sky-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <li key={item} className="flex items-start gap-2 text-sm text-zinc-400">
+                      <svg className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       {item}
@@ -67,13 +67,13 @@ export default function ServicesPage() {
         </section>
       ))}
 
-      <section className="py-16 md:py-24 bg-sky-600">
+      <section className="py-16 md:py-24 bg-red-700">
         <Container>
           <div className="text-center">
             <h2 className="text-2xl md:text-3xl uppercase tracking-[0.15em] font-bold text-white mb-4">
               Not Sure Which Service You Need?
             </h2>
-            <p className="text-sky-100 text-lg mb-8">
+            <p className="text-red-100 text-lg mb-8">
               Try our free quote estimator — it takes less than a minute.
             </p>
             <Button href="/quote" variant="secondary" size="lg">

@@ -11,16 +11,16 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="py-16 md:py-24 bg-gray-50">
+      <section className="py-16 md:py-24 bg-zinc-900">
         <Container>
           <div className="max-w-3xl mx-auto text-center">
-            <p className="text-sky-600 text-sm uppercase tracking-[0.2em] font-bold mb-3">
+            <p className="text-red-500 text-sm uppercase tracking-[0.2em] font-bold mb-3">
               About
             </p>
-            <h1 className="text-3xl md:text-4xl font-bold text-slate-800 mb-6">
+            <h1 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Hi, I&apos;m Inna Rohovska
             </h1>
-            <p className="text-gray-500 text-lg leading-relaxed">
+            <p className="text-zinc-400 text-lg leading-relaxed">
               Professional cleaner based in Western Washington, dedicated to making
               every home shine.
             </p>
@@ -29,7 +29,7 @@ export default function AboutPage() {
       </section>
 
       {/* Story */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 md:py-24 bg-zinc-950">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             {/* Photo */}
@@ -45,10 +45,10 @@ export default function AboutPage() {
             </div>
 
             <div>
-              <h2 className="text-2xl font-bold text-slate-800 mb-6 uppercase tracking-widest">
+              <h2 className="text-2xl font-bold text-white mb-6 uppercase tracking-widest">
                 My Story
               </h2>
-              <div className="space-y-4 text-gray-600 leading-relaxed">
+              <div className="space-y-4 text-zinc-400 leading-relaxed">
                 <p>
                   I&apos;m Inna Rohovska, a sole proprietor and professional cleaner
                   based in the Western Washington area. I started my cleaning
@@ -75,10 +75,10 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="py-16 md:py-24 bg-gray-50">
+      <section className="py-16 md:py-24 bg-zinc-900">
         <Container>
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl font-bold text-slate-800 mb-10 uppercase tracking-widest text-center">
+            <h2 className="text-2xl font-bold text-white mb-10 uppercase tracking-widest text-center">
               What I Stand For
             </h2>
 
@@ -89,10 +89,10 @@ export default function AboutPage() {
                 { title: 'Trust', desc: 'Your home, your rules. I treat every space with respect.' },
               ].map((val) => (
                 <div key={val.title} className="text-center">
-                  <h3 className="text-sm uppercase tracking-widest font-bold text-slate-800 mb-3">
+                  <h3 className="text-sm uppercase tracking-widest font-bold text-white mb-3">
                     {val.title}
                   </h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">
+                  <p className="text-zinc-400 text-sm leading-relaxed">
                     {val.desc}
                   </p>
                 </div>
@@ -103,23 +103,23 @@ export default function AboutPage() {
       </section>
 
       {/* Guarantees */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 md:py-24 bg-zinc-950">
         <Container>
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-2xl font-bold text-slate-800 mb-6 uppercase tracking-widest">
+            <h2 className="text-2xl font-bold text-white mb-6 uppercase tracking-widest">
               My Promise to You
             </h2>
-            <div className="space-y-4 text-sm text-gray-600">
-              <div className="border border-gray-200 p-5 flex items-center gap-4">
-                <span className="text-sky-600 text-xl">&#10003;</span>
+            <div className="space-y-4 text-sm text-zinc-400">
+              <div className="border border-zinc-800 p-5 flex items-center gap-4">
+                <span className="text-red-500 text-xl">&#10003;</span>
                 <span>100% Satisfaction Guarantee — not happy? I&apos;ll re-clean for free.</span>
               </div>
-              <div className="border border-gray-200 p-5 flex items-center gap-4">
-                <span className="text-sky-600 text-xl">&#10003;</span>
+              <div className="border border-zinc-800 p-5 flex items-center gap-4">
+                <span className="text-red-500 text-xl">&#10003;</span>
                 <span>Fully Insured — your home is protected.</span>
               </div>
-              <div className="border border-gray-200 p-5 flex items-center gap-4">
-                <span className="text-sky-600 text-xl">&#10003;</span>
+              <div className="border border-zinc-800 p-5 flex items-center gap-4">
+                <span className="text-red-500 text-xl">&#10003;</span>
                 <span>Eco-Friendly Products — safe for your family and pets.</span>
               </div>
             </div>

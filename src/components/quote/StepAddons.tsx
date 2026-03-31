@@ -15,8 +15,8 @@ export default function StepAddons({ value, onChange }: Props) {
 
   return (
     <div>
-      <h3 className="text-lg font-bold text-slate-800 mb-2">Any add-ons?</h3>
-      <p className="text-gray-500 text-sm mb-6">Optional extras to customize your cleaning.</p>
+      <h3 className="text-lg font-bold text-white mb-2">Any add-ons?</h3>
+      <p className="text-zinc-500 text-sm mb-6">Optional extras to customize your cleaning.</p>
 
       <div className="grid grid-cols-1 gap-3">
         {addonKeys.map((key) => (
@@ -25,14 +25,14 @@ export default function StepAddons({ value, onChange }: Props) {
             onClick={() => toggle(key)}
             className={`p-4 border-2 text-left transition-all duration-300 flex items-center justify-between ${
               value[key]
-                ? 'border-sky-600 bg-sky-50'
-                : 'border-gray-200 hover:border-gray-300'
+                ? 'border-red-600 bg-red-950'
+                : 'border-zinc-700 hover:border-zinc-600'
             }`}
           >
             <div className="flex items-center gap-3">
               <div
                 className={`w-5 h-5 border-2 flex items-center justify-center transition-all ${
-                  value[key] ? 'bg-sky-600 border-sky-600' : 'border-gray-300'
+                  value[key] ? 'bg-red-600 border-red-600' : 'border-zinc-600'
                 }`}
               >
                 {value[key] && (
@@ -41,11 +41,11 @@ export default function StepAddons({ value, onChange }: Props) {
                   </svg>
                 )}
               </div>
-              <span className="text-sm font-bold text-slate-800">
+              <span className="text-sm font-bold text-white">
                 {ADDON_LABELS[key]}
               </span>
             </div>
-            <span className="text-sm text-sky-600 font-bold">
+            <span className="text-sm text-red-500 font-bold">
               +${ADDON_PRICES[key]}
             </span>
           </button>

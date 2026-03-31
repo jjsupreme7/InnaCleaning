@@ -14,11 +14,11 @@ export default function MobileMenu({ isOpen, onClose, links }: MobileMenuProps) 
   return (
     <div className="fixed inset-0 z-[60]">
       <div className="absolute inset-0 bg-black/50" onClick={onClose} />
-      <div className="absolute right-0 top-0 h-full w-72 bg-white shadow-xl">
+      <div className="absolute right-0 top-0 h-full w-72 bg-zinc-950 shadow-xl border-l border-zinc-800">
         <div className="flex justify-end p-4">
           <button
             onClick={onClose}
-            className="p-2 text-slate-800"
+            className="p-2 text-white"
             aria-label="Close menu"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -33,7 +33,7 @@ export default function MobileMenu({ isOpen, onClose, links }: MobileMenuProps) 
               key={link.href}
               href={link.href}
               onClick={onClose}
-              className="py-3 text-sm uppercase tracking-widest text-gray-600 hover:text-slate-800 transition-colors duration-300 font-medium border-b border-gray-100"
+              className="py-3 text-sm uppercase tracking-widest text-zinc-400 hover:text-white transition-colors duration-300 font-medium border-b border-zinc-800"
             >
               {link.label}
             </Link>
@@ -41,7 +41,7 @@ export default function MobileMenu({ isOpen, onClose, links }: MobileMenuProps) 
           <Link
             href="/booking"
             onClick={onClose}
-            className="mt-6 inline-block border-2 border-sky-600 bg-sky-600 text-white px-5 py-3 text-xs uppercase tracking-widest font-bold text-center hover:bg-sky-700 transition-all duration-300"
+            className="mt-6 inline-block border-2 border-red-600 bg-red-600 text-white px-5 py-3 text-xs uppercase tracking-widest font-bold text-center hover:bg-red-700 transition-all duration-300"
           >
             Book Now
           </Link>

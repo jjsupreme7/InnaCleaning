@@ -28,7 +28,7 @@ export default function FAQPage() {
           ))}
 
           <div className="text-center mt-12">
-            <p className="text-gray-500 text-sm mb-4">
+            <p className="text-zinc-500 text-sm mb-4">
               Still have questions?
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

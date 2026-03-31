@@ -11,14 +11,14 @@ export default function FAQItem({ question, answer }: Props) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="border-b border-gray-200">
+    <div className="border-b border-zinc-800">
       <button
         onClick={() => setOpen(!open)}
         className="w-full py-5 flex items-center justify-between text-left group"
       >
-        <span className="text-sm font-bold text-slate-800 pr-4">{question}</span>
+        <span className="text-sm font-bold text-white pr-4">{question}</span>
         <svg
-          className={`w-4 h-4 text-gray-400 transition-transform duration-300 flex-shrink-0 ${open ? 'rotate-180' : ''}`}
+          className={`w-4 h-4 text-zinc-500 transition-transform duration-300 flex-shrink-0 ${open ? 'rotate-180' : ''}`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -31,7 +31,7 @@ export default function FAQItem({ question, answer }: Props) {
           open ? 'max-h-96 pb-5' : 'max-h-0'
         }`}
       >
-        <p className="text-gray-600 text-sm leading-relaxed">{answer}</p>
+        <p className="text-zinc-400 text-sm leading-relaxed">{answer}</p>
       </div>
     </div>
   );

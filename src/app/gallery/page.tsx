@@ -34,7 +34,7 @@ export default function GalleryPage() {
           </div>
 
           <div className="text-center mt-12">
-            <p className="text-gray-500 text-sm mb-6">
+            <p className="text-zinc-500 text-sm mb-6">
               Real photos coming soon! Want to see your home transformed?
             </p>
             <Button href="/quote" variant="primary" size="lg">

@@ -14,17 +14,17 @@ export default function BeforeAfterCard({ title, index }: Props) {
   const color = colors[index % colors.length];
 
   return (
-    <div className="border border-gray-100">
+    <div className="border border-zinc-800">
       <div className="grid grid-cols-2">
         <div className={`aspect-square bg-gradient-to-br ${color.before} flex items-center justify-center`}>
-          <span className="text-xs uppercase tracking-widest font-bold text-black/30">Before</span>
+          <span className="text-xs uppercase tracking-widest font-bold text-black/40">Before</span>
         </div>
         <div className={`aspect-square bg-gradient-to-br ${color.after} flex items-center justify-center`}>
-          <span className="text-xs uppercase tracking-widest font-bold text-black/30">After</span>
+          <span className="text-xs uppercase tracking-widest font-bold text-black/40">After</span>
         </div>
       </div>
-      <div className="p-4">
-        <p className="text-sm font-bold text-slate-800">{title}</p>
+      <div className="p-4 bg-zinc-950">
+        <p className="text-sm font-bold text-white">{title}</p>
       </div>
     </div>
   );

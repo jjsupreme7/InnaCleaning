@@ -5,7 +5,7 @@ import { reviews } from '@/data/reviews';
 
 export default function TestimonialsSection() {
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-16 md:py-24 bg-zinc-950">
       <Container>
         <SectionHeading
           title="What Clients Say"

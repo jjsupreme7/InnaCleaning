@@ -12,9 +12,9 @@ interface ButtonProps {
 }
 
 const variants = {
-  primary: 'bg-sky-600 text-white border-sky-600 hover:bg-sky-700 hover:border-sky-700',
-  secondary: 'bg-slate-800 text-white border-slate-800 hover:bg-slate-900',
-  outline: 'bg-transparent text-slate-800 border-slate-800 hover:bg-slate-800 hover:text-white',
+  primary: 'bg-red-600 text-white border-red-600 hover:bg-red-700 hover:border-red-700',
+  secondary: 'bg-zinc-900 text-white border-zinc-900 hover:bg-black',
+  outline: 'bg-transparent text-white border-zinc-700 hover:bg-zinc-800 hover:text-white',
 };
 
 const sizes = {

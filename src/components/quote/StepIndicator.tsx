@@ -14,10 +14,10 @@ export default function StepIndicator({ currentStep }: { currentStep: number }) 
               <div
                 className={`w-8 h-8 flex items-center justify-center text-xs font-bold border-2 transition-all duration-300 ${
                   isCompleted
-                    ? 'bg-sky-600 border-sky-600 text-white'
+                    ? 'bg-red-600 border-red-600 text-white'
                     : isActive
-                    ? 'border-sky-600 text-sky-600'
-                    : 'border-gray-200 text-gray-400'
+                    ? 'border-red-600 text-red-500'
+                    : 'border-zinc-700 text-zinc-500'
                 }`}
               >
                 {isCompleted ? (
@@ -30,7 +30,7 @@ export default function StepIndicator({ currentStep }: { currentStep: number }) 
               </div>
               <span
                 className={`mt-1 text-[10px] uppercase tracking-widest font-medium hidden sm:block ${
-                  isActive ? 'text-sky-600' : 'text-gray-400'
+                  isActive ? 'text-red-500' : 'text-zinc-500'
                 }`}
               >
                 {label}
@@ -40,7 +40,7 @@ export default function StepIndicator({ currentStep }: { currentStep: number }) 
             {i < steps.length - 1 && (
               <div
                 className={`w-8 sm:w-16 h-0.5 mx-1 ${
-                  isCompleted ? 'bg-sky-600' : 'bg-gray-200'
+                  isCompleted ? 'bg-red-600' : 'bg-zinc-700'
                 }`}
               />
             )}

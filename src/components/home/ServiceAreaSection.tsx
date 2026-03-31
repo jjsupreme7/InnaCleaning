@@ -4,7 +4,7 @@ import { serviceAreas } from '@/data/serviceAreas';
 
 export default function ServiceAreaSection() {
   return (
-    <section className="py-16 md:py-24 bg-gray-50">
+    <section className="py-16 md:py-24 bg-zinc-900">
       <Container>
         <SectionHeading
           title="Service Areas"
@@ -15,7 +15,7 @@ export default function ServiceAreaSection() {
           {serviceAreas.map((area) => (
             <span
               key={area}
-              className="border border-gray-200 bg-white px-5 py-2 text-sm text-gray-600 uppercase tracking-widest font-medium hover:border-sky-600 hover:text-sky-600 transition-all duration-300"
+              className="border border-zinc-700 bg-zinc-950 px-5 py-2 text-sm text-zinc-400 uppercase tracking-widest font-medium hover:border-red-600 hover:text-red-500 transition-all duration-300"
             >
               {area}
             </span>
