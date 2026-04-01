@@ -1,23 +1,26 @@
+'use client';
+
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function CTABanner() {
+  const { t } = useLanguage();
+
   return (
     <section className="py-16 md:py-24 bg-red-700">
       <Container>
         <div className="text-center">
           <h2 className="text-2xl md:text-3xl uppercase tracking-[0.15em] font-bold text-white mb-4">
-            Ready for a Sparkling Clean Home?
+            {t.cta.headline}
           </h2>
           <p className="text-red-100 text-lg mb-8 max-w-xl mx-auto">
-            Get your free estimate in under a minute. No commitment, no hassle.
+            {t.cta.description}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button href="/quote" variant="secondary" size="lg">
-              Get Free Quote
-            </Button>
+            <Button href="/quote" variant="secondary" size="lg">{t.cta.quote}</Button>
             <Button href="/booking" variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-red-700">
-              Book Now
+              {t.cta.book}
             </Button>
           </div>
         </div>

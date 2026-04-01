@@ -3,16 +3,17 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
+import type { Lang } from '@/i18n/translations';
 
-const navLinks = [
-  { href: '/services', label: 'Services' },
-  { href: '/about', label: 'About' },
-  { href: '/gallery', label: 'Gallery' },
-  { href: '/faq', label: 'FAQ' },
-  { href: '/contact', label: 'Contact' },
+const LANGS: { code: Lang; label: string }[] = [
+  { code: 'en', label: 'EN' },
+  { code: 'ru', label: 'RU' },
+  { code: 'uk', label: 'UK' },
 ];
 
 export default function Navbar() {
+  const { lang, setLang, t } = useLanguage();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -62,7 +63,13 @@ export default function Navbar() {
 
             {/* Desktop nav */}
             <div className="hidden md:flex items-center gap-6">
-              {navLinks.map((link) => (
+              {[
+                { href: '/services', label: t.nav.services },
+                { href: '/about', label: t.nav.about },
+                { href: '/gallery', label: t.nav.gallery },
+                { href: '/faq', label: t.nav.faq },
+                { href: '/contact', label: t.nav.contact },
+              ].map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
@@ -73,19 +80,35 @@ export default function Navbar() {
               ))}
             </div>
 
-            {/* Desktop CTA */}
+            {/* Desktop CTA + language switcher */}
             <div className="hidden md:flex items-center gap-3">
+              {/* Language switcher */}
+              <div className="flex items-center gap-1 border border-white/20 rounded-full px-2 py-1">
+                {LANGS.map((l, i) => (
+                  <span key={l.code} className="flex items-center">
+                    <button
+                      onClick={() => setLang(l.code)}
+                      className={`text-[10px] font-bold uppercase tracking-widest px-1 transition-colors ${
+                        lang === l.code ? 'text-white' : 'text-white/40 hover:text-white/70'
+                      }`}
+                    >
+                      {l.label}
+                    </button>
+                    {i < LANGS.length - 1 && <span className="text-white/20 text-[10px]">|</span>}
+                  </span>
+                ))}
+              </div>
               <Link
                 href="/portal"
                 className="text-xs uppercase tracking-widest text-white/70 hover:text-white transition-colors duration-200 font-medium"
               >
-                My Portal
+                {t.nav.portal}
               </Link>
               <Link
                 href="/booking"
                 className="bg-red-600 hover:bg-red-700 text-white font-bold px-5 py-2 rounded-full text-xs uppercase tracking-widest transition-all duration-300 hover:scale-105"
               >
-                Book Now
+                {t.nav.bookNow}
               </Link>
             </div>
 
@@ -121,7 +144,14 @@ export default function Navbar() {
         >
           <div className="bg-black/60 backdrop-blur-md border border-white/10 rounded-2xl p-4">
             <div className="flex flex-col gap-1">
-              {navLinks.map((link, i) => (
+              {[
+                { href: '/services', label: t.nav.services },
+                { href: '/about', label: t.nav.about },
+                { href: '/gallery', label: t.nav.gallery },
+                { href: '/faq', label: t.nav.faq },
+                { href: '/contact', label: t.nav.contact },
+                { href: '/portal', label: t.nav.portal },
+              ].map((link, i) => (
                 <Link
                   key={link.href}
                   href={link.href}
@@ -133,12 +163,27 @@ export default function Navbar() {
                 </Link>
               ))}
               <div className="h-px bg-white/10 my-2" />
+              {/* Mobile language switcher */}
+              <div className="flex justify-center gap-4 py-2">
+                {LANGS.map((l) => (
+                  <button
+                    key={l.code}
+                    onClick={() => setLang(l.code)}
+                    className={`text-sm font-bold uppercase tracking-widest transition-colors ${
+                      lang === l.code ? 'text-white' : 'text-white/40 hover:text-white/70'
+                    }`}
+                  >
+                    {l.label}
+                  </button>
+                ))}
+              </div>
+              <div className="h-px bg-white/10 my-1" />
               <Link
                 href="/booking"
                 onClick={() => setMobileOpen(false)}
                 className="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3 rounded-full text-xs uppercase tracking-widest text-center transition-all duration-300"
               >
-                Book Now
+                {t.nav.bookNow}
               </Link>
             </div>
           </div>

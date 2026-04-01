@@ -5,23 +5,23 @@ import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
 import { services } from '@/data/services';
 import { Check } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
-const categories = ['All', 'Regular', 'Deep Clean', 'Move', 'Airbnb'];
-
-const categoryMap: Record<string, string> = {
-  standard: 'Regular',
-  deep: 'Deep Clean',
-  move: 'Move',
-  airbnb: 'Airbnb',
+const categoryMap: Record<string, number> = {
+  standard: 1,
+  deep: 2,
+  move: 3,
+  airbnb: 4,
 };
 
 const popularId = 'deep';
 
 export default function ServicesPreview() {
-  const [activeFilter, setActiveFilter] = useState('All');
+  const { t } = useLanguage();
+  const [activeFilter, setActiveFilter] = useState(0);
 
   const filtered =
-    activeFilter === 'All'
+    activeFilter === 0
       ? services
       : services.filter((s) => categoryMap[s.id] === activeFilter);
 
@@ -30,30 +30,27 @@ export default function ServicesPreview() {
       <Container>
         <div className="mb-10 max-w-xl">
           <p className="mb-2 text-sm font-bold uppercase tracking-[0.2em] text-red-500">
-            Services & Pricing
+            {t.services.badge}
           </p>
           <h2 className="text-3xl font-bold text-white lg:text-4xl">
-            Find the right clean for your home
+            {t.services.headline}
           </h2>
-          <p className="mt-3 leading-relaxed text-zinc-400">
-            From quick turnaround visits to top-to-bottom deep cleans.
-            Every service tailored to your home.
-          </p>
+          <p className="mt-3 leading-relaxed text-zinc-400">{t.services.description}</p>
         </div>
 
         {/* Filter chips */}
         <div className="mb-8 flex flex-wrap gap-2">
-          {categories.map((cat) => (
+          {t.services.filters.map((label, i) => (
             <button
-              key={cat}
-              onClick={() => setActiveFilter(cat)}
+              key={i}
+              onClick={() => setActiveFilter(i)}
               className={`min-h-[44px] px-5 py-2 text-sm font-bold uppercase tracking-widest transition-colors ${
-                activeFilter === cat
+                activeFilter === i
                   ? 'bg-red-600 text-white'
                   : 'border border-zinc-700 bg-zinc-900 text-zinc-400 hover:border-red-600 hover:text-red-500'
               }`}
             >
-              {cat}
+              {label}
             </button>
           ))}
         </div>
@@ -70,7 +67,7 @@ export default function ServicesPreview() {
             >
               {service.id === popularId && (
                 <span className="absolute right-3 top-3 bg-red-600 px-2 py-1 text-xs font-bold uppercase tracking-widest text-white">
-                  Most Popular
+                  {t.services.popular}
                 </span>
               )}
 
@@ -84,7 +81,7 @@ export default function ServicesPreview() {
 
               <div className="flex items-baseline gap-1">
                 <span className="text-3xl font-bold text-white">${service.startingPrice}</span>
-                <span className="text-sm text-zinc-500">starting</span>
+                <span className="text-sm text-zinc-500">{t.services.starting}</span>
               </div>
 
               <ul className="flex flex-col gap-1.5">
@@ -102,7 +99,7 @@ export default function ServicesPreview() {
                 size="sm"
                 className="mt-auto"
               >
-                Learn More
+                {t.services.learnMore}
               </Button>
             </div>
           ))}

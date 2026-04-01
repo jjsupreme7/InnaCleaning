@@ -1,15 +1,19 @@
+'use client';
+
 import Container from '@/components/ui/Container';
-import SectionHeading from '@/components/ui/SectionHeading';
 import { serviceAreas } from '@/data/serviceAreas';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function ServiceAreaSection() {
+  const { t } = useLanguage();
+
   return (
     <section className="py-16 md:py-24 bg-zinc-900">
       <Container>
-        <SectionHeading
-          title="Service Areas"
-          subtitle="Proudly serving the greater Seattle area"
-        />
+        <div className="text-center mb-10">
+          <h2 className="text-xs uppercase tracking-widest font-bold text-zinc-500 mb-2">{t.areas.title}</h2>
+          <p className="text-2xl font-bold text-white">{t.areas.subtitle}</p>
+        </div>
 
         <div className="flex flex-wrap justify-center gap-3">
           {serviceAreas.map((area) => (

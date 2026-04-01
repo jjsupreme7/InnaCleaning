@@ -1,0 +1,319 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e4]:
+      - link "Inna Cleaning" [ref=e5] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e6]:
+        - link "Services" [ref=e7] [cursor=pointer]:
+          - /url: /services
+        - link "About" [ref=e8] [cursor=pointer]:
+          - /url: /about
+        - link "Gallery" [ref=e9] [cursor=pointer]:
+          - /url: /gallery
+        - link "FAQ" [ref=e10] [cursor=pointer]:
+          - /url: /faq
+        - link "Contact" [ref=e11] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=e12]:
+        - link "My Portal" [ref=e13] [cursor=pointer]:
+          - /url: /portal
+        - link "Book Now" [ref=e14] [cursor=pointer]:
+          - /url: /booking
+  - main [ref=e16]:
+    - generic [ref=e17]:
+      - img "Luxury home" [ref=e18]
+      - generic [ref=e22]:
+        - paragraph [ref=e23]: Professional Home Cleaning
+        - heading "A Spotless Home, Every Time" [level=1] [ref=e24]:
+          - text: A Spotless Home,
+          - generic [ref=e26]:
+            - generic [ref=e27]: Every Time
+            - generic [ref=e28]:
+              - generic [ref=e29]:
+                - generic [ref=e30]: E
+                - generic [ref=e31]: v
+                - generic [ref=e32]: e
+                - generic [ref=e33]: r
+                - generic [ref=e34]: "y"
+              - generic [ref=e36]:
+                - generic [ref=e37]: T
+                - generic [ref=e38]: i
+                - generic [ref=e39]: m
+                - generic [ref=e40]: e
+        - paragraph [ref=e41]: Reliable, detailed, and personally delivered cleaning services for homes that deserve the very best.
+        - generic [ref=e42]:
+          - link "Get Free Quote" [ref=e43] [cursor=pointer]:
+            - /url: /quote
+          - link "Book Now" [ref=e44] [cursor=pointer]:
+            - /url: /booking
+    - generic [ref=e47]:
+      - generic [ref=e48]:
+        - paragraph [ref=e49]: Welcome
+        - heading "Hi, I'm Inna — and I love making homes sparkle." [level=2] [ref=e50]
+        - paragraph [ref=e51]: With years of professional cleaning experience, I treat every home as if it were my own. Inviting someone into your space requires trust, and I take that responsibility seriously.
+        - paragraph [ref=e52]: Whether you need a regular clean, a deep clean for that fresh start, or help preparing for a move — I deliver results that exceed your expectations. Every time.
+        - generic [ref=e53]:
+          - generic [ref=e54]:
+            - paragraph [ref=e55]: 5+
+            - paragraph [ref=e56]: Years Experience
+          - generic [ref=e57]:
+            - paragraph [ref=e58]: 200+
+            - paragraph [ref=e59]: Happy Clients
+          - generic [ref=e60]:
+            - paragraph [ref=e61]: 100%
+            - paragraph [ref=e62]: Satisfaction
+        - link "My Story" [ref=e64] [cursor=pointer]:
+          - /url: /about
+      - generic [ref=e65]:
+        - paragraph [ref=e67]: Photo Coming Soon
+        - generic [ref=e68]:
+          - paragraph [ref=e69]: 5★
+          - paragraph [ref=e70]: Average Rating
+        - generic [ref=e71]:
+          - paragraph [ref=e72]: 200+
+          - paragraph [ref=e73]: Homes Cleaned
+    - generic [ref=e76]:
+      - generic [ref=e77]:
+        - paragraph [ref=e78]: Why Choose Inna
+        - heading "Quality and trust, built into every clean" [level=2] [ref=e79]
+        - paragraph [ref=e80]: Every detail of our service is designed to give you confidence and a consistently spotless home — from eco-friendly products to our satisfaction guarantee.
+        - generic [ref=e81]:
+          - generic [ref=e82]:
+            - img [ref=e84]
+            - generic [ref=e86]:
+              - heading "Fully Insured" [level=3] [ref=e87]
+              - paragraph [ref=e88]: Bonded and insured for your peace of mind. Your home and belongings are always protected.
+          - generic [ref=e89]:
+            - img [ref=e91]
+            - generic [ref=e94]:
+              - heading "Eco-Friendly Products" [level=3] [ref=e95]
+              - paragraph [ref=e96]: Safe for kids, pets, and the planet. We use non-toxic, biodegradable cleaning solutions.
+          - generic [ref=e97]:
+            - img [ref=e99]
+            - generic [ref=e102]:
+              - heading "Flexible Scheduling" [level=3] [ref=e103]
+              - paragraph [ref=e104]: Morning, afternoon, or weekend — we work around your schedule, not the other way around.
+          - generic [ref=e105]:
+            - img [ref=e107]
+            - generic [ref=e109]:
+              - heading "Satisfaction Guaranteed" [level=3] [ref=e110]
+              - paragraph [ref=e111]: Not happy with something? We'll come back and fix it at no charge.
+          - generic [ref=e112]:
+            - img [ref=e114]
+            - generic [ref=e117]:
+              - heading "Detail-Obsessed" [level=3] [ref=e118]
+              - paragraph [ref=e119]: From baseboards to ceiling fans, nothing gets missed. Every clean is thorough, every time.
+          - generic [ref=e120]:
+            - img [ref=e122]
+            - generic [ref=e125]:
+              - heading "Trusted & Vetted" [level=3] [ref=e126]
+              - paragraph [ref=e127]: Background checked and personally vetted. Feel confident welcoming us into your home.
+      - generic [ref=e128]:
+        - paragraph [ref=e130]: Interior Photo
+        - generic [ref=e131]:
+          - paragraph [ref=e132]: 5+
+          - paragraph [ref=e133]: Years of experience
+        - generic [ref=e134]:
+          - paragraph [ref=e135]: "0"
+          - paragraph [ref=e136]: Complaints, ever
+    - generic [ref=e138]:
+      - generic [ref=e139]:
+        - paragraph [ref=e140]: Services & Pricing
+        - heading "Find the right clean for your home" [level=2] [ref=e141]
+        - paragraph [ref=e142]: From quick turnaround visits to top-to-bottom deep cleans. Every service tailored to your home.
+      - generic [ref=e143]:
+        - button "All" [ref=e144]
+        - button "Regular" [ref=e145]
+        - button "Deep Clean" [ref=e146]
+        - button "Move" [ref=e147]
+        - button "Airbnb" [ref=e148]
+      - generic [ref=e149]:
+        - generic [ref=e150]:
+          - generic [ref=e151]:
+            - paragraph [ref=e152]: ✨
+            - heading "Standard Cleaning" [level=3] [ref=e153]
+            - paragraph [ref=e154]: A thorough cleaning of your entire home, perfect for regular upkeep and maintain…
+          - generic [ref=e155]:
+            - generic [ref=e156]: $80
+            - generic [ref=e157]: starting
+          - list [ref=e158]:
+            - listitem [ref=e159]:
+              - img [ref=e160]
+              - text: Dusting all surfaces and furniture
+            - listitem [ref=e162]:
+              - img [ref=e163]
+              - text: Vacuuming and mopping all floors
+            - listitem [ref=e165]:
+              - img [ref=e166]
+              - text: Kitchen counters and sink cleaning
+          - link "Learn More" [ref=e168] [cursor=pointer]:
+            - /url: /services
+        - generic [ref=e169]:
+          - generic [ref=e170]: Most Popular
+          - generic [ref=e171]:
+            - paragraph [ref=e172]: 🧹
+            - heading "Deep Cleaning" [level=3] [ref=e173]
+            - paragraph [ref=e174]: An intensive, top-to-bottom cleaning that reaches every corner. Ideal for homes …
+          - generic [ref=e175]:
+            - generic [ref=e176]: $120
+            - generic [ref=e177]: starting
+          - list [ref=e178]:
+            - listitem [ref=e179]:
+              - img [ref=e180]
+              - text: Everything in Standard Cleaning
+            - listitem [ref=e182]:
+              - img [ref=e183]
+              - text: Baseboards and door frames
+            - listitem [ref=e185]:
+              - img [ref=e186]
+              - text: Light fixtures and ceiling fans
+          - link "Learn More" [ref=e188] [cursor=pointer]:
+            - /url: /services
+        - generic [ref=e189]:
+          - generic [ref=e190]:
+            - paragraph [ref=e191]: 📦
+            - heading "Move-In / Move-Out" [level=3] [ref=e192]
+            - paragraph [ref=e193]: Get your home spotless for new tenants or leave it pristine when you move. Cover…
+          - generic [ref=e194]:
+            - generic [ref=e195]: $140
+            - generic [ref=e196]: starting
+          - list [ref=e197]:
+            - listitem [ref=e198]:
+              - img [ref=e199]
+              - text: Everything in Deep Cleaning
+            - listitem [ref=e201]:
+              - img [ref=e202]
+              - text: Inside all closets and storage areas
+            - listitem [ref=e204]:
+              - img [ref=e205]
+              - text: Inside oven and refrigerator
+          - link "Learn More" [ref=e207] [cursor=pointer]:
+            - /url: /services
+        - generic [ref=e208]:
+          - generic [ref=e209]:
+            - paragraph [ref=e210]: 🏠
+            - heading "Airbnb / Short-Term Rental" [level=3] [ref=e211]
+            - paragraph [ref=e212]: Quick turnaround cleaning between guests. Keep your ratings high with a consiste…
+          - generic [ref=e213]:
+            - generic [ref=e214]: $100
+            - generic [ref=e215]: starting
+          - list [ref=e216]:
+            - listitem [ref=e217]:
+              - img [ref=e218]
+              - text: Full standard cleaning
+            - listitem [ref=e220]:
+              - img [ref=e221]
+              - text: Linen change and bed making
+            - listitem [ref=e223]:
+              - img [ref=e224]
+              - text: Restocking essentials check
+          - link "Learn More" [ref=e226] [cursor=pointer]:
+            - /url: /services
+    - generic [ref=e228]:
+      - generic [ref=e229]:
+        - heading "What Clients Say" [level=2] [ref=e230]
+        - paragraph [ref=e231]: Real reviews from real homeowners
+      - generic [ref=e232]:
+        - generic [ref=e233]:
+          - generic [ref=e234]:
+            - img [ref=e235]
+            - img [ref=e237]
+            - img [ref=e239]
+            - img [ref=e241]
+            - img [ref=e243]
+          - paragraph [ref=e245]: “Inna is absolutely amazing! My house has never been this clean. She pays attention to every detail and always goes above and beyond. Highly recommend!”
+          - generic [ref=e246]:
+            - paragraph [ref=e247]: Sarah M.
+            - paragraph [ref=e248]: Deep Cleaning
+        - generic [ref=e249]:
+          - generic [ref=e250]:
+            - img [ref=e251]
+            - img [ref=e253]
+            - img [ref=e255]
+            - img [ref=e257]
+            - img [ref=e259]
+          - paragraph [ref=e261]: “We hired Inna for our move-out cleaning and our landlord was impressed. Got our full deposit back! Professional, thorough, and reliable.”
+          - generic [ref=e262]:
+            - paragraph [ref=e263]: James K.
+            - paragraph [ref=e264]: Move-Out Cleaning
+        - generic [ref=e265]:
+          - generic [ref=e266]:
+            - img [ref=e267]
+            - img [ref=e269]
+            - img [ref=e271]
+            - img [ref=e273]
+            - img [ref=e275]
+          - paragraph [ref=e277]: “Been using Inna's cleaning service bi-weekly for 6 months now. She's consistent, trustworthy, and my home always smells fresh. Best decision I've made!”
+          - generic [ref=e278]:
+            - paragraph [ref=e279]: Lisa T.
+            - paragraph [ref=e280]: Standard Cleaning
+    - generic [ref=e282]:
+      - generic [ref=e283]:
+        - heading "Service Areas" [level=2] [ref=e284]
+        - paragraph [ref=e285]: Proudly serving the greater Seattle area
+      - generic [ref=e286]:
+        - generic [ref=e287]: Seattle
+        - generic [ref=e288]: Bellevue
+        - generic [ref=e289]: Tacoma
+        - generic [ref=e290]: Kirkland
+        - generic [ref=e291]: Redmond
+        - generic [ref=e292]: Renton
+        - generic [ref=e293]: Kent
+        - generic [ref=e294]: Federal Way
+        - generic [ref=e295]: Issaquah
+        - generic [ref=e296]: Sammamish
+        - generic [ref=e297]: Bothell
+        - generic [ref=e298]: Woodinville
+    - generic [ref=e301]:
+      - heading "Ready for a Sparkling Clean Home?" [level=2] [ref=e302]
+      - paragraph [ref=e303]: Get your free estimate in under a minute. No commitment, no hassle.
+      - generic [ref=e304]:
+        - link "Get Free Quote" [ref=e305] [cursor=pointer]:
+          - /url: /quote
+        - link "Book Now" [ref=e306] [cursor=pointer]:
+          - /url: /booking
+  - contentinfo [ref=e307]:
+    - generic [ref=e308]:
+      - generic [ref=e309]:
+        - generic [ref=e310]:
+          - paragraph [ref=e311]: Inna Cleaning
+          - paragraph [ref=e312]: Professional home cleaning services in the greater Seattle area. Reliable, thorough, and always with a personal touch.
+        - generic [ref=e313]:
+          - heading "Quick Links" [level=4] [ref=e314]
+          - list [ref=e315]:
+            - listitem [ref=e316]:
+              - link "Services" [ref=e317] [cursor=pointer]:
+                - /url: /services
+            - listitem [ref=e318]:
+              - link "Free Quote" [ref=e319] [cursor=pointer]:
+                - /url: /quote
+            - listitem [ref=e320]:
+              - link "Book Now" [ref=e321] [cursor=pointer]:
+                - /url: /booking
+            - listitem [ref=e322]:
+              - link "About" [ref=e323] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e324]:
+              - link "FAQ" [ref=e325] [cursor=pointer]:
+                - /url: /faq
+            - listitem [ref=e326]:
+              - link "Contact" [ref=e327] [cursor=pointer]:
+                - /url: /contact
+        - generic [ref=e328]:
+          - heading "Contact" [level=4] [ref=e329]
+          - list [ref=e330]:
+            - listitem [ref=e331]:
+              - link "(206) 555-1234" [ref=e332] [cursor=pointer]:
+                - /url: tel:+12065551234
+            - listitem [ref=e333]:
+              - link "inna@innacleaning.com" [ref=e334] [cursor=pointer]:
+                - /url: mailto:inna@innacleaning.com
+            - listitem [ref=e335]: Seattle, WA & surrounding areas
+        - generic [ref=e336]:
+          - heading "Hours" [level=4] [ref=e337]
+          - list [ref=e338]:
+            - listitem [ref=e339]: "Mon – Fri: 8am – 6pm"
+            - listitem [ref=e340]: "Saturday: 9am – 4pm"
+            - listitem [ref=e341]: "Sunday: By request"
+      - generic [ref=e342]: © 2026 Inna Cleaning. All rights reserved.
+  - alert [ref=e343]

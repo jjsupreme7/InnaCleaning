@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import StickyBookButton from "@/components/layout/StickyBookButton";
+import Providers from "./providers";
 
 const assistant = Assistant({
   variable: "--font-assistant",
@@ -25,10 +26,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${assistant.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col font-sans">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <StickyBookButton />
+        <Providers>
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <StickyBookButton />
+        </Providers>
       </body>
     </html>
   );
