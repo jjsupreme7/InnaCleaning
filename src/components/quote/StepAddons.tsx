@@ -1,5 +1,8 @@
+'use client';
+
 import { Addons } from '@/types';
-import { ADDON_PRICES, ADDON_LABELS } from '@/data/pricing';
+import { ADDON_PRICES } from '@/data/pricing';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface Props {
   value: Addons;
@@ -9,14 +12,17 @@ interface Props {
 const addonKeys = Object.keys(ADDON_PRICES) as (keyof Addons)[];
 
 export default function StepAddons({ value, onChange }: Props) {
+  const { t } = useLanguage();
+  const q = t.quote;
+
   const toggle = (key: keyof Addons) => {
     onChange({ ...value, [key]: !value[key] });
   };
 
   return (
     <div>
-      <h3 className="text-lg font-bold text-white mb-2">Any add-ons?</h3>
-      <p className="text-zinc-500 text-sm mb-6">Optional extras to customize your cleaning.</p>
+      <h3 className="text-lg font-bold text-white mb-2">{q.addonsHeading}</h3>
+      <p className="text-zinc-500 text-sm mb-6">{q.addonsSubheading}</p>
 
       <div className="grid grid-cols-1 gap-3">
         {addonKeys.map((key) => (
@@ -42,7 +48,7 @@ export default function StepAddons({ value, onChange }: Props) {
                 )}
               </div>
               <span className="text-sm font-bold text-white">
-                {ADDON_LABELS[key]}
+                {q.addonLabels[key]}
               </span>
             </div>
             <span className="text-sm text-red-500 font-bold">

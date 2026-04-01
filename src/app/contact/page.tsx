@@ -4,8 +4,12 @@ import { useState } from 'react';
 import Container from '@/components/ui/Container';
 import SectionHeading from '@/components/ui/SectionHeading';
 import Button from '@/components/ui/Button';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function ContactPage() {
+  const { t } = useLanguage();
+  const c = t.contact;
+
   const [submitted, setSubmitted] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -26,12 +30,12 @@ export default function ContactPage() {
       });
       const data = await res.json();
       if (!res.ok) {
-        setError(data.error || 'Something went wrong. Please try again.');
+        setError(data.error || c.errorDefault);
       } else {
         setSubmitted(true);
       }
     } catch {
-      setError('Network error. Please try again.');
+      setError(c.errorNetwork);
     } finally {
       setLoading(false);
     }
@@ -40,39 +44,36 @@ export default function ContactPage() {
   return (
     <section className="py-16 md:py-24">
       <Container>
-        <SectionHeading
-          title="Get in Touch"
-          subtitle="I'd love to hear from you"
-        />
+        <SectionHeading title={c.title} subtitle={c.subtitle} />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
           {/* Contact Info */}
           <div>
             <h3 className="text-sm uppercase tracking-widest font-bold text-zinc-500 mb-6">
-              Contact Information
+              {c.infoHeading}
             </h3>
 
             <div className="space-y-6">
               <div>
-                <p className="text-xs uppercase tracking-widest font-bold text-zinc-500 mb-1">Phone</p>
+                <p className="text-xs uppercase tracking-widest font-bold text-zinc-500 mb-1">{c.phone}</p>
                 <a href="tel:+12065551234" className="text-lg font-bold text-white hover:text-red-400 transition-colors">
                   (206) 555-1234
                 </a>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-widest font-bold text-zinc-500 mb-1">Email</p>
+                <p className="text-xs uppercase tracking-widest font-bold text-zinc-500 mb-1">{c.email}</p>
                 <a href="mailto:inna@innacleaning.com" className="text-lg font-bold text-white hover:text-red-400 transition-colors">
                   inna@innacleaning.com
                 </a>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-widest font-bold text-zinc-500 mb-1">Hours</p>
-                <p className="text-zinc-400 text-sm">Monday – Saturday: 8am – 7pm</p>
-                <p className="text-zinc-400 text-sm">Sunday: Closed</p>
+                <p className="text-xs uppercase tracking-widest font-bold text-zinc-500 mb-1">{c.hours}</p>
+                <p className="text-zinc-400 text-sm">{c.hoursWeekday}</p>
+                <p className="text-zinc-400 text-sm">{c.hoursSunday}</p>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-widest font-bold text-zinc-500 mb-1">Service Area</p>
-                <p className="text-zinc-400 text-sm">Seattle, Bellevue, Tacoma & surrounding cities</p>
+                <p className="text-xs uppercase tracking-widest font-bold text-zinc-500 mb-1">{c.serviceArea}</p>
+                <p className="text-zinc-400 text-sm">{c.serviceAreaText}</p>
               </div>
             </div>
 
@@ -84,7 +85,7 @@ export default function ContactPage() {
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                Call Now
+                {c.callNow}
               </a>
             </div>
           </div>
@@ -94,50 +95,50 @@ export default function ContactPage() {
             {submitted ? (
               <div className="text-center py-12 border border-zinc-800 bg-zinc-900">
                 <div className="text-3xl mb-3 text-red-500">&#10003;</div>
-                <h3 className="text-lg font-bold text-white mb-2">Message Sent!</h3>
-                <p className="text-zinc-400 text-sm mb-4">I&apos;ll get back to you as soon as possible.</p>
+                <h3 className="text-lg font-bold text-white mb-2">{c.messageSent}</h3>
+                <p className="text-zinc-400 text-sm mb-4">{c.messageConfirm}</p>
                 <Button onClick={() => { setSubmitted(false); setName(''); setEmail(''); setMessage(''); }} variant="outline" size="sm">
-                  Send Another
+                  {c.sendAnother}
                 </Button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <label className="block text-xs uppercase tracking-widest font-bold text-zinc-500 mb-2">Name</label>
+                  <label className="block text-xs uppercase tracking-widest font-bold text-zinc-500 mb-2">{c.name}</label>
                   <input
                     type="text"
                     required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     className="w-full border-2 border-zinc-700 bg-zinc-900 text-white px-4 py-3 text-sm focus:border-red-600 focus:outline-none transition-colors"
-                    placeholder="Your name"
+                    placeholder={c.namePlaceholder}
                   />
                 </div>
                 <div>
-                  <label className="block text-xs uppercase tracking-widest font-bold text-zinc-500 mb-2">Email</label>
+                  <label className="block text-xs uppercase tracking-widest font-bold text-zinc-500 mb-2">{c.emailLabel}</label>
                   <input
                     type="email"
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="w-full border-2 border-zinc-700 bg-zinc-900 text-white px-4 py-3 text-sm focus:border-red-600 focus:outline-none transition-colors"
-                    placeholder="your@email.com"
+                    placeholder={c.emailPlaceholder}
                   />
                 </div>
                 <div>
-                  <label className="block text-xs uppercase tracking-widest font-bold text-zinc-500 mb-2">Message</label>
+                  <label className="block text-xs uppercase tracking-widest font-bold text-zinc-500 mb-2">{c.message}</label>
                   <textarea
                     rows={5}
                     required
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     className="w-full border-2 border-zinc-700 bg-zinc-900 text-white px-4 py-3 text-sm focus:border-red-600 focus:outline-none transition-colors resize-none"
-                    placeholder="How can I help you?"
+                    placeholder={c.messagePlaceholder}
                   />
                 </div>
                 {error && <p className="text-red-400 text-sm">{error}</p>}
                 <Button type="submit" variant="primary" size="lg" className="w-full text-center" disabled={loading}>
-                  {loading ? 'Sending…' : 'Send Message'}
+                  {loading ? c.sending : c.send}
                 </Button>
               </form>
             )}

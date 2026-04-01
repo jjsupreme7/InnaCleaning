@@ -1,19 +1,19 @@
+'use client';
+
 import Container from '@/components/ui/Container';
 import SectionHeading from '@/components/ui/SectionHeading';
 import BookingForm from '@/components/booking/BookingForm';
-
-export const metadata = {
-  title: 'Book Now | Inna Cleaning',
-  description: 'Book your professional cleaning appointment. Choose your date, time, and service.',
-};
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function BookingPage() {
+  const { t } = useLanguage();
+
   return (
     <section className="py-16 md:py-24">
       <Container>
         <SectionHeading
-          title="Book Your Cleaning"
-          subtitle="Fill out the form below and I'll confirm your appointment"
+          title={t.booking.title}
+          subtitle={t.booking.subtitle}
         />
         <div className="max-w-2xl mx-auto">
           <BookingForm />

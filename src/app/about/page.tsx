@@ -1,13 +1,14 @@
+'use client';
+
 import Image from 'next/image';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
-
-export const metadata = {
-  title: 'About | Inna Cleaning',
-  description: 'Meet Inna Rohovska — professional cleaner serving the Western Washington area with years of experience, care, and attention to detail.',
-};
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function AboutPage() {
+  const { t } = useLanguage();
+  const a = t.about;
+
   return (
     <>
       {/* Hero */}
@@ -15,14 +16,13 @@ export default function AboutPage() {
         <Container>
           <div className="max-w-3xl mx-auto text-center">
             <p className="text-red-500 text-sm uppercase tracking-[0.2em] font-bold mb-3">
-              About
+              {a.badge}
             </p>
             <h1 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Hi, I&apos;m Inna Rohovska
+              {a.headline}
             </h1>
             <p className="text-zinc-400 text-lg leading-relaxed">
-              Professional cleaner based in Western Washington, dedicated to making
-              every home shine.
+              {a.intro}
             </p>
           </div>
         </Container>
@@ -46,28 +46,12 @@ export default function AboutPage() {
 
             <div>
               <h2 className="text-2xl font-bold text-white mb-6 uppercase tracking-widest">
-                My Story
+                {a.storyHeading}
               </h2>
               <div className="space-y-4 text-zinc-400 leading-relaxed">
-                <p>
-                  I&apos;m Inna Rohovska, a sole proprietor and professional cleaner
-                  based in the Western Washington area. I started my cleaning
-                  business because I believe everyone deserves to come home to a
-                  clean, fresh, and comfortable space — without the stress of
-                  doing it themselves.
-                </p>
-                <p>
-                  With multiple years of professional cleaning experience, I&apos;ve
-                  built my reputation on trust, reliability, and an obsessive
-                  attention to detail. Whether it&apos;s a cozy apartment, a large
-                  family home, or anything in between — I can serve any type of
-                  home and tailor my cleaning to your specific needs.
-                </p>
-                <p>
-                  I understand that letting someone into your home requires trust.
-                  That&apos;s why I take the time to learn your preferences, respect your
-                  space, and deliver consistent results every single time.
-                </p>
+                <p>{a.story1}</p>
+                <p>{a.story2}</p>
+                <p>{a.story3}</p>
               </div>
             </div>
           </div>
@@ -79,15 +63,11 @@ export default function AboutPage() {
         <Container>
           <div className="max-w-3xl mx-auto">
             <h2 className="text-2xl font-bold text-white mb-10 uppercase tracking-widest text-center">
-              What I Stand For
+              {a.valuesHeading}
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-              {[
-                { title: 'Reliability', desc: 'I show up on time, every time. You can count on me.' },
-                { title: 'Attention to Detail', desc: 'No corner is overlooked. I clean with care and precision.' },
-                { title: 'Trust', desc: 'Your home, your rules. I treat every space with respect.' },
-              ].map((val) => (
+              {a.values.map((val) => (
                 <div key={val.title} className="text-center">
                   <h3 className="text-sm uppercase tracking-widest font-bold text-white mb-3">
                     {val.title}
@@ -107,26 +87,26 @@ export default function AboutPage() {
         <Container>
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-2xl font-bold text-white mb-6 uppercase tracking-widest">
-              My Promise to You
+              {a.promiseHeading}
             </h2>
             <div className="space-y-4 text-sm text-zinc-400">
               <div className="border border-zinc-800 p-5 flex items-center gap-4">
                 <span className="text-red-500 text-xl">&#10003;</span>
-                <span>100% Satisfaction Guarantee — not happy? I&apos;ll re-clean for free.</span>
+                <span>{a.promise1}</span>
               </div>
               <div className="border border-zinc-800 p-5 flex items-center gap-4">
                 <span className="text-red-500 text-xl">&#10003;</span>
-                <span>Fully Insured — your home is protected.</span>
+                <span>{a.promise2}</span>
               </div>
               <div className="border border-zinc-800 p-5 flex items-center gap-4">
                 <span className="text-red-500 text-xl">&#10003;</span>
-                <span>Eco-Friendly Products — safe for your family and pets.</span>
+                <span>{a.promise3}</span>
               </div>
             </div>
 
             <div className="mt-10">
               <Button href="/quote" variant="primary" size="lg">
-                Get Your Free Quote
+                {a.getQuote}
               </Button>
             </div>
           </div>

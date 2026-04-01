@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -9,6 +10,8 @@ interface MobileMenuProps {
 }
 
 export default function MobileMenu({ isOpen, onClose, links }: MobileMenuProps) {
+  const { t } = useLanguage();
+
   if (!isOpen) return null;
 
   return (
@@ -43,7 +46,7 @@ export default function MobileMenu({ isOpen, onClose, links }: MobileMenuProps) 
             onClick={onClose}
             className="mt-6 inline-block border-2 border-red-600 bg-red-600 text-white px-5 py-3 text-xs uppercase tracking-widest font-bold text-center hover:bg-red-700 transition-all duration-300"
           >
-            Book Now
+            {t.nav.bookNow}
           </Link>
         </nav>
       </div>

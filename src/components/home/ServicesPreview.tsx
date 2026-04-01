@@ -73,9 +73,9 @@ export default function ServicesPreview() {
 
               <div>
                 <p className="mb-2 text-2xl">{service.icon}</p>
-                <h3 className="font-bold text-white">{service.title}</h3>
+                <h3 className="font-bold text-white">{t.servicesItems[service.id as keyof typeof t.servicesItems].title}</h3>
                 <p className="mt-1 text-sm text-zinc-500">
-                  {service.description.substring(0, 80)}…
+                  {t.servicesItems[service.id as keyof typeof t.servicesItems].description.substring(0, 80)}…
                 </p>
               </div>
 
@@ -85,7 +85,7 @@ export default function ServicesPreview() {
               </div>
 
               <ul className="flex flex-col gap-1.5">
-                {service.includes.slice(0, 3).map((item) => (
+                {t.servicesItems[service.id as keyof typeof t.servicesItems].includes.slice(0, 3).map((item) => (
                   <li key={item} className="flex items-center gap-2 text-sm text-zinc-400">
                     <Check className="h-3.5 w-3.5 shrink-0 text-red-500" />
                     {item}

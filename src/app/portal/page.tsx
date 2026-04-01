@@ -7,6 +7,7 @@ import { supabase } from '@/lib/supabase';
 import type { User } from '@supabase/supabase-js';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface Booking {
   id: string;
@@ -29,6 +30,9 @@ interface Quote {
 
 export default function PortalPage() {
   const router = useRouter();
+  const { t } = useLanguage();
+  const p = t.portal;
+
   const [user, setUser] = useState<User | null>(null);
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [quotes, setQuotes] = useState<Quote[]>([]);
@@ -64,7 +68,7 @@ export default function PortalPage() {
     return (
       <section className="py-16 md:py-24">
         <Container>
-          <p className="text-zinc-500 text-center">Loading…</p>
+          <p className="text-zinc-500 text-center">{p.loading}</p>
         </Container>
       </section>
     );
@@ -76,22 +80,22 @@ export default function PortalPage() {
         {/* Header */}
         <div className="flex items-center justify-between mb-12">
           <div>
-            <h1 className="text-2xl font-bold uppercase tracking-widest text-white">My Portal</h1>
+            <h1 className="text-2xl font-bold uppercase tracking-widest text-white">{p.title}</h1>
             <p className="text-zinc-500 text-sm mt-1">{user?.email}</p>
           </div>
           <div className="flex gap-3">
-            <Button href="/booking" variant="primary" size="sm">New Booking</Button>
-            <Button onClick={handleLogout} variant="outline" size="sm">Log Out</Button>
+            <Button href="/booking" variant="primary" size="sm">{p.newBooking}</Button>
+            <Button onClick={handleLogout} variant="outline" size="sm">{p.logOut}</Button>
           </div>
         </div>
 
         {/* Bookings */}
         <div className="mb-12">
-          <h2 className="text-xs uppercase tracking-widest font-bold text-zinc-500 mb-4">My Bookings</h2>
+          <h2 className="text-xs uppercase tracking-widest font-bold text-zinc-500 mb-4">{p.bookings}</h2>
           {bookings.length === 0 ? (
             <div className="border border-zinc-800 bg-zinc-900 p-8 text-center">
-              <p className="text-zinc-500 text-sm mb-4">No bookings yet.</p>
-              <Button href="/booking" variant="primary" size="md">Book a Cleaning</Button>
+              <p className="text-zinc-500 text-sm mb-4">{p.noBookings}</p>
+              <Button href="/booking" variant="primary" size="md">{p.bookCleaning}</Button>
             </div>
           ) : (
             <div className="space-y-3">
@@ -113,11 +117,11 @@ export default function PortalPage() {
 
         {/* Quotes */}
         <div>
-          <h2 className="text-xs uppercase tracking-widest font-bold text-zinc-500 mb-4">My Quotes</h2>
+          <h2 className="text-xs uppercase tracking-widest font-bold text-zinc-500 mb-4">{p.quotes}</h2>
           {quotes.length === 0 ? (
             <div className="border border-zinc-800 bg-zinc-900 p-8 text-center">
-              <p className="text-zinc-500 text-sm mb-4">No saved quotes yet.</p>
-              <Button href="/quote" variant="primary" size="md">Get a Quote</Button>
+              <p className="text-zinc-500 text-sm mb-4">{p.noQuotes}</p>
+              <Button href="/quote" variant="primary" size="md">{p.getQuote}</Button>
             </div>
           ) : (
             <div className="space-y-3">
@@ -142,7 +146,7 @@ export default function PortalPage() {
         </div>
 
         <p className="text-center mt-12">
-          <Link href="/" className="text-zinc-600 text-xs hover:text-zinc-400 transition-colors uppercase tracking-widest">← Back to site</Link>
+          <Link href="/" className="text-zinc-600 text-xs hover:text-zinc-400 transition-colors uppercase tracking-widest">{p.back}</Link>
         </p>
       </Container>
     </section>

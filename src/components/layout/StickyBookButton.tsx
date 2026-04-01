@@ -2,8 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function StickyBookButton() {
+  const { t } = useLanguage();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -26,7 +28,7 @@ export default function StickyBookButton() {
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
         </svg>
-        Book Now
+        {t.nav.bookNow}
       </Link>
 
       {/* Mobile: bottom bar */}
@@ -35,7 +37,7 @@ export default function StickyBookButton() {
           href="/booking"
           className="block w-full bg-red-600 text-white py-3 text-xs uppercase tracking-widest font-bold text-center border-2 border-red-600 hover:bg-red-700 transition-all duration-300"
         >
-          Book Now
+          {t.nav.bookNow}
         </Link>
       </div>
     </>

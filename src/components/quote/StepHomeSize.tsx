@@ -1,5 +1,8 @@
+'use client';
+
 import { HomeSize } from '@/types';
-import { HOME_SIZE_LABELS, BASE_PRICES } from '@/data/pricing';
+import { BASE_PRICES } from '@/data/pricing';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface Props {
   value: HomeSize | null;
@@ -9,10 +12,13 @@ interface Props {
 const sizes: HomeSize[] = ['studio', '1bed', '2bed', '3bed', '4bed_plus'];
 
 export default function StepHomeSize({ value, onChange }: Props) {
+  const { t } = useLanguage();
+  const q = t.quote;
+
   return (
     <div>
-      <h3 className="text-lg font-bold text-white mb-2">How big is your home?</h3>
-      <p className="text-zinc-500 text-sm mb-6">Select the size that best describes your space.</p>
+      <h3 className="text-lg font-bold text-white mb-2">{q.homeSizeHeading}</h3>
+      <p className="text-zinc-500 text-sm mb-6">{q.homeSizeSubheading}</p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {sizes.map((size) => (
@@ -26,10 +32,10 @@ export default function StepHomeSize({ value, onChange }: Props) {
             }`}
           >
             <span className="block text-sm font-bold text-white">
-              {HOME_SIZE_LABELS[size]}
+              {q.sizeLabels[size]}
             </span>
             <span className="block text-xs text-zinc-500 mt-1">
-              From ${BASE_PRICES[size]}
+              {q.from}{BASE_PRICES[size]}
             </span>
           </button>
         ))}

@@ -1,6 +1,11 @@
-const steps = ['Size', 'Type', 'Condition', 'Add-ons', 'Frequency', 'Contact'];
+'use client';
+
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function StepIndicator({ currentStep }: { currentStep: number }) {
+  const { t } = useLanguage();
+  const steps = t.quote.steps;
+
   return (
     <div className="flex items-center justify-center mb-10">
       {steps.map((label, i) => {

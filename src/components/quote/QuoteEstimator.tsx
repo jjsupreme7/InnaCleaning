@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { QuoteState } from '@/types';
 import { useQuoteCalculator } from '@/hooks/useQuoteCalculator';
+import { useLanguage } from '@/contexts/LanguageContext';
 import StepIndicator from './StepIndicator';
 import StepHomeSize from './StepHomeSize';
 import StepCleaningType from './StepCleaningType';
@@ -25,6 +26,9 @@ const initialState: QuoteState = {
 };
 
 export default function QuoteEstimator() {
+  const { t } = useLanguage();
+  const q = t.quote;
+
   const [state, setState] = useState<QuoteState>(initialState);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -90,15 +94,17 @@ export default function QuoteEstimator() {
     return (
       <div className="text-center py-16">
         <div className="text-5xl mb-4 text-red-500">&#10003;</div>
-        <h3 className="text-2xl font-bold text-white mb-3">Quote Saved!</h3>
+        <h3 className="text-2xl font-bold text-white mb-3">{q.savedHeading}</h3>
         <p className="text-zinc-400 mb-2">
-          Thanks, {state.name}! Your estimated total is{' '}
+          {q.savedThanks.replace('{name}', state.name)}{' '}
           <span className="text-white font-bold">${breakdown?.total}</span>.
         </p>
-        <p className="text-zinc-500 text-sm mb-8">I&apos;ll be in touch at {state.email} shortly.</p>
+        <p className="text-zinc-500 text-sm mb-8">
+          {q.savedInTouch.replace('{email}', state.email)}
+        </p>
         <div className="flex gap-4 justify-center">
-          <Button href="/booking" variant="primary" size="lg">Book Now</Button>
-          <Button onClick={() => { setSubmitted(false); setState(initialState); }} variant="outline" size="lg">Start Over</Button>
+          <Button href="/booking" variant="primary" size="lg">{q.bookNow}</Button>
+          <Button onClick={() => { setSubmitted(false); setState(initialState); }} variant="outline" size="lg">{q.startOver}</Button>
         </div>
       </div>
     );
@@ -129,14 +135,14 @@ export default function QuoteEstimator() {
 
         <div className="flex justify-between mt-8">
           <div>
-            {state.step > 1 && <Button onClick={prevStep} variant="outline" size="md">Back</Button>}
+            {state.step > 1 && <Button onClick={prevStep} variant="outline" size="md">{q.back}</Button>}
           </div>
           <div>
             {state.step < 6 ? (
-              <Button onClick={nextStep} variant="primary" size="md" disabled={!canProceed()}>Next</Button>
+              <Button onClick={nextStep} variant="primary" size="md" disabled={!canProceed()}>{q.next}</Button>
             ) : (
               <Button onClick={handleSubmit} variant="primary" size="md" disabled={!canProceed() || loading}>
-                {loading ? 'Saving…' : 'Get My Quote'}
+                {loading ? q.saving : q.getQuote}
               </Button>
             )}
           </div>

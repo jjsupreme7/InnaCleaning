@@ -1,9 +1,11 @@
 interface Props {
   title: string;
   index: number;
+  before: string;
+  after: string;
 }
 
-export default function BeforeAfterCard({ title, index }: Props) {
+export default function BeforeAfterCard({ title, index, before, after }: Props) {
   // Placeholder cards with gradient backgrounds since we don't have real photos yet
   const colors = [
     { before: 'from-amber-200 to-amber-300', after: 'from-sky-200 to-sky-300' },
@@ -17,10 +19,10 @@ export default function BeforeAfterCard({ title, index }: Props) {
     <div className="border border-zinc-800">
       <div className="grid grid-cols-2">
         <div className={`aspect-square bg-gradient-to-br ${color.before} flex items-center justify-center`}>
-          <span className="text-xs uppercase tracking-widest font-bold text-black/40">Before</span>
+          <span className="text-xs uppercase tracking-widest font-bold text-black/40">{before}</span>
         </div>
         <div className={`aspect-square bg-gradient-to-br ${color.after} flex items-center justify-center`}>
-          <span className="text-xs uppercase tracking-widest font-bold text-black/40">After</span>
+          <span className="text-xs uppercase tracking-widest font-bold text-black/40">{after}</span>
         </div>
       </div>
       <div className="p-4 bg-zinc-950">
