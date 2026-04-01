@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { ArrowRight, Check, House, Leaf, ShieldCheck, Sparkles } from 'lucide-react';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
@@ -29,10 +30,12 @@ export default function AboutPage() {
             </div>
 
             <div className="scroll-fade-up relative overflow-hidden rounded-[2.4rem] shadow-[0_30px_80px_-40px_rgba(27,69,56,0.52)]">
-              <img
+              <Image
                 src={siteImages.aboutInna}
                 alt="Professional cleaner standing in a bright kitchen"
                 className="aspect-[6/5] w-full object-cover"
+                width={800}
+                height={667}
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_46%,rgba(18,52,43,0.56)_100%)]" />

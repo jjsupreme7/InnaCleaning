@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { ArrowRight, Check, Sparkles } from 'lucide-react';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
@@ -32,10 +33,12 @@ export default function ServicesPage() {
             </div>
 
             <div className="scroll-fade-up relative overflow-hidden rounded-[2.4rem] shadow-[0_30px_80px_-40px_rgba(27,69,56,0.52)]">
-              <img
+              <Image
                 src={siteImages.cleanKitchen}
                 alt="Bright, freshly cleaned kitchen interior"
                 className="aspect-[6/5] w-full object-cover"
+                width={800}
+                height={667}
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_48%,rgba(18,52,43,0.62)_100%)]" />
@@ -61,10 +64,12 @@ export default function ServicesPage() {
                 key={service.id}
                 className="panel-card scroll-fade-up overflow-hidden"
               >
-                <img
+                <Image
                   src={serviceImages[service.id as keyof typeof serviceImages]}
                   alt={`${service.title} cleaning service`}
                   className="aspect-[16/10] w-full object-cover"
+                  width={800}
+                  height={500}
                   loading="lazy"
                 />
                 <div className="p-7 md:p-8">

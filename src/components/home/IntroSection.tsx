@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { ArrowRight, Leaf, ShieldCheck, Sparkles } from 'lucide-react';
 import { siteImages } from '@/data/images';
 import Container from '@/components/ui/Container';
@@ -10,10 +11,12 @@ export default function IntroSection() {
         <div className="grid items-center gap-12 md:grid-cols-[0.92fr_1.08fr]">
           <div className="scroll-fade-up order-2 md:order-1">
             <div className="relative overflow-hidden rounded-[2.2rem] shadow-[0_30px_70px_-34px_rgba(27,69,56,0.46)]">
-              <img
+              <Image
                 src={siteImages.aboutInna}
                 alt="Professional cleaner holding a broom in a bright kitchen"
                 className="aspect-[4/5] w-full object-cover"
+                width={600}
+                height={750}
                 loading="lazy"
               />
               <div className="absolute inset-x-6 bottom-6 rounded-[1.6rem] border border-white/40 bg-white/70 px-5 py-4 backdrop-blur-md">
