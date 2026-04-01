@@ -1,30 +1,39 @@
 interface Props {
   title: string;
-  index: number;
+  image: string;
 }
 
-export default function BeforeAfterCard({ title, index }: Props) {
-  // Placeholder cards with gradient backgrounds since we don't have real photos yet
-  const colors = [
-    { before: 'from-amber-200 to-amber-300', after: 'from-sky-200 to-sky-300' },
-    { before: 'from-stone-200 to-stone-300', after: 'from-emerald-200 to-emerald-300' },
-    { before: 'from-orange-200 to-orange-300', after: 'from-blue-200 to-blue-300' },
-    { before: 'from-yellow-200 to-yellow-300', after: 'from-teal-200 to-teal-300' },
-  ];
-  const color = colors[index % colors.length];
-
+export default function BeforeAfterCard({ title, image }: Props) {
   return (
-    <div className="border border-gray-100">
+    <div className="soft-card scroll-fade-up overflow-hidden">
       <div className="grid grid-cols-2">
-        <div className={`aspect-square bg-gradient-to-br ${color.before} flex items-center justify-center`}>
-          <span className="text-xs uppercase tracking-widest font-bold text-black/30">Before</span>
+        <div className="group relative aspect-square overflow-hidden">
+          <div
+            className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+            style={{
+              backgroundImage: `url(${image})`,
+              filter: 'grayscale(1) saturate(0.55) brightness(0.88)',
+            }}
+          />
+          <span className="absolute left-4 top-4 rounded-full bg-white/74 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-[#536e66]">
+            Before
+          </span>
         </div>
-        <div className={`aspect-square bg-gradient-to-br ${color.after} flex items-center justify-center`}>
-          <span className="text-xs uppercase tracking-widest font-bold text-black/30">After</span>
+        <div className="group relative aspect-square overflow-hidden">
+          <div
+            className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+            style={{ backgroundImage: `url(${image})` }}
+          />
+          <span className="absolute left-4 top-4 rounded-full bg-[#edf5ee]/84 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-[#467968]">
+            After
+          </span>
         </div>
       </div>
-      <div className="p-4">
-        <p className="text-sm font-bold text-slate-800">{title}</p>
+      <div className="p-5">
+        <p className="text-lg font-semibold text-[var(--color-foreground)]">{title}</p>
+        <p className="mt-2 text-sm leading-7 text-[#67827b]">
+          Illustrative stock preview with a muted-to-fresh treatment.
+        </p>
       </div>
     </div>
   );

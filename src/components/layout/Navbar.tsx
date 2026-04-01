@@ -2,7 +2,9 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { Menu, Sparkles } from 'lucide-react';
 import Container from '@/components/ui/Container';
+import Button from '@/components/ui/Button';
 import MobileMenu from './MobileMenu';
 
 const navLinks = [
@@ -20,19 +22,32 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+      <header className="sticky top-0 z-50 border-b border-white/45 bg-[#f8f4ed]/85 backdrop-blur-xl">
         <Container>
-          <div className="flex items-center justify-between h-16 md:h-20">
-            <Link href="/" className="text-xl md:text-2xl font-bold tracking-[0.1em] uppercase text-slate-800">
-              Inna Cleaning
+          <div className="flex h-20 items-center justify-between md:h-24">
+            <Link
+              href="/"
+              className="flex items-center gap-3 text-[var(--color-foreground)]"
+            >
+              <span className="accent-ring flex h-11 w-11 items-center justify-center rounded-2xl bg-white/85 text-[#4f8676]">
+                <Sparkles className="h-5 w-5" strokeWidth={1.8} />
+              </span>
+              <span>
+                <span className="block font-serif text-2xl leading-none md:text-3xl">
+                  Inna Cleaning
+                </span>
+                <span className="mt-1 block text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-[#69857e]">
+                  Warm, personal home care
+                </span>
+              </span>
             </Link>
 
-            <nav className="hidden md:flex items-center gap-8">
+            <nav className="hidden items-center gap-2 rounded-full border border-white/55 bg-white/55 px-3 py-2 shadow-[0_18px_40px_-32px_rgba(27,69,56,0.45)] md:flex">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-sm uppercase tracking-widest text-gray-600 hover:text-slate-800 transition-colors duration-300 font-medium"
+                  className="rounded-full px-4 py-2 text-sm font-medium text-[#5e7972] transition-colors duration-300 hover:bg-white hover:text-[var(--color-foreground)]"
                 >
                   {link.label}
                 </Link>
@@ -40,22 +55,17 @@ export default function Navbar() {
             </nav>
 
             <div className="hidden md:block">
-              <Link
-                href="/booking"
-                className="inline-block border-2 border-sky-600 bg-sky-600 text-white px-5 py-2 text-xs uppercase tracking-widest font-bold hover:bg-sky-700 hover:border-sky-700 transition-all duration-300"
-              >
+              <Button href="/booking" size="sm">
                 Book Now
-              </Link>
+              </Button>
             </div>
 
             <button
               onClick={() => setMobileOpen(true)}
-              className="md:hidden p-2 text-slate-800"
+              className="accent-ring flex h-11 w-11 items-center justify-center rounded-2xl bg-white/85 text-[var(--color-foreground)] md:hidden"
               aria-label="Open menu"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
+              <Menu className="h-5 w-5" strokeWidth={1.8} />
             </button>
           </div>
         </Container>

@@ -1,36 +1,43 @@
+import { ArrowRight } from 'lucide-react';
 import Container from '@/components/ui/Container';
 import SectionHeading from '@/components/ui/SectionHeading';
 import Button from '@/components/ui/Button';
 import { services } from '@/data/services';
+import ServiceIcon from '@/components/ui/ServiceIcon';
 
 export default function ServicesPreview() {
   return (
-    <section className="py-16 md:py-24 bg-gray-50">
+    <section className="section-shell bg-[#edf5ee]/70">
       <Container>
         <SectionHeading
           title="Services"
           subtitle="Professional cleaning tailored to your needs"
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
           {services.map((service) => (
             <div
               key={service.id}
-              className="bg-white border border-gray-100 p-6 hover:-translate-y-1 transition-all duration-300 group"
+              className="scroll-fade-up soft-card group flex h-full flex-col p-6 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_26px_70px_-38px_rgba(27,69,56,0.45)]"
             >
-              <div className="text-3xl mb-4">{service.icon}</div>
-              <h3 className="text-sm uppercase tracking-widest font-bold text-slate-800 mb-3">
+              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-[1.25rem] bg-[linear-gradient(135deg,#dff0ea,#f2e8cf)] text-[#467968] transition-transform duration-300 group-hover:scale-105">
+                <ServiceIcon icon={service.icon} className="h-6 w-6" strokeWidth={1.8} />
+              </div>
+              <h3 className="text-xl font-semibold text-[var(--color-foreground)]">
                 {service.title}
               </h3>
-              <p className="text-gray-500 text-sm leading-relaxed mb-4">
+              <p className="mt-4 flex-1 text-sm leading-7 text-[#67827b]">
                 {service.description.substring(0, 100)}...
               </p>
-              <p className="text-sky-600 font-bold text-sm mb-4">
+              <p className="mt-5 text-sm font-semibold uppercase tracking-[0.18em] text-[#467968]">
                 From ${service.startingPrice}
               </p>
-              <Button href="/services" variant="outline" size="sm">
-                Learn More
-              </Button>
+              <div className="mt-6">
+                <Button href="/services" variant="outline" size="sm">
+                  Learn More
+                  <ArrowRight className="h-4 w-4" strokeWidth={2} />
+                </Button>
+              </div>
             </div>
           ))}
         </div>

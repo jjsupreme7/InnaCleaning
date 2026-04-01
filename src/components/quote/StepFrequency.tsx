@@ -15,30 +15,34 @@ const frequencies: { id: Frequency; desc: string }[] = [
 
 export default function StepFrequency({ value, onChange }: Props) {
   return (
-    <div>
-      <h3 className="text-lg font-bold text-slate-800 mb-2">How often?</h3>
-      <p className="text-gray-500 text-sm mb-6">Recurring cleanings come with a discount.</p>
+    <div className="pt-8">
+      <h3 className="font-serif text-4xl leading-none text-[var(--color-foreground)]">
+        How often?
+      </h3>
+      <p className="mt-3 text-sm leading-7 text-[#67827b] md:text-base">
+        Recurring cleanings come with a discount.
+      </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
         {frequencies.map((freq) => (
           <button
             key={freq.id}
             onClick={() => onChange(freq.id)}
-            className={`p-4 border-2 text-left transition-all duration-300 hover:-translate-y-0.5 relative ${
+            className={`relative rounded-[1.6rem] border p-5 text-left transition-all duration-300 hover:-translate-y-0.5 ${
               value === freq.id
-                ? 'border-sky-600 bg-sky-50'
-                : 'border-gray-200 hover:border-gray-300'
+                ? 'border-[#92c0b1] bg-[#edf5ee] shadow-[0_18px_40px_-26px_rgba(70,121,104,0.35)]'
+                : 'border-[rgba(70,121,104,0.12)] bg-white/82 hover:border-[#b7d8cd] hover:bg-white'
             }`}
           >
             {freq.id === 'weekly' && (
-              <span className="absolute -top-2 right-3 bg-green-500 text-white text-[10px] uppercase tracking-widest font-bold px-2 py-0.5">
+              <span className="absolute right-4 top-4 rounded-full bg-[#467968] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white">
                 Best Value
               </span>
             )}
-            <span className="block text-sm font-bold text-slate-800">
+            <span className="block text-base font-semibold text-[var(--color-foreground)]">
               {FREQUENCY_LABELS[freq.id]}
             </span>
-            <span className="block text-xs text-gray-400 mt-1">
+            <span className="mt-2 block text-sm leading-7 text-[#67827b]">
               {freq.desc}
             </span>
           </button>

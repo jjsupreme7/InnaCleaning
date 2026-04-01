@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { ArrowRight, RotateCcw } from 'lucide-react';
 import { QuoteState } from '@/types';
 import { useQuoteCalculator } from '@/hooks/useQuoteCalculator';
 import StepIndicator from './StepIndicator';
@@ -57,11 +58,11 @@ export default function QuoteEstimator() {
   const reset = () => setState(initialState);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-      <div className="lg:col-span-2">
+    <div className="grid grid-cols-1 gap-8 xl:grid-cols-[1.25fr_0.75fr]">
+      <div className="panel-card scroll-fade-up p-6 md:p-8">
         <StepIndicator currentStep={state.step} />
 
-        <div className="min-h-[300px]">
+        <div className="min-h-[320px]">
           {state.step === 1 && (
             <StepHomeSize
               value={state.homeSize}
@@ -94,7 +95,7 @@ export default function QuoteEstimator() {
           )}
         </div>
 
-        <div className="flex justify-between mt-8">
+        <div className="mt-10 flex flex-col justify-between gap-4 border-t border-[rgba(70,121,104,0.12)] pt-6 sm:flex-row">
           <div>
             {state.step > 1 && (
               <Button onClick={prevStep} variant="outline" size="md">
@@ -106,14 +107,15 @@ export default function QuoteEstimator() {
             {state.step < 5 ? (
               <Button
                 onClick={nextStep}
-                variant="primary"
                 size="md"
                 disabled={!canProceed()}
               >
                 Next
+                <ArrowRight className="h-4 w-4" strokeWidth={2} />
               </Button>
             ) : (
               <Button onClick={reset} variant="outline" size="sm">
+                <RotateCcw className="h-4 w-4" strokeWidth={1.8} />
                 Start Over
               </Button>
             )}
@@ -121,8 +123,8 @@ export default function QuoteEstimator() {
         </div>
       </div>
 
-      <div className="lg:col-span-1">
-        <div className="lg:sticky lg:top-24">
+      <div className="scroll-fade-up">
+        <div className="xl:sticky xl:top-28">
           <PriceSummary
             breakdown={breakdown}
             showBookButton={state.step === 5 && state.frequency !== null}

@@ -1,27 +1,46 @@
+import { Quote, Star, UserRound } from 'lucide-react';
 import { Review } from '@/types';
 
 export default function ReviewCard({ review }: { review: Review }) {
+  const initials = review.name
+    .split(' ')
+    .map((part) => part[0])
+    .join('')
+    .slice(0, 2);
+
   return (
-    <div className="bg-white border border-gray-100 p-6">
-      <div className="flex gap-1 mb-3">
+    <div className="soft-card scroll-fade-up h-full p-6 md:p-7">
+      <div className="mb-5 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,#dff0ea,#f3e8cb)] text-sm font-semibold text-[#456f64]">
+            <span className="sr-only">{review.name}</span>
+            {initials || <UserRound className="h-5 w-5" strokeWidth={1.8} />}
+          </div>
+          <div>
+            <p className="font-semibold text-[var(--color-foreground)]">{review.name}</p>
+            <p className="text-xs uppercase tracking-[0.18em] text-[#739087]">
+              {review.service}
+            </p>
+          </div>
+        </div>
+        <Quote className="h-5 w-5 text-[#90b9ac]" strokeWidth={1.8} />
+      </div>
+
+      <div className="mb-4 flex gap-1">
         {Array.from({ length: 5 }).map((_, i) => (
-          <svg
+          <Star
             key={i}
-            className={`w-4 h-4 ${i < review.rating ? 'text-yellow-400' : 'text-gray-200'}`}
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-          </svg>
+            className={`h-4 w-4 ${
+              i < review.rating ? 'fill-[#f2c869] text-[#f2c869]' : 'text-[#d8e5df]'
+            }`}
+            strokeWidth={1.8}
+          />
         ))}
       </div>
-      <p className="text-gray-600 text-sm leading-relaxed mb-4 italic">
+
+      <p className="text-sm leading-7 text-[#5d7871] italic">
         &ldquo;{review.text}&rdquo;
       </p>
-      <div>
-        <p className="font-bold text-slate-800 text-sm">{review.name}</p>
-        <p className="text-gray-400 text-xs uppercase tracking-widest">{review.service}</p>
-      </div>
     </div>
   );
 }

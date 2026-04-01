@@ -14,7 +14,7 @@ export const services: Service[] = [
       'Making beds and tidying up',
     ],
     startingPrice: 80,
-    icon: '✨',
+    icon: 'sparkles',
   },
   {
     id: 'deep',
@@ -30,7 +30,7 @@ export const services: Service[] = [
       'Window sills and tracks',
     ],
     startingPrice: 120,
-    icon: '🧹',
+    icon: 'spray',
   },
   {
     id: 'move',
@@ -45,7 +45,7 @@ export const services: Service[] = [
       'Wall spot cleaning',
     ],
     startingPrice: 140,
-    icon: '📦',
+    icon: 'package',
   },
   {
     id: 'airbnb',
@@ -60,6 +60,6 @@ export const services: Service[] = [
       'Bathroom deep sanitize',
     ],
     startingPrice: 100,
-    icon: '🏠',
+    icon: 'home',
   },
 ];

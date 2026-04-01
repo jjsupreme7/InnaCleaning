@@ -1,14 +1,43 @@
 import type { Metadata } from "next";
-import { Assistant } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import StickyBookButton from "@/components/layout/StickyBookButton";
 
-const assistant = Assistant({
-  variable: "--font-assistant",
-  subsets: ["latin"],
-  weight: ["400", "700"],
+const dmSans = localFont({
+  variable: "--font-body",
+  src: "./fonts/Geist-Regular.ttf",
+  display: "swap",
+  fallback: ["Arial", "sans-serif"],
+});
+
+const cormorant = localFont({
+  variable: "--font-heading",
+  src: [
+    {
+      path: "./fonts/Georgia.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Georgia-Italic.ttf",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "./fonts/Georgia-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Georgia-BoldItalic.ttf",
+      weight: "700",
+      style: "italic",
+    },
+  ],
+  display: "swap",
+  fallback: ["Georgia", "Times New Roman", "serif"],
 });
 
 export const metadata: Metadata = {
@@ -23,8 +52,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${assistant.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col font-sans">
+    <html
+      lang="en"
+      className={`${dmSans.variable} ${cormorant.variable} h-full antialiased`}
+    >
+      <body className="flex min-h-full flex-col overflow-x-hidden font-sans">
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

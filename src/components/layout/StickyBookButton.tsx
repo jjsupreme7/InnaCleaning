@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { CalendarDays } from 'lucide-react';
 
 export default function StickyBookButton() {
   const [visible, setVisible] = useState(false);
@@ -18,23 +19,20 @@ export default function StickyBookButton() {
 
   return (
     <>
-      {/* Desktop: floating button */}
       <Link
         href="/booking"
-        className="hidden md:flex fixed bottom-6 right-6 z-40 bg-sky-600 text-white px-6 py-3 text-xs uppercase tracking-widest font-bold border-2 border-sky-600 hover:bg-sky-700 hover:border-sky-700 transition-all duration-300 shadow-lg items-center gap-2"
+        className="fixed bottom-6 right-6 z-40 hidden items-center gap-2 rounded-full border border-[#467968] bg-[#467968] px-6 py-3.5 text-sm font-semibold tracking-[0.08em] text-white shadow-[0_24px_52px_-28px_rgba(27,69,56,0.9)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#3a6659] md:flex"
       >
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
+        <CalendarDays className="h-4 w-4" strokeWidth={1.8} />
         Book Now
       </Link>
 
-      {/* Mobile: bottom bar */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 p-3 bg-white border-t border-gray-200">
+      <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-white/40 bg-[#f8f4ed]/95 p-3 backdrop-blur md:hidden">
         <Link
           href="/booking"
-          className="block w-full bg-sky-600 text-white py-3 text-xs uppercase tracking-widest font-bold text-center border-2 border-sky-600 hover:bg-sky-700 transition-all duration-300"
+          className="flex w-full items-center justify-center gap-2 rounded-full bg-[#467968] py-3.5 text-sm font-semibold tracking-[0.08em] text-white shadow-[0_18px_40px_-22px_rgba(27,69,56,0.8)] transition-all duration-300 hover:bg-[#3a6659]"
         >
+          <CalendarDays className="h-4 w-4" strokeWidth={1.8} />
           Book Now
         </Link>
       </div>

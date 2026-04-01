@@ -1,26 +1,41 @@
 import Link from 'next/link';
+import { Mail, MapPin, Phone, Sparkles } from 'lucide-react';
 import Container from '@/components/ui/Container';
+import Button from '@/components/ui/Button';
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-800 text-white py-16">
+    <footer className="mt-16 bg-[#17352d] py-16 text-white md:mt-24">
       <Container>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div className="grid gap-12 md:grid-cols-[1.2fr_.9fr_.9fr]">
           <div>
-            <h3 className="text-lg font-bold uppercase tracking-[0.1em] mb-4">
-              Inna Cleaning
-            </h3>
-            <p className="text-gray-400 text-sm leading-relaxed">
+            <div className="mb-5 flex items-center gap-3">
+              <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 text-[#b2dbc9]">
+                <Sparkles className="h-5 w-5" strokeWidth={1.8} />
+              </span>
+              <div>
+                <h3 className="font-serif text-3xl leading-none">Inna Cleaning</h3>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.22em] text-[#b8d0c7]">
+                  Personal, detail-first service
+                </p>
+              </div>
+            </div>
+            <p className="max-w-md text-sm leading-7 text-[#c1d5cf]">
               Professional home cleaning services in the greater Seattle area.
               Reliable, thorough, and always with a personal touch.
             </p>
+            <div className="mt-6">
+              <Button href="/quote" variant="secondary" size="sm">
+                Free Quote
+              </Button>
+            </div>
           </div>
 
           <div>
-            <h4 className="text-sm font-bold uppercase tracking-widest mb-4">
+            <h4 className="mb-5 text-xs font-semibold uppercase tracking-[0.24em] text-[#b8d0c7]">
               Quick Links
             </h4>
-            <nav className="flex flex-col gap-2">
+            <nav className="flex flex-col gap-3">
               {[
                 { href: '/services', label: 'Services' },
                 { href: '/quote', label: 'Free Quote' },
@@ -32,7 +47,7 @@ export default function Footer() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-gray-400 text-sm hover:text-white transition-colors duration-300"
+                  className="text-sm text-[#d4e2dd] transition-colors duration-300 hover:text-white"
                 >
                   {link.label}
                 </Link>
@@ -41,22 +56,33 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm font-bold uppercase tracking-widest mb-4">
+            <h4 className="mb-5 text-xs font-semibold uppercase tracking-[0.24em] text-[#b8d0c7]">
               Contact
             </h4>
-            <div className="flex flex-col gap-2 text-gray-400 text-sm">
-              <a href="tel:+12065551234" className="hover:text-white transition-colors duration-300">
+            <div className="space-y-4 text-sm text-[#d4e2dd]">
+              <a
+                href="tel:+12065551234"
+                className="flex items-center gap-3 transition-colors duration-300 hover:text-white"
+              >
+                <Phone className="h-4 w-4 text-[#9dcdbc]" strokeWidth={1.8} />
                 (206) 555-1234
               </a>
-              <a href="mailto:inna@innacleaning.com" className="hover:text-white transition-colors duration-300">
+              <a
+                href="mailto:inna@innacleaning.com"
+                className="flex items-center gap-3 transition-colors duration-300 hover:text-white"
+              >
+                <Mail className="h-4 w-4 text-[#9dcdbc]" strokeWidth={1.8} />
                 inna@innacleaning.com
               </a>
-              <p className="mt-2">Serving Seattle, Bellevue, Tacoma & surrounding areas</p>
+              <p className="flex items-start gap-3 leading-7">
+                <MapPin className="mt-1 h-4 w-4 flex-shrink-0 text-[#9dcdbc]" strokeWidth={1.8} />
+                <span>Serving Seattle, Bellevue, Tacoma & surrounding areas</span>
+              </p>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-slate-700 mt-12 pt-8 text-center text-gray-500 text-xs uppercase tracking-widest">
+        <div className="mt-12 border-t border-white/10 pt-8 text-center text-xs uppercase tracking-[0.24em] text-[#9ab7ae]">
           &copy; {new Date().getFullYear()} Inna Cleaning. All rights reserved.
         </div>
       </Container>

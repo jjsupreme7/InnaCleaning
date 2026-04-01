@@ -3,6 +3,7 @@ import SectionHeading from '@/components/ui/SectionHeading';
 import FAQItemComponent from '@/components/faq/FAQItem';
 import Button from '@/components/ui/Button';
 import { faqItems } from '@/data/faq';
+import { ArrowRight } from 'lucide-react';
 
 export const metadata = {
   title: 'FAQ | Inna Cleaning',
@@ -11,14 +12,14 @@ export const metadata = {
 
 export default function FAQPage() {
   return (
-    <section className="py-16 md:py-24">
+    <section className="section-shell">
       <Container>
         <SectionHeading
           title="Frequently Asked Questions"
           subtitle="Everything you need to know"
         />
 
-        <div className="max-w-2xl mx-auto">
+        <div className="mx-auto max-w-3xl">
           {faqItems.map((item) => (
             <FAQItemComponent
               key={item.question}
@@ -27,16 +28,17 @@ export default function FAQPage() {
             />
           ))}
 
-          <div className="text-center mt-12">
-            <p className="text-gray-500 text-sm mb-4">
+          <div className="mt-12 text-center">
+            <p className="mb-4 text-sm leading-7 text-[#67827b]">
               Still have questions?
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col justify-center gap-4 sm:flex-row">
               <Button href="/contact" variant="outline" size="md">
                 Contact Me
               </Button>
-              <Button href="/quote" variant="primary" size="md">
+              <Button href="/quote" size="md">
                 Get a Quote
+                <ArrowRight className="h-4 w-4" strokeWidth={2} />
               </Button>
             </div>
           </div>

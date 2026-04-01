@@ -2,6 +2,7 @@ export type HomeSize = 'studio' | '1bed' | '2bed' | '3bed' | '4bed_plus';
 export type CleaningType = 'standard' | 'deep' | 'move_in_out' | 'airbnb';
 export type Condition = 'light' | 'medium' | 'heavy';
 export type Frequency = 'one_time' | 'weekly' | 'biweekly' | 'monthly';
+export type ServiceIconName = 'sparkles' | 'spray' | 'package' | 'home';
 
 export interface Addons {
   fridge: boolean;
@@ -36,7 +37,7 @@ export interface Service {
   description: string;
   includes: string[];
   startingPrice: number;
-  icon: string;
+  icon: ServiceIconName;
 }
 
 export interface Review {
