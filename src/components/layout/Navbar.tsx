@@ -46,7 +46,7 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className="fixed top-4 md:top-6 left-1/2 z-50 w-[92vw] max-w-4xl"
+        className="fixed top-4 md:top-6 left-1/2 z-50 w-[95vw] max-w-5xl"
         style={{
           transition: hasLoaded ? 'all 0.4s ease-out' : 'opacity 0.8s ease-out, transform 0.8s ease-out',
           opacity: hasLoaded ? 1 : 0,
@@ -62,7 +62,7 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop nav */}
-            <div className="hidden md:flex items-center gap-6">
+            <div className="hidden md:flex items-center gap-4">
               {[
                 { href: '/services', label: t.nav.services },
                 { href: '/about', label: t.nav.about },
@@ -73,7 +73,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-xs uppercase tracking-widest text-white/70 hover:text-white transition-colors duration-200 font-medium"
+                  className="text-xs uppercase tracking-wide text-white/70 hover:text-white transition-colors duration-200 font-medium"
                 >
                   {link.label}
                 </Link>
@@ -81,7 +81,7 @@ export default function Navbar() {
             </div>
 
             {/* Desktop CTA + language switcher */}
-            <div className="hidden md:flex items-center gap-3">
+            <div className="hidden md:flex items-center gap-2">
               {/* Language switcher */}
               <div className="flex items-center gap-1 border border-white/20 rounded-full px-2 py-1">
                 {LANGS.map((l, i) => (
