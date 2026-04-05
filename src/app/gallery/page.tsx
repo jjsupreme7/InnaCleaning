@@ -158,6 +158,7 @@ export default function GalleryPage() {
                 before={g.before}
                 after={g.after}
                 isActive={i === activeIndex}
+                dragLabel={g.dragToCompare}
               />
             </div>
           ))}
@@ -222,6 +223,7 @@ export default function GalleryPage() {
                   src={video.src}
                   title={g.videoItems[video.titleKey] || `Clip ${i + 1}`}
                   isActive={i === activeVideoIndex}
+                  playLabel={g.tapToPlay}
                 />
               </div>
             ))}

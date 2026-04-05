@@ -7,9 +7,10 @@ interface Props {
   src: string;
   title: string;
   isActive?: boolean;
+  playLabel?: string;
 }
 
-export default function VideoCard({ src, title, isActive = true }: Props) {
+export default function VideoCard({ src, title, isActive = true, playLabel = 'Tap to play' }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
 
@@ -17,7 +18,7 @@ export default function VideoCard({ src, title, isActive = true }: Props) {
     const v = videoRef.current;
     if (!v) return;
     if (v.paused) {
-      v.play();
+      v.play().catch(() => setPlaying(false));
       setPlaying(true);
     } else {
       v.pause();
@@ -77,7 +78,7 @@ export default function VideoCard({ src, title, isActive = true }: Props) {
       {/* Title bar */}
       <div className="bg-zinc-900 border border-t-0 border-zinc-800 px-5 py-4 flex items-center justify-between">
         <p className="text-sm font-bold text-white">{title}</p>
-        <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-600 font-bold">Tap to play</p>
+        <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-600 font-bold">{playLabel}</p>
       </div>
     </div>
   );

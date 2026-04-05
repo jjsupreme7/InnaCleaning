@@ -218,6 +218,8 @@ export const translations = {
       ],
       videosTitle: 'In Action',
       videosSubtitle: 'Watch our cleaning process',
+      dragToCompare: 'Drag to compare',
+      tapToPlay: 'Tap to play',
       videoItems: [
         'Cleaning in Progress',
         'Deep Clean Session',
@@ -641,6 +643,8 @@ export const translations = {
       ],
       videosTitle: 'В действии',
       videosSubtitle: 'Смотрите процесс уборки',
+      dragToCompare: 'Потяните для сравнения',
+      tapToPlay: 'Нажмите для воспроизведения',
       videoItems: [
         'Уборка в процессе',
         'Генеральная уборка',
@@ -1059,6 +1063,8 @@ export const translations = {
       ],
       videosTitle: 'У дії',
       videosSubtitle: 'Дивіться процес прибирання',
+      dragToCompare: 'Потягніть для порівняння',
+      tapToPlay: 'Натисніть для відтворення',
       videoItems: [
         'Прибирання в процесі',
         'Генеральне прибирання',
