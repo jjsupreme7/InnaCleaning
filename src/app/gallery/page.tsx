@@ -19,10 +19,7 @@ const SHOWCASE_PHOTOS = [
   { src: '/images/gallery/inna/tp-bow-fold.jpg', titleKey: 2 },
   { src: '/images/gallery/inna/bathroom-touches.jpg', titleKey: 4 },
   { src: '/images/gallery/inna/leather-cleaning.jpg', titleKey: 5 },
-  { src: '/images/gallery/video-stills/clip-01.jpg', titleKey: 6 },
   { src: '/images/gallery/video-stills/clip-06.jpg', titleKey: 7 },
-  { src: '/images/gallery/video-stills/clip-03.jpg', titleKey: 8 },
-  { src: '/images/gallery/video-stills/clip-10.jpg', titleKey: 9 },
 ];
 
 // Video clips
