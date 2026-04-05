@@ -49,13 +49,25 @@ export default function AboutPage() {
                 {a.storyHeading}
               </h2>
               <div className="space-y-4 text-zinc-400 leading-relaxed">
-                <p>{a.story1}</p>
-                <p>{a.story2}</p>
-                <p>{a.story3}</p>
+                {a.storyParagraphs.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
               </div>
             </div>
           </div>
         </Container>
+      </section>
+
+      {/* Visual Break — Sunset Lake */}
+      <section className="relative h-[35vh] min-h-[240px] max-h-[400px] overflow-hidden">
+        <Image
+          src="/images/sunset-lake.jpg"
+          alt="Peaceful misty lake at sunset"
+          fill
+          className="object-cover object-center"
+          quality={85}
+        />
+        <div className="absolute inset-0 bg-black/30" />
       </section>
 
       {/* Values */}
