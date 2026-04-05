@@ -203,8 +203,6 @@ export const translations = {
       ctaText: 'Want to see your home transformed like this?',
       beforeAfterItems: [
         'Fridge Deep Clean',
-        'Living Room Refresh',
-        'Exterior Transformation',
       ],
       photosTitle: 'Our Work',
       photosSubtitle: 'The details that make the difference',
@@ -628,8 +626,6 @@ export const translations = {
       ctaText: 'Хотите увидеть преображение своего дома?',
       beforeAfterItems: [
         'Генеральная чистка холодильника',
-        'Обновление гостиной',
-        'Преображение экстерьера',
       ],
       photosTitle: 'Наша работа',
       photosSubtitle: 'Детали, которые имеют значение',
@@ -1048,8 +1044,6 @@ export const translations = {
       ctaText: 'Хочете побачити перетворення свого будинку?',
       beforeAfterItems: [
         'Генеральне чищення холодильника',
-        'Оновлення вітальні',
-        'Перетворення екстер\'єру',
       ],
       photosTitle: 'Наша робота',
       photosSubtitle: 'Деталі, які мають значення',

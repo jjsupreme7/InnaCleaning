@@ -10,8 +10,6 @@ import { useLanguage } from '@/contexts/LanguageContext';
 // Before/After pairs for the slider carousel
 const GALLERY_DATA: { beforeImage?: string; afterImage?: string; image?: string }[] = [
   { beforeImage: '/images/gallery/inna/fridge-before.jpg', afterImage: '/images/gallery/inna/fridge-after.jpg' },
-  { beforeImage: '/images/gallery/living-before.jpg', afterImage: '/images/gallery/living-after.jpg' },
-  { beforeImage: '/images/gallery/exterior-before.jpg', afterImage: '/images/gallery/exterior-after.jpg' },
 ];
 
 // Showcase photos
