@@ -17,7 +17,6 @@ const SHOWCASE_PHOTOS = [
   { src: '/images/gallery/inna/toilet-clean.jpg', titleKey: 0 },
   { src: '/images/gallery/inna/tp-fan-fold.jpg', titleKey: 1 },
   { src: '/images/gallery/inna/tp-bow-fold.jpg', titleKey: 2 },
-  { src: '/images/gallery/inna/cleaning-equipment.jpg', titleKey: 3 },
   { src: '/images/gallery/inna/bathroom-touches.jpg', titleKey: 4 },
   { src: '/images/gallery/inna/leather-cleaning.jpg', titleKey: 5 },
   { src: '/images/gallery/video-stills/clip-01.jpg', titleKey: 6 },
