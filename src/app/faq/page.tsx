@@ -58,7 +58,8 @@ export default function FAQPage() {
       {/* FAQ Items */}
       <section className="py-16 md:py-24 bg-zinc-950">
         <Container>
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-3xl mx-auto border border-zinc-800/70 rounded-sm p-4 md:p-8 relative">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-[2px] bg-red-500" />
             {f.items.map((item, i) => (
               <motion.div
                 key={item.question}

@@ -48,7 +48,10 @@ export default function ContactPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
           {/* Contact Info */}
-          <div>
+          <div className="border border-zinc-700/50 rounded-sm p-6 md:p-8 relative">
+            <div className="absolute top-0 left-0 w-8 h-[2px] bg-red-500" />
+            <div className="absolute top-0 left-0 w-[2px] h-8 bg-red-500" />
+
             <h3 className="text-sm uppercase tracking-widest font-bold text-zinc-500 mb-6">
               {c.infoHeading}
             </h3>
@@ -91,7 +94,9 @@ export default function ContactPage() {
           </div>
 
           {/* Contact Form */}
-          <div>
+          <div className="border border-zinc-700/50 rounded-sm p-6 md:p-8 relative">
+            <div className="absolute bottom-0 right-0 w-8 h-[2px] bg-red-500" />
+            <div className="absolute bottom-0 right-0 w-[2px] h-8 bg-red-500" />
             {submitted ? (
               <div className="text-center py-12 border border-zinc-800 bg-zinc-900">
                 <div className="text-3xl mb-3 text-red-500">&#10003;</div>
