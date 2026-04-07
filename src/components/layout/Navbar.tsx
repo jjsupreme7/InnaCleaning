@@ -62,7 +62,7 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop nav */}
-            <div className="hidden md:flex items-center gap-4">
+            <div className="hidden md:flex items-center gap-2">
               {[
                 { href: '/services', label: t.nav.services },
                 { href: '/about', label: t.nav.about },
@@ -73,7 +73,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-xs uppercase tracking-wide text-white/70 hover:text-white transition-colors duration-200 font-medium"
+                  className="text-xs uppercase tracking-wide text-white/70 hover:text-white border border-white/15 hover:border-white/30 rounded-full px-3 py-1.5 transition-all duration-200 font-medium"
                 >
                   {link.label}
                 </Link>
