@@ -62,7 +62,7 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop nav */}
-            <div className="hidden md:flex flex-1 items-center justify-center gap-3">
+            <div className="hidden md:flex flex-1 items-center justify-evenly">
               {[
                 { href: '/services', label: t.nav.services },
                 { href: '/about', label: t.nav.about },
