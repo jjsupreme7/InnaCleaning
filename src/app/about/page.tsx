@@ -15,15 +15,19 @@ export default function AboutPage() {
       <section className="py-16 md:py-24 bg-zinc-900">
         <Container>
           <div className="max-w-3xl mx-auto text-center">
-            <p className="text-red-500 text-sm uppercase tracking-[0.2em] font-bold mb-3">
-              {a.badge}
-            </p>
-            <h1 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              {a.headline}
-            </h1>
-            <p className="text-zinc-400 text-lg leading-relaxed">
-              {a.intro}
-            </p>
+            <div className="border border-zinc-700/60 rounded-sm px-8 py-12 md:px-14 md:py-16 relative">
+              {/* Top accent line */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-[2px] bg-red-500" />
+              <p className="text-red-500 text-sm uppercase tracking-[0.2em] font-bold mb-3">
+                {a.badge}
+              </p>
+              <h1 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                {a.headline}
+              </h1>
+              <p className="text-zinc-400 text-lg leading-relaxed">
+                {a.intro}
+              </p>
+            </div>
           </div>
         </Container>
       </section>
@@ -31,27 +35,35 @@ export default function AboutPage() {
       {/* Story */}
       <section className="py-16 md:py-24 bg-zinc-950">
         <Container>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            {/* Photo */}
-            <div className="aspect-[4/5] relative overflow-hidden">
-              <Image
-                src="/inna-about.jpg"
-                alt="Inna Rohovska — professional cleaner in Western Washington"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                priority
-              />
-            </div>
+          <div className="border border-zinc-800/70 rounded-sm p-4 md:p-8 relative">
+            {/* Corner accents */}
+            <div className="absolute top-0 left-0 w-8 h-[2px] bg-red-500" />
+            <div className="absolute top-0 left-0 w-[2px] h-8 bg-red-500" />
+            <div className="absolute bottom-0 right-0 w-8 h-[2px] bg-red-500" />
+            <div className="absolute bottom-0 right-0 w-[2px] h-8 bg-red-500" />
 
-            <div>
-              <h2 className="text-2xl font-bold text-white mb-6 uppercase tracking-widest">
-                {a.storyHeading}
-              </h2>
-              <div className="space-y-4 text-zinc-400 leading-relaxed">
-                {a.storyParagraphs.map((p, i) => (
-                  <p key={i}>{p}</p>
-                ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              {/* Photo */}
+              <div className="aspect-[4/5] relative overflow-hidden border border-zinc-800/50">
+                <Image
+                  src="/inna-about.jpg"
+                  alt="Inna Rohovska — professional cleaner in Western Washington"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  priority
+                />
+              </div>
+
+              <div>
+                <h2 className="text-2xl font-bold text-white mb-6 uppercase tracking-widest">
+                  {a.storyHeading}
+                </h2>
+                <div className="space-y-4 text-zinc-400 leading-relaxed">
+                  {a.storyParagraphs.map((p, i) => (
+                    <p key={i}>{p}</p>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -78,9 +90,13 @@ export default function AboutPage() {
               {a.valuesHeading}
             </h2>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               {a.values.map((val) => (
-                <div key={val.title} className="text-center">
+                <div
+                  key={val.title}
+                  className="text-center border border-zinc-700/50 rounded-sm px-6 py-8 relative group hover:border-zinc-600/70 transition-colors duration-300"
+                >
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-[2px] bg-red-500/80 group-hover:w-12 transition-all duration-300" />
                   <h3 className="text-sm uppercase tracking-widest font-bold text-white mb-3">
                     {val.title}
                   </h3>
@@ -102,18 +118,16 @@ export default function AboutPage() {
               {a.promiseHeading}
             </h2>
             <div className="space-y-4 text-sm text-zinc-400">
-              <div className="border border-zinc-800 p-5 flex items-center gap-4">
-                <span className="text-red-500 text-xl">&#10003;</span>
-                <span>{a.promise1}</span>
-              </div>
-              <div className="border border-zinc-800 p-5 flex items-center gap-4">
-                <span className="text-red-500 text-xl">&#10003;</span>
-                <span>{a.promise2}</span>
-              </div>
-              <div className="border border-zinc-800 p-5 flex items-center gap-4">
-                <span className="text-red-500 text-xl">&#10003;</span>
-                <span>{a.promise3}</span>
-              </div>
+              {[a.promise1, a.promise2, a.promise3].map((promise, i) => (
+                <div
+                  key={i}
+                  className="border border-zinc-700/60 rounded-sm p-5 flex items-center gap-4 relative hover:border-zinc-600/70 transition-colors duration-300"
+                >
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[2px] h-6 bg-red-500" />
+                  <span className="text-red-500 text-xl">&#10003;</span>
+                  <span>{promise}</span>
+                </div>
+              ))}
             </div>
 
             <div className="mt-10">
