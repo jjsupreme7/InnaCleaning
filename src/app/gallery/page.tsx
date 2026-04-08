@@ -40,6 +40,8 @@ const VIDEOS = [
   { src: '/videos/gallery/clip-08.mp4', titleKey: 7 },
   { src: '/videos/gallery/clip-09.mp4', titleKey: 8 },
   { src: '/videos/gallery/clip-10.mp4', titleKey: 9 },
+  { src: '/videos/gallery/clip-11.mp4', titleKey: 10 },
+  { src: '/videos/gallery/clip-12.mp4', titleKey: 11 },
 ];
 
 export default function GalleryPage() {

@@ -239,6 +239,8 @@ export const translations = {
         'Kitchen Makeover',
         'Final Walkthrough',
         'Move-Out Clean',
+        'Bathtub Scrub Down',
+        'Toilet Deep Clean',
       ],
     },
 
@@ -672,6 +674,8 @@ export const translations = {
         'Преображение кухни',
         'Финальный осмотр',
         'Уборка при выезде',
+        'Чистка ванны',
+        'Глубокая чистка унитаза',
       ],
     },
 
@@ -1100,6 +1104,8 @@ export const translations = {
         'Перетворення кухні',
         'Фінальний огляд',
         'Прибирання при виїзді',
+        'Чищення ванни',
+        'Глибоке чищення унітазу',
       ],
     },
 
