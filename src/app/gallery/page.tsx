@@ -10,6 +10,12 @@ import { useLanguage } from '@/contexts/LanguageContext';
 // Before/After pairs for the slider carousel
 const GALLERY_DATA: { beforeImage?: string; afterImage?: string; image?: string }[] = [
   { beforeImage: '/images/gallery/inna/fridge-before.jpg', afterImage: '/images/gallery/inna/fridge-after.jpg' },
+  { beforeImage: '/images/gallery/inna/stove-before.jpg', afterImage: '/images/gallery/inna/stove-after.jpg' },
+  { beforeImage: '/images/gallery/inna/hood-filters-before.jpg', afterImage: '/images/gallery/inna/hood-filters-after.jpg' },
+  { beforeImage: '/images/gallery/inna/highchair-before.jpg', afterImage: '/images/gallery/inna/highchair-after.jpg' },
+  { beforeImage: '/images/gallery/inna/dryer-before.jpg', afterImage: '/images/gallery/inna/dryer-after.jpg' },
+  { beforeImage: '/images/gallery/inna/soap-dish-before.jpg', afterImage: '/images/gallery/inna/soap-dish-after.jpg' },
+  { beforeImage: '/images/gallery/inna/door-track-before.jpg', afterImage: '/images/gallery/inna/door-track-after.jpg' },
 ];
 
 // Showcase photos
