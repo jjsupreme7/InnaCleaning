@@ -6,10 +6,12 @@ import { useState } from 'react';
 
 const navItems = [
   { href: '/admin', label: 'Overview', exact: true },
+  { href: '/admin/leads', label: 'CRM / Leads' },
   { href: '/admin/users', label: 'Portal Users' },
   { href: '/admin/bookings', label: 'Bookings' },
   { href: '/admin/quotes', label: 'Quotes' },
   { href: '/admin/contacts', label: 'Messages' },
+  { href: '/admin/analytics', label: 'Analytics' },
 ];
 
 function NavLink({ href, label, exact }: { href: string; label: string; exact?: boolean }) {

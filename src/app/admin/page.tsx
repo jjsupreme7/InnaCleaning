@@ -8,6 +8,7 @@ interface Stats {
   bookings: number;
   quotes: number;
   users: number;
+  leads: number;
 }
 
 function StatCard({
@@ -66,7 +67,8 @@ export default function AdminOverview() {
       <h1 className="text-2xl font-bold text-white mb-1">Overview</h1>
       <p className="text-zinc-500 text-sm mb-8">All activity across your site.</p>
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
+        <StatCard href="/admin/leads" label="Leads" value={stats?.leads ?? 0} sub="in pipeline" />
         <StatCard href="/admin/users" label="Portal Users" value={stats?.users ?? 0} sub="signed up" />
         <StatCard href="/admin/bookings" label="Bookings" value={stats?.bookings ?? 0} sub="submitted" />
         <StatCard href="/admin/quotes" label="Quotes" value={stats?.quotes ?? 0} sub="requested" />

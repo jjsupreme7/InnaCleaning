@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
+import { linkOrCreateLead } from '@/lib/crm/link-lead';
 
 export async function POST(req: NextRequest) {
   try {
@@ -9,9 +10,11 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Name and email are required.' }, { status: 400 });
     }
 
+    const leadId = await linkOrCreateLead({ name, email, source: 'quote' });
+
     const { data, error } = await supabase
       .from('inna_quotes')
-      .insert({ name, email, home_size, cleaning_type, condition, addons: addons || null, frequency, estimated_total: estimated_total || null })
+      .insert({ name, email, home_size, cleaning_type, condition, addons: addons || null, frequency, estimated_total: estimated_total || null, lead_id: leadId })
       .select('id')
       .single();
 

@@ -53,3 +53,29 @@ export interface FAQItem {
   question: string;
   answer: string;
 }
+
+// CRM types
+export type LeadStatus = 'new_lead' | 'contacted' | 'quote_sent' | 'follow_up' | 'booked' | 'lost';
+export type BookingStatus = 'pending' | 'confirmed' | 'completed' | 'canceled';
+export type NoteType = 'note' | 'call' | 'email';
+
+export interface Lead {
+  id: string;
+  name: string;
+  email: string;
+  phone: string | null;
+  address: string | null;
+  source: string;
+  status: LeadStatus;
+  tags: string[];
+  created_at: string;
+  updated_at: string;
+}
+
+export interface LeadNote {
+  id: string;
+  lead_id: string;
+  content: string;
+  type: NoteType;
+  created_at: string;
+}
