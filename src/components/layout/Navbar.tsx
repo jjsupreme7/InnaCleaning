@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { Menu, X, Phone, Sun, Moon } from 'lucide-react';
+import { Menu, X, Phone, Sun, Moon, User } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useTheme } from '@/contexts/ThemeContext';
 import type { Lang } from '@/i18n/translations';
@@ -109,6 +109,15 @@ export default function Navbar() {
                 <Sun size={16} strokeWidth={2} className={`absolute transition-all duration-300 ${theme === 'light' ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 rotate-90 scale-75'}`} />
                 <Moon size={16} strokeWidth={2} className={`absolute transition-all duration-300 ${theme === 'dark' ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-75'}`} />
               </button>
+              {/* Portal link */}
+              <Link
+                href="/portal"
+                className="relative w-8 h-8 flex items-center justify-center rounded-full transition-all duration-300 hover:scale-110"
+                style={{ color: 'var(--text-secondary)' }}
+                aria-label="My Portal"
+              >
+                <User size={16} strokeWidth={2} />
+              </Link>
               <a
                 href="tel:+12532156068"
                 className="flex items-center gap-1.5 text-sm transition-colors"
@@ -163,6 +172,7 @@ export default function Navbar() {
                 { href: '/about', label: t.nav.about },
                 { href: '/gallery', label: t.nav.gallery },
                 { href: '/contact', label: t.nav.contact },
+                { href: '/portal', label: t.nav.portal || 'My Portal' },
               ].map((link, i) => (
                 <Link
                   key={link.href}
