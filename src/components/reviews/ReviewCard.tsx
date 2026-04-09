@@ -2,7 +2,11 @@ import { Review } from '@/types';
 
 export default function ReviewCard({ review }: { review: Review }) {
   return (
-    <div className="theme-transition border shadow-sm rounded-xl p-6" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
+    <div className="relative theme-transition border shadow-sm rounded-xl p-6" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
+      {/* Decorative quote mark */}
+      <div className="absolute top-4 right-4 text-4xl font-display leading-none opacity-10" style={{ color: 'var(--text-primary)' }} aria-hidden="true">
+        &ldquo;
+      </div>
       <div className="flex gap-1 mb-3">
         {Array.from({ length: 5 }).map((_, i) => (
           <svg

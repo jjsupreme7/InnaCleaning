@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -27,7 +28,7 @@ export default function IntroSection() {
                 <p className="mt-1 text-xs uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>{t.intro.years}</p>
               </div>
               <div>
-                <p className="text-4xl font-bold text-red-500">200+</p>
+                <p className="text-4xl font-bold text-red-500">327+</p>
                 <p className="mt-1 text-xs uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>{t.intro.clients}</p>
               </div>
               <div>
@@ -42,15 +43,20 @@ export default function IntroSection() {
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <div className="col-span-2 flex aspect-video items-center justify-center rounded-xl border bg-gradient-to-br from-red-50 to-zinc-100" style={{ borderColor: 'var(--card-border)' }}>
-              <p className="text-sm uppercase tracking-widest" style={{ color: 'var(--text-faint)' }}>{t.intro.photoSoon}</p>
+            <div className="col-span-2 aspect-video relative overflow-hidden rounded-xl">
+              <Image
+                src="/images/gallery/inna/cleaning-equipment.jpg"
+                alt="Professional cleaning supplies and equipment"
+                fill
+                className="object-cover"
+              />
             </div>
             <div className="flex flex-col justify-center rounded-xl bg-red-600 p-6">
               <p className="text-4xl font-bold text-white">5★</p>
               <p className="mt-1 text-sm text-red-100">{t.intro.rating}</p>
             </div>
             <div className="flex flex-col justify-center rounded-xl border p-6" style={{ background: 'var(--card-bg)', borderColor: 'var(--card-border)' }}>
-              <p className="text-4xl font-bold" style={{ color: 'var(--text-primary)' }}>200+</p>
+              <p className="text-4xl font-bold" style={{ color: 'var(--text-primary)' }}>327+</p>
               <p className="mt-1 text-sm" style={{ color: 'var(--text-secondary)' }}>{t.intro.homes}</p>
             </div>
           </div>

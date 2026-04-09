@@ -10,11 +10,16 @@ export default function Home() {
   return (
     <>
       <HeroSection />
+      <div className="h-px" style={{ background: 'linear-gradient(to right, transparent, var(--border-default), transparent)' }} />
       <IntroSection />
+      <div className="h-px" style={{ background: 'linear-gradient(to right, transparent, var(--border-default), transparent)' }} />
       <FeaturesSection />
-      <ServicesPreview />
-      <TestimonialsSection />
+      <div className="h-px" style={{ background: 'linear-gradient(to right, transparent, var(--border-default), transparent)' }} />
       <ServiceAreaSection />
+      <div className="h-px" style={{ background: 'linear-gradient(to right, transparent, var(--border-default), transparent)' }} />
+      <ServicesPreview />
+      <div className="h-px" style={{ background: 'linear-gradient(to right, transparent, var(--border-default), transparent)' }} />
+      <TestimonialsSection />
       <CTABanner />
     </>
   );

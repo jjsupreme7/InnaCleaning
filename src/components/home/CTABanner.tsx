@@ -17,11 +17,14 @@ export default function CTABanner() {
           <p className="text-red-100 text-lg mb-8 max-w-xl mx-auto">
             {t.cta.description}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-6 items-center justify-center">
             <Button href="/quote" variant="secondary" size="lg">{t.cta.quote}</Button>
-            <Button href="/booking" variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-red-700">
+            <a
+              href="/booking"
+              className="text-white/80 underline underline-offset-4 hover:text-white text-sm uppercase tracking-widest font-bold transition-colors"
+            >
               {t.cta.book}
-            </Button>
+            </a>
           </div>
         </div>
       </Container>

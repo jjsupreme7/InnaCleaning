@@ -5,6 +5,14 @@ import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
 import { services } from '@/data/services';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { Sparkles, Paintbrush, PackageOpen, Home } from 'lucide-react';
+
+const SERVICE_ICONS: Record<string, React.ComponentType<{ className?: string; strokeWidth?: number }>> = {
+  standard: Sparkles,
+  deep: Paintbrush,
+  move: PackageOpen,
+  airbnb: Home,
+};
 
 export default function ServicesPage() {
   const { t } = useLanguage();
@@ -87,7 +95,7 @@ export default function ServicesPage() {
                   )}
 
                   <div className="flex items-center gap-4 mb-6">
-                    <span className="text-3xl">{service.icon}</span>
+                    {(() => { const Icon = SERVICE_ICONS[service.id] || Sparkles; return <Icon className="w-7 h-7 text-red-500" strokeWidth={1.5} />; })()}
                     <div>
                       <h2 className="text-xl font-bold font-display uppercase tracking-widest" style={{ color: 'var(--text-primary)' }}>
                         {content.title}

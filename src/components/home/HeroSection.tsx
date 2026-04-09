@@ -21,6 +21,14 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-black/40" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
 
+      {/* Decorative gradient orbs */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+        {/* Large soft orb top-center */}
+        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[40rem] h-80 rounded-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.15),transparent_70%)]" />
+        {/* Warm accent bottom-left */}
+        <div className="absolute bottom-20 -left-20 w-[30rem] h-60 rounded-full bg-[radial-gradient(circle_at_center,rgba(239,68,68,0.08),transparent_70%)]" />
+      </div>
+
       <div className="relative z-10 mx-auto w-full max-w-6xl px-6">
         <div className="max-w-2xl">
           <p className="mb-4 text-sm font-bold uppercase tracking-[0.3em] text-red-400">

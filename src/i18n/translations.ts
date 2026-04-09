@@ -45,7 +45,7 @@ export const translations = {
         { title: 'Trusted & Vetted', description: 'Background checked and personally vetted. Feel confident welcoming us into your home.' },
       ],
       yearsExp: 'Years of experience',
-      complaints: 'Complaints, ever',
+      complaints: 'Satisfaction rate',
       photo: 'Interior Photo',
     },
     services: {
@@ -484,7 +484,7 @@ export const translations = {
         { title: 'Надёжная и проверенная', description: 'Прошла проверку биографических данных. Смело приглашайте нас в свой дом.' },
       ],
       yearsExp: 'Лет опыта',
-      complaints: 'Жалоб за всё время',
+      complaints: 'Уровень удовлетворённости',
       photo: 'Фото интерьера',
     },
     services: {
@@ -914,7 +914,7 @@ export const translations = {
         { title: 'Надійна і перевірена', description: 'Пройшла перевірку біографічних даних. Впевнено запрошуйте нас у свій будинок.' },
       ],
       yearsExp: 'Років досвіду',
-      complaints: 'Скарг за весь час',
+      complaints: 'Рівень задоволеності',
       photo: "Фото інтер'єру",
     },
     services: {
