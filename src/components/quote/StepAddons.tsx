@@ -21,8 +21,8 @@ export default function StepAddons({ value, onChange }: Props) {
 
   return (
     <div>
-      <h3 className="text-lg font-bold text-zinc-900 mb-2">{q.addonsHeading}</h3>
-      <p className="text-zinc-500 text-sm mb-6">{q.addonsSubheading}</p>
+      <h3 className="text-lg font-bold mb-2" style={{ color: 'var(--text-primary)' }}>{q.addonsHeading}</h3>
+      <p className="text-sm mb-6" style={{ color: 'var(--text-muted)' }}>{q.addonsSubheading}</p>
 
       <div className="grid grid-cols-1 gap-3">
         {addonKeys.map((key) => (
@@ -32,14 +32,16 @@ export default function StepAddons({ value, onChange }: Props) {
             className={`p-4 rounded-lg border-2 text-left transition-all duration-300 flex items-center justify-between ${
               value[key]
                 ? 'border-red-500 bg-red-50'
-                : 'border-zinc-300 hover:border-zinc-400'
+                : ''
             }`}
+            style={!value[key] ? { borderColor: 'var(--input-border)' } : undefined}
           >
             <div className="flex items-center gap-3">
               <div
                 className={`w-5 h-5 border-2 flex items-center justify-center transition-all ${
-                  value[key] ? 'bg-red-600 border-red-600' : 'border-zinc-600'
+                  value[key] ? 'bg-red-600 border-red-600' : ''
                 }`}
+                style={!value[key] ? { borderColor: 'var(--text-secondary)' } : undefined}
               >
                 {value[key] && (
                   <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -47,7 +49,7 @@ export default function StepAddons({ value, onChange }: Props) {
                   </svg>
                 )}
               </div>
-              <span className="text-sm font-bold text-zinc-900">
+              <span className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>
                 {q.addonLabels[key]}
               </span>
             </div>

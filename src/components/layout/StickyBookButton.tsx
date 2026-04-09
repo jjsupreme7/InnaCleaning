@@ -32,7 +32,7 @@ export default function StickyBookButton() {
       </Link>
 
       {/* Mobile: bottom bar */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 p-3 bg-white border-t border-zinc-200 shadow-[0_-2px_10px_rgba(0,0,0,0.05)]">
+      <div className="theme-transition md:hidden fixed bottom-0 left-0 right-0 z-40 p-3 border-t" style={{ background: 'var(--sticky-bg)', borderColor: 'var(--sticky-border)', boxShadow: 'var(--sticky-shadow)' }}>
         <Link
           href="/booking"
           className="block w-full rounded-lg bg-red-600 text-white py-3 text-xs uppercase tracking-widest font-bold text-center border-2 border-red-600 hover:bg-red-700 transition-all duration-300"

@@ -15,8 +15,8 @@ export default function PriceSummary({ breakdown, showBookButton }: Props) {
 
   if (!breakdown) {
     return (
-      <div className="bg-white border border-zinc-200 shadow-sm rounded-xl p-6 text-center">
-        <p className="text-zinc-500 text-sm">
+      <div className="theme-transition border shadow-sm rounded-xl p-6 text-center" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
+        <p className="text-sm" style={{ color: 'var(--text-muted)' }}>
           {q.priceSummaryEmpty}
         </p>
       </div>
@@ -24,30 +24,30 @@ export default function PriceSummary({ breakdown, showBookButton }: Props) {
   }
 
   return (
-    <div className="bg-white border border-zinc-200 shadow-sm rounded-xl p-6">
-      <h4 className="text-xs uppercase tracking-widest font-bold text-zinc-500 mb-4">
+    <div className="theme-transition border shadow-sm rounded-xl p-6" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
+      <h4 className="text-xs uppercase tracking-widest font-bold mb-4" style={{ color: 'var(--text-muted)' }}>
         {q.priceSummaryHeading}
       </h4>
 
       <div className="space-y-2 text-sm">
-        <div className="flex justify-between text-zinc-600">
+        <div className="flex justify-between" style={{ color: 'var(--text-secondary)' }}>
           <span>{q.basePrice}</span>
           <span>${breakdown.basePrice}</span>
         </div>
         {breakdown.afterType !== breakdown.basePrice && (
-          <div className="flex justify-between text-zinc-600">
+          <div className="flex justify-between" style={{ color: 'var(--text-secondary)' }}>
             <span>{q.cleaningTypeLabel}</span>
             <span>${breakdown.afterType - breakdown.basePrice > 0 ? '+' : ''}${breakdown.afterType - breakdown.basePrice}</span>
           </div>
         )}
         {breakdown.afterCondition !== breakdown.afterType && (
-          <div className="flex justify-between text-zinc-600">
+          <div className="flex justify-between" style={{ color: 'var(--text-secondary)' }}>
             <span>{q.conditionLabel}</span>
             <span>+${breakdown.afterCondition - breakdown.afterType}</span>
           </div>
         )}
         {breakdown.addonsTotal > 0 && (
-          <div className="flex justify-between text-zinc-600">
+          <div className="flex justify-between" style={{ color: 'var(--text-secondary)' }}>
             <span>{q.addonsLabel}</span>
             <span>+${breakdown.addonsTotal}</span>
           </div>
@@ -60,16 +60,16 @@ export default function PriceSummary({ breakdown, showBookButton }: Props) {
         )}
       </div>
 
-      <div className="border-t border-zinc-200 mt-4 pt-4">
+      <div className="border-t mt-4 pt-4" style={{ borderColor: 'var(--card-border)' }}>
         <div className="flex justify-between items-center">
-          <span className="text-xs uppercase tracking-widest font-bold text-zinc-500">
+          <span className="text-xs uppercase tracking-widest font-bold" style={{ color: 'var(--text-muted)' }}>
             {q.totalLabel}
           </span>
-          <span className="text-3xl font-bold text-zinc-900">
+          <span className="text-3xl font-bold" style={{ color: 'var(--text-primary)' }}>
             ${breakdown.total}
           </span>
         </div>
-        <p className="text-[11px] text-zinc-500 mt-2">
+        <p className="text-[11px] mt-2" style={{ color: 'var(--text-muted)' }}>
           {q.disclaimer}
         </p>
       </div>

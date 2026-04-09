@@ -16,8 +16,8 @@ export default function StepCondition({ value, onChange }: Props) {
 
   return (
     <div>
-      <h3 className="text-lg font-bold text-zinc-900 mb-2">{q.conditionHeading}</h3>
-      <p className="text-zinc-500 text-sm mb-6">{q.conditionSubheading}</p>
+      <h3 className="text-lg font-bold mb-2" style={{ color: 'var(--text-primary)' }}>{q.conditionHeading}</h3>
+      <p className="text-sm mb-6" style={{ color: 'var(--text-muted)' }}>{q.conditionSubheading}</p>
 
       <div className="grid grid-cols-1 gap-3">
         {conditionIds.map((id, i) => (
@@ -27,13 +27,14 @@ export default function StepCondition({ value, onChange }: Props) {
             className={`p-4 rounded-lg border-2 text-left transition-all duration-300 hover:-translate-y-0.5 ${
               value === id
                 ? 'border-red-500 bg-red-50'
-                : 'border-zinc-300 hover:border-zinc-400'
+                : ''
             }`}
+            style={value !== id ? { borderColor: 'var(--input-border)' } : undefined}
           >
-            <span className="block text-sm font-bold text-zinc-900">
+            <span className="block text-sm font-bold" style={{ color: 'var(--text-primary)' }}>
               {q.conditionLabels[id]}
             </span>
-            <span className="block text-xs text-zinc-500 mt-1">
+            <span className="block text-xs mt-1" style={{ color: 'var(--text-muted)' }}>
               {q.conditionDescs[i]}
             </span>
           </button>

@@ -15,29 +15,31 @@ export default function StepContact({ name, email, onChangeName, onChangeEmail }
 
   return (
     <div>
-      <h3 className="text-lg font-bold text-zinc-900 mb-2">{q.contactHeading}</h3>
-      <p className="text-zinc-500 text-sm mb-6">{q.contactSubheading}</p>
+      <h3 className="text-lg font-bold mb-2" style={{ color: 'var(--text-primary)' }}>{q.contactHeading}</h3>
+      <p className="text-sm mb-6" style={{ color: 'var(--text-muted)' }}>{q.contactSubheading}</p>
 
       <div className="space-y-4">
         <div>
-          <label className="block text-xs uppercase tracking-widest font-bold text-zinc-500 mb-2">{q.contactNameLabel}</label>
+          <label className="block text-xs uppercase tracking-widest font-bold mb-2" style={{ color: 'var(--text-muted)' }}>{q.contactNameLabel}</label>
           <input
             type="text"
             required
             value={name}
             onChange={(e) => onChangeName(e.target.value)}
-            className="w-full rounded-lg border-2 border-zinc-300 bg-white text-zinc-900 px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors"
+            className="w-full rounded-lg border-2 px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors"
+            style={{ background: 'var(--input-bg)', borderColor: 'var(--input-border)', color: 'var(--text-primary)' }}
             placeholder={q.contactNamePlaceholder}
           />
         </div>
         <div>
-          <label className="block text-xs uppercase tracking-widest font-bold text-zinc-500 mb-2">{q.contactEmailLabel}</label>
+          <label className="block text-xs uppercase tracking-widest font-bold mb-2" style={{ color: 'var(--text-muted)' }}>{q.contactEmailLabel}</label>
           <input
             type="email"
             required
             value={email}
             onChange={(e) => onChangeEmail(e.target.value)}
-            className="w-full rounded-lg border-2 border-zinc-300 bg-white text-zinc-900 px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors"
+            className="w-full rounded-lg border-2 px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors"
+            style={{ background: 'var(--input-bg)', borderColor: 'var(--input-border)', color: 'var(--text-primary)' }}
             placeholder={q.contactEmailPlaceholder}
           />
         </div>

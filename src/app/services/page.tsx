@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import Container from '@/components/ui/Container';
-import SectionHeading from '@/components/ui/SectionHeading';
 import Button from '@/components/ui/Button';
 import { services } from '@/data/services';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -14,47 +13,83 @@ export default function ServicesPage() {
 
   return (
     <>
-      {/* Hero Banner */}
-      <section className="relative h-[40vh] min-h-[320px] max-h-[480px] flex items-end overflow-hidden">
+      {/* ── Immersive Hero ── */}
+      <section className="relative min-h-[50vh] md:min-h-[55vh] flex items-end overflow-hidden">
         <Image
           src="/images/clean-interior.jpg"
           alt="Sparkling clean home interior"
           fill
-          className="object-cover object-center"
+          className="object-cover object-center scale-105"
           priority
-          quality={80}
+          quality={85}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10" />
+        {/* Layered gradient: soft top fade, strong bottom for text */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/75" />
+        {/* Subtle warm tint */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-red-950/20 via-transparent to-transparent" />
 
-        <div className="relative z-10 w-full pb-10">
+        {/* Decorative geometric accent */}
+        <div className="absolute top-0 right-0 w-48 h-48 md:w-72 md:h-72 opacity-10">
+          <div className="absolute inset-0 border-2 border-white rounded-full translate-x-1/2 -translate-y-1/2" />
+          <div className="absolute inset-4 border border-white/50 rounded-full translate-x-1/2 -translate-y-1/2" />
+        </div>
+
+        <div className="relative z-10 w-full pb-12 md:pb-16">
           <Container>
-            <p className="text-sm font-bold uppercase tracking-[0.3em] text-red-400 mb-3">
-              {sp.title}
-            </p>
-            <h1 className="text-3xl md:text-5xl font-bold text-white font-display">
-              {sp.subtitle}
-            </h1>
+            <div className="max-w-2xl">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-[2px] bg-red-400" />
+                <p className="text-sm font-bold uppercase tracking-[0.3em] text-red-400">
+                  {sp.title}
+                </p>
+              </div>
+              <h1 className="text-4xl md:text-6xl font-bold text-white font-display leading-tight mb-4">
+                {sp.subtitle}
+              </h1>
+              <p className="text-white/70 text-lg max-w-lg">
+                Professional cleaning tailored to your needs — from routine upkeep to deep restoration.
+              </p>
+            </div>
           </Container>
         </div>
       </section>
 
+      {/* ── Service Cards ── */}
       {services.map((service, i) => {
         const content = si[service.id as keyof typeof si];
+        const isPopular = service.id === 'deep';
+
         return (
           <section
             key={service.id}
-            className={`py-20 md:py-28 ${i % 2 === 0 ? 'bg-white' : 'bg-zinc-50'}`}
+            className="py-20 md:py-28 theme-transition"
+            style={{ background: i % 2 === 0 ? 'var(--bg-elevated)' : 'var(--section-alt)' }}
           >
             <Container>
               <div className="max-w-3xl mx-auto">
-                <div className="border border-zinc-200 rounded-xl p-6 md:p-8 relative hover:border-zinc-300 transition-colors duration-300">
+                <div
+                  className="rounded-xl p-6 md:p-8 relative group transition-all duration-300 theme-transition"
+                  style={{
+                    background: 'var(--card-bg)',
+                    borderWidth: 1,
+                    borderStyle: 'solid',
+                    borderColor: isPopular ? 'rgba(239,68,68,0.3)' : 'var(--card-border)',
+                  }}
+                >
                   {/* Left accent bar */}
-                  <div className="absolute left-0 top-8 w-[2px] h-12 bg-red-500" />
+                  <div className={`absolute left-0 top-8 w-[2px] h-12 ${isPopular ? 'bg-red-500' : 'bg-red-400'}`} />
+
+                  {/* Popular badge */}
+                  {isPopular && (
+                    <div className="absolute -top-3 right-6 bg-red-600 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">
+                      Most Popular
+                    </div>
+                  )}
 
                   <div className="flex items-center gap-4 mb-6">
                     <span className="text-3xl">{service.icon}</span>
                     <div>
-                      <h2 className="text-xl font-bold text-zinc-900 font-display uppercase tracking-widest">
+                      <h2 className="text-xl font-bold font-display uppercase tracking-widest" style={{ color: 'var(--text-primary)' }}>
                         {content.title}
                       </h2>
                       <p className="text-red-500 font-bold text-sm mt-1">
@@ -63,17 +98,17 @@ export default function ServicesPage() {
                     </div>
                   </div>
 
-                  <p className="text-zinc-600 leading-relaxed mb-6">
+                  <p className="leading-relaxed mb-6" style={{ color: 'var(--text-secondary)' }}>
                     {content.description}
                   </p>
 
                   <div className="mb-8">
-                    <h3 className="text-xs uppercase tracking-widest font-bold text-zinc-500 mb-3">
+                    <h3 className="text-xs uppercase tracking-widest font-bold mb-3" style={{ color: 'var(--text-muted)' }}>
                       {sp.whatsIncluded}
                     </h3>
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       {content.includes.map((item) => (
-                        <li key={item} className="flex items-start gap-2 text-sm text-zinc-600">
+                        <li key={item} className="flex items-start gap-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
                           <svg className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                           </svg>
@@ -93,10 +128,16 @@ export default function ServicesPage() {
         );
       })}
 
-      <section className="py-20 md:py-28 bg-red-700">
+      {/* ── CTA Banner ── */}
+      <section className="py-20 md:py-28 bg-red-700 relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-10">
+          <div className="absolute -top-20 -left-20 w-64 h-64 border-2 border-white rounded-full" />
+          <div className="absolute -bottom-10 -right-10 w-48 h-48 border border-white rounded-full" />
+        </div>
         <Container>
-          <div className="text-center">
-            <h2 className="text-2xl md:text-3xl uppercase tracking-[0.15em] font-bold text-white mb-4">
+          <div className="text-center relative z-10">
+            <h2 className="text-2xl md:text-3xl uppercase tracking-[0.15em] font-bold text-white font-display mb-4">
               {sp.ctaHeadline}
             </h2>
             <p className="text-red-100 text-lg mb-8">

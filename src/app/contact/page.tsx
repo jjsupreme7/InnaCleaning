@@ -68,39 +68,39 @@ export default function ContactPage() {
       </div>
     </section>
 
-    <section className="py-20 md:py-28">
+    <section className="theme-transition py-20 md:py-28" style={{ background: 'var(--bg-base)' }}>
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
           {/* Contact Info */}
-          <div className="border border-zinc-200 rounded-xl p-6 md:p-8 relative">
+          <div className="theme-transition border rounded-xl p-6 md:p-8 relative" style={{ borderColor: 'var(--card-border)' }}>
             <div className="absolute top-0 left-0 w-8 h-[2px] bg-red-500" />
             <div className="absolute top-0 left-0 w-[2px] h-8 bg-red-500" />
 
-            <h3 className="text-sm uppercase tracking-widest font-bold text-zinc-500 mb-6">
+            <h3 className="text-sm uppercase tracking-widest font-bold mb-6" style={{ color: 'var(--text-muted)' }}>
               {c.infoHeading}
             </h3>
 
             <div className="space-y-6">
               <div>
-                <p className="text-xs uppercase tracking-widest font-bold text-zinc-500 mb-1">{c.phone}</p>
-                <a href="tel:+12065551234" className="text-lg font-bold text-zinc-900 hover:text-red-400 transition-colors">
+                <p className="text-xs uppercase tracking-widest font-bold mb-1" style={{ color: 'var(--text-muted)' }}>{c.phone}</p>
+                <a href="tel:+12065551234" className="text-lg font-bold hover:text-red-400 transition-colors" style={{ color: 'var(--text-primary)' }}>
                   (206) 555-1234
                 </a>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-widest font-bold text-zinc-500 mb-1">{c.email}</p>
-                <a href="mailto:inna@innacleaning.com" className="text-lg font-bold text-zinc-900 hover:text-red-400 transition-colors">
+                <p className="text-xs uppercase tracking-widest font-bold mb-1" style={{ color: 'var(--text-muted)' }}>{c.email}</p>
+                <a href="mailto:inna@innacleaning.com" className="text-lg font-bold hover:text-red-400 transition-colors" style={{ color: 'var(--text-primary)' }}>
                   inna@innacleaning.com
                 </a>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-widest font-bold text-zinc-500 mb-1">{c.hours}</p>
-                <p className="text-zinc-600 text-sm">{c.hoursWeekday}</p>
-                <p className="text-zinc-600 text-sm">{c.hoursSunday}</p>
+                <p className="text-xs uppercase tracking-widest font-bold mb-1" style={{ color: 'var(--text-muted)' }}>{c.hours}</p>
+                <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>{c.hoursWeekday}</p>
+                <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>{c.hoursSunday}</p>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-widest font-bold text-zinc-500 mb-1">{c.serviceArea}</p>
-                <p className="text-zinc-600 text-sm">{c.serviceAreaText}</p>
+                <p className="text-xs uppercase tracking-widest font-bold mb-1" style={{ color: 'var(--text-muted)' }}>{c.serviceArea}</p>
+                <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>{c.serviceAreaText}</p>
               </div>
             </div>
 
@@ -118,14 +118,14 @@ export default function ContactPage() {
           </div>
 
           {/* Contact Form */}
-          <div className="border border-zinc-200 rounded-xl p-6 md:p-8 relative">
+          <div className="theme-transition border rounded-xl p-6 md:p-8 relative" style={{ borderColor: 'var(--card-border)' }}>
             <div className="absolute bottom-0 right-0 w-8 h-[2px] bg-red-500" />
             <div className="absolute bottom-0 right-0 w-[2px] h-8 bg-red-500" />
             {submitted ? (
-              <div className="text-center py-12 border border-zinc-200 bg-zinc-50">
+              <div className="text-center py-12 border" style={{ borderColor: 'var(--card-border)', background: 'var(--card-bg)' }}>
                 <div className="text-3xl mb-3 text-red-500">&#10003;</div>
-                <h3 className="text-lg font-bold text-zinc-900 mb-2">{c.messageSent}</h3>
-                <p className="text-zinc-600 text-sm mb-4">{c.messageConfirm}</p>
+                <h3 className="text-lg font-bold mb-2" style={{ color: 'var(--text-primary)' }}>{c.messageSent}</h3>
+                <p className="text-sm mb-4" style={{ color: 'var(--text-secondary)' }}>{c.messageConfirm}</p>
                 <Button onClick={() => { setSubmitted(false); setName(''); setEmail(''); setMessage(''); }} variant="outline" size="sm">
                   {c.sendAnother}
                 </Button>
@@ -133,35 +133,38 @@ export default function ContactPage() {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <label className="block text-xs uppercase tracking-widest font-bold text-zinc-500 mb-2">{c.name}</label>
+                  <label className="block text-xs uppercase tracking-widest font-bold mb-2" style={{ color: 'var(--text-muted)' }}>{c.name}</label>
                   <input
                     type="text"
                     required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full rounded-lg border-2 border-zinc-300 bg-white text-zinc-900 px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors"
+                    className="w-full rounded-lg border-2 px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors"
+                    style={{ background: 'var(--input-bg)', borderColor: 'var(--input-border)', color: 'var(--text-primary)' }}
                     placeholder={c.namePlaceholder}
                   />
                 </div>
                 <div>
-                  <label className="block text-xs uppercase tracking-widest font-bold text-zinc-500 mb-2">{c.emailLabel}</label>
+                  <label className="block text-xs uppercase tracking-widest font-bold mb-2" style={{ color: 'var(--text-muted)' }}>{c.emailLabel}</label>
                   <input
                     type="email"
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full rounded-lg border-2 border-zinc-300 bg-white text-zinc-900 px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors"
+                    className="w-full rounded-lg border-2 px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors"
+                    style={{ background: 'var(--input-bg)', borderColor: 'var(--input-border)', color: 'var(--text-primary)' }}
                     placeholder={c.emailPlaceholder}
                   />
                 </div>
                 <div>
-                  <label className="block text-xs uppercase tracking-widest font-bold text-zinc-500 mb-2">{c.message}</label>
+                  <label className="block text-xs uppercase tracking-widest font-bold mb-2" style={{ color: 'var(--text-muted)' }}>{c.message}</label>
                   <textarea
                     rows={5}
                     required
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    className="w-full rounded-lg border-2 border-zinc-300 bg-white text-zinc-900 px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors resize-none"
+                    className="w-full rounded-lg border-2 px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors resize-none"
+                    style={{ background: 'var(--input-bg)', borderColor: 'var(--input-border)', color: 'var(--text-primary)' }}
                     placeholder={c.messagePlaceholder}
                   />
                 </div>

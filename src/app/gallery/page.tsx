@@ -98,12 +98,12 @@ export default function GalleryPage() {
   }, [activeIndex, goTo]);
 
   return (
-    <section className="py-20 md:py-28 overflow-hidden">
+    <section className="theme-transition py-20 md:py-28 overflow-hidden" style={{ background: 'var(--bg-base)' }}>
       {/* ───── Before & After Section ───── */}
       <div className="text-center mb-12 px-4">
         <p className="text-xs uppercase tracking-[0.3em] font-bold text-red-600 mb-3">{g.title}</p>
-        <h1 className="text-3xl md:text-4xl font-bold text-zinc-900 font-display mb-3">{g.subtitle}</h1>
-        <p className="text-zinc-500 text-sm max-w-md mx-auto">
+        <h1 className="text-3xl md:text-4xl font-bold font-display mb-3" style={{ color: 'var(--text-primary)' }}>{g.subtitle}</h1>
+        <p className="text-sm max-w-md mx-auto" style={{ color: 'var(--text-muted)' }}>
           {g.dragHint}
         </p>
       </div>
@@ -131,12 +131,14 @@ export default function GalleryPage() {
         </div>
 
         <button onClick={() => goTo(activeIndex - 1)} disabled={activeIndex === 0}
-          className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/80 backdrop-blur border border-zinc-200 text-zinc-800 flex items-center justify-center hover:bg-white shadow-sm transition-colors disabled:opacity-20 disabled:cursor-default z-10"
+          className="theme-transition absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-12 h-12 backdrop-blur border flex items-center justify-center shadow-sm transition-colors disabled:opacity-20 disabled:cursor-default z-10"
+          style={{ background: 'var(--bg-overlay)', borderColor: 'var(--card-border)', color: 'var(--text-primary)' }}
           aria-label="Previous">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12 4L6 10L12 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
         </button>
         <button onClick={() => goTo(activeIndex + 1)} disabled={activeIndex === baCount - 1}
-          className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/80 backdrop-blur border border-zinc-200 text-zinc-800 flex items-center justify-center hover:bg-white shadow-sm transition-colors disabled:opacity-20 disabled:cursor-default z-10"
+          className="theme-transition absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-12 h-12 backdrop-blur border flex items-center justify-center shadow-sm transition-colors disabled:opacity-20 disabled:cursor-default z-10"
+          style={{ background: 'var(--bg-overlay)', borderColor: 'var(--card-border)', color: 'var(--text-primary)' }}
           aria-label="Next">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M8 4L14 10L8 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
         </button>
@@ -146,12 +148,13 @@ export default function GalleryPage() {
       <div className="flex items-center justify-center gap-2 mt-8">
         {g.beforeAfterItems.map((_, i) => (
           <button key={i} onClick={() => goTo(i)}
-            className={`transition-all duration-300 ${i === activeIndex ? 'w-8 h-1.5 bg-red-600' : 'w-1.5 h-1.5 bg-zinc-300 hover:bg-zinc-400'}`}
+            className={`transition-all duration-300 ${i === activeIndex ? 'w-8 h-1.5 bg-red-600' : 'w-1.5 h-1.5'}`}
+            style={i !== activeIndex ? { background: 'var(--border-default)' } : undefined}
             aria-label={`Go to slide ${i + 1}`} />
         ))}
       </div>
       <div className="text-center mt-4">
-        <span className="text-zinc-400 text-xs font-bold tabular-nums">
+        <span className="text-xs font-bold tabular-nums" style={{ color: 'var(--text-faint)' }}>
           {String(activeIndex + 1).padStart(2, '0')} / {String(baCount).padStart(2, '0')}
         </span>
       </div>
@@ -160,7 +163,7 @@ export default function GalleryPage() {
       <div className="mt-24 px-4 max-w-6xl mx-auto">
         <div className="text-center mb-10">
           <p className="text-xs uppercase tracking-[0.3em] font-bold text-red-600 mb-3">{g.photosTitle}</p>
-          <h2 className="text-2xl md:text-3xl font-bold text-zinc-900 font-display mb-3">{g.photosSubtitle}</h2>
+          <h2 className="text-2xl md:text-3xl font-bold font-display mb-3" style={{ color: 'var(--text-primary)' }}>{g.photosSubtitle}</h2>
         </div>
         <PhotoGrid
           photos={SHOWCASE_PHOTOS.map((p) => ({
@@ -174,7 +177,7 @@ export default function GalleryPage() {
       <div className="mt-24 px-4 max-w-6xl mx-auto">
         <div className="text-center mb-10">
           <p className="text-xs uppercase tracking-[0.3em] font-bold text-red-600 mb-3">{g.videosTitle}</p>
-          <h2 className="text-2xl md:text-3xl font-bold text-zinc-900 font-display mb-3">{g.videosSubtitle}</h2>
+          <h2 className="text-2xl md:text-3xl font-bold font-display mb-3" style={{ color: 'var(--text-primary)' }}>{g.videosSubtitle}</h2>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4">
@@ -191,7 +194,7 @@ export default function GalleryPage() {
 
       {/* CTA */}
       <div className="text-center mt-16 px-4">
-        <p className="text-zinc-500 text-sm mb-6">{g.ctaText}</p>
+        <p className="text-sm mb-6" style={{ color: 'var(--text-muted)' }}>{g.ctaText}</p>
         <Button href="/quote" variant="primary" size="lg">
           {g.getQuote}
         </Button>

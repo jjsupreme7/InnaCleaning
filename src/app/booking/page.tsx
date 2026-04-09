@@ -9,7 +9,7 @@ export default function BookingPage() {
   const { t } = useLanguage();
 
   return (
-    <section className="py-16 md:py-24">
+    <section className="theme-transition py-16 md:py-24" style={{ background: 'var(--bg-base)' }}>
       <Container>
         <SectionHeading
           title={t.booking.title}

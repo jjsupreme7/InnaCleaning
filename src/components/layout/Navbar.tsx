@@ -2,8 +2,9 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X, Phone, Sun, Moon } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useTheme } from '@/contexts/ThemeContext';
 import type { Lang } from '@/i18n/translations';
 
 const LANGS: { code: Lang; label: string }[] = [
@@ -14,6 +15,7 @@ const LANGS: { code: Lang; label: string }[] = [
 
 export default function Navbar() {
   const { lang, setLang, t } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -54,10 +56,10 @@ export default function Navbar() {
         }}
       >
         {/* Main pill */}
-        <div className="bg-white/80 backdrop-blur-md border border-zinc-200/60 shadow-sm rounded-full px-4 py-2 md:px-6 md:py-2.5">
+        <div className="backdrop-blur-md rounded-full px-4 py-2 md:px-6 md:py-2.5 theme-transition" style={{ background: 'var(--bg-overlay)', borderWidth: 1, borderStyle: 'solid', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-nav)' }}>
           <div className="flex w-full items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="text-base md:text-lg font-bold tracking-[0.1em] uppercase text-zinc-900 hover:text-red-500 transition-colors duration-300">
+            <Link href="/" className="text-base md:text-lg font-bold tracking-[0.1em] uppercase hover:text-red-500 transition-colors duration-300" style={{ color: 'var(--text-primary)' }}>
               Inna Cleaning
             </Link>
 
@@ -72,7 +74,8 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-xs uppercase tracking-wide text-zinc-600 hover:text-zinc-900 border border-zinc-200 hover:border-zinc-400 rounded-full px-3 py-1.5 transition-all duration-200 font-medium"
+                  className="text-xs uppercase tracking-wide hover:text-red-500 rounded-full px-3 py-1.5 transition-all duration-200 font-medium theme-transition"
+                  style={{ color: 'var(--text-secondary)', borderWidth: 1, borderStyle: 'solid', borderColor: 'var(--border-default)' }}
                 >
                   {link.label}
                 </Link>
@@ -82,24 +85,34 @@ export default function Navbar() {
             {/* Desktop CTA + language switcher */}
             <div className="hidden md:flex items-center gap-2">
               {/* Language switcher */}
-              <div className="flex items-center gap-1 border border-zinc-300 rounded-full px-2 py-1">
+              <div className="flex items-center gap-1 rounded-full px-2 py-1 theme-transition" style={{ borderWidth: 1, borderStyle: 'solid', borderColor: 'var(--border-default)' }}>
                 {LANGS.map((l, i) => (
                   <span key={l.code} className="flex items-center">
                     <button
                       onClick={() => setLang(l.code)}
-                      className={`text-[10px] font-bold uppercase tracking-widest px-1 transition-colors ${
-                        lang === l.code ? 'text-zinc-900' : 'text-zinc-400 hover:text-zinc-600'
-                      }`}
+                      className="text-[10px] font-bold uppercase tracking-widest px-1 transition-colors"
+                      style={{ color: lang === l.code ? 'var(--text-primary)' : 'var(--text-faint)' }}
                     >
                       {l.label}
                     </button>
-                    {i < LANGS.length - 1 && <span className="text-zinc-300 text-[10px]">|</span>}
+                    {i < LANGS.length - 1 && <span className="text-[10px]" style={{ color: 'var(--text-faint)' }}>|</span>}
                   </span>
                 ))}
               </div>
+              {/* Dark mode toggle */}
+              <button
+                onClick={toggleTheme}
+                className="relative w-8 h-8 flex items-center justify-center rounded-full transition-all duration-300 hover:scale-110"
+                style={{ color: 'var(--text-secondary)' }}
+                aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+              >
+                <Sun size={16} strokeWidth={2} className={`absolute transition-all duration-300 ${theme === 'light' ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 rotate-90 scale-75'}`} />
+                <Moon size={16} strokeWidth={2} className={`absolute transition-all duration-300 ${theme === 'dark' ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-75'}`} />
+              </button>
               <a
                 href="tel:+12532156068"
-                className="flex items-center gap-1.5 text-sm text-zinc-600 hover:text-zinc-900 transition-colors"
+                className="flex items-center gap-1.5 text-sm transition-colors"
+                style={{ color: 'var(--text-secondary)' }}
               >
                 <Phone size={14} strokeWidth={2} />
                 (253) 215-6068
@@ -115,7 +128,8 @@ export default function Navbar() {
             {/* Mobile toggle */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden text-zinc-900 hover:scale-110 transition-transform duration-200"
+              className="md:hidden hover:scale-110 transition-transform duration-200"
+              style={{ color: 'var(--text-primary)' }}
               aria-label="Toggle menu"
             >
               <div className="relative w-6 h-6">
@@ -142,7 +156,7 @@ export default function Navbar() {
             mobileOpen ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-4 scale-95 pointer-events-none'
           }`}
         >
-          <div className="bg-white/90 backdrop-blur-md border border-zinc-200 shadow-lg rounded-xl p-4">
+          <div className="backdrop-blur-md shadow-lg rounded-xl p-4 theme-transition" style={{ background: 'var(--bg-overlay-mobile)', borderWidth: 1, borderStyle: 'solid', borderColor: 'var(--border-default)' }}>
             <div className="flex flex-col gap-1">
               {[
                 { href: '/services', label: t.nav.services },
@@ -154,28 +168,36 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100 rounded-lg px-3 py-3 text-sm uppercase tracking-widest font-medium transition-all duration-200"
-                  style={{ animationDelay: mobileOpen ? `${i * 50 + 50}ms` : '0ms' }}
+                  className="rounded-lg px-3 py-3 text-sm uppercase tracking-widest font-medium transition-all duration-200"
+                  style={{ color: 'var(--text-secondary)', animationDelay: mobileOpen ? `${i * 50 + 50}ms` : '0ms' }}
                 >
                   {link.label}
                 </Link>
               ))}
-              <div className="h-px bg-zinc-200 my-2" />
-              {/* Mobile language switcher */}
-              <div className="flex justify-center gap-4 py-2">
+              <div className="h-px my-2" style={{ background: 'var(--border-default)' }} />
+              {/* Mobile language switcher + dark mode toggle */}
+              <div className="flex justify-center items-center gap-4 py-2">
                 {LANGS.map((l) => (
                   <button
                     key={l.code}
                     onClick={() => setLang(l.code)}
-                    className={`text-sm font-bold uppercase tracking-widest transition-colors ${
-                      lang === l.code ? 'text-zinc-900' : 'text-zinc-400 hover:text-zinc-600'
-                    }`}
+                    className="text-sm font-bold uppercase tracking-widest transition-colors"
+                    style={{ color: lang === l.code ? 'var(--text-primary)' : 'var(--text-faint)' }}
                   >
                     {l.label}
                   </button>
                 ))}
+                <div className="w-px h-5" style={{ background: 'var(--border-default)' }} />
+                <button
+                  onClick={toggleTheme}
+                  className="flex items-center gap-1.5 text-sm font-bold uppercase tracking-widest transition-colors"
+                  style={{ color: 'var(--text-secondary)' }}
+                >
+                  {theme === 'light' ? <Moon size={14} /> : <Sun size={14} />}
+                  {theme === 'light' ? 'Dark' : 'Light'}
+                </button>
               </div>
-              <div className="h-px bg-zinc-200 my-1" />
+              <div className="h-px my-1" style={{ background: 'var(--border-default)' }} />
               <Link
                 href="/booking"
                 onClick={() => setMobileOpen(false)}

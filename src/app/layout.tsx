@@ -49,7 +49,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className="min-h-full flex flex-col font-sans">
+      <body className="theme-transition min-h-full flex flex-col font-sans" style={{ background: 'var(--bg-base)', color: 'var(--text-primary)' }}>
         <Providers>
           <Navbar />
           <main className="flex-1">{children}</main>

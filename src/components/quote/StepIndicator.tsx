@@ -22,8 +22,9 @@ export default function StepIndicator({ currentStep }: { currentStep: number }) 
                     ? 'bg-red-600 border-red-600 text-white'
                     : isActive
                     ? 'border-red-600 text-red-500'
-                    : 'border-zinc-300 text-zinc-400'
+                    : ''
                 }`}
+                style={!isCompleted && !isActive ? { borderColor: 'var(--input-border)', color: 'var(--text-faint)' } : undefined}
               >
                 {isCompleted ? (
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -35,8 +36,9 @@ export default function StepIndicator({ currentStep }: { currentStep: number }) 
               </div>
               <span
                 className={`mt-1 text-[10px] uppercase tracking-widest font-medium hidden sm:block ${
-                  isActive ? 'text-red-500' : 'text-zinc-500'
+                  isActive ? 'text-red-500' : ''
                 }`}
+                style={!isActive ? { color: 'var(--text-muted)' } : undefined}
               >
                 {label}
               </span>
@@ -45,8 +47,9 @@ export default function StepIndicator({ currentStep }: { currentStep: number }) 
             {i < steps.length - 1 && (
               <div
                 className={`w-8 sm:w-16 h-0.5 mx-1 ${
-                  isCompleted ? 'bg-red-600' : 'bg-zinc-300'
+                  isCompleted ? 'bg-red-600' : ''
                 }`}
+                style={!isCompleted ? { background: 'var(--input-border)' } : undefined}
               />
             )}
           </div>

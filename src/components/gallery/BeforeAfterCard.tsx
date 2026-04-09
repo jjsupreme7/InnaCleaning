@@ -55,7 +55,8 @@ export default function BeforeAfterCard({ title, image, beforeImage, afterImage,
     >
       <div
         ref={containerRef}
-        className="relative aspect-[4/3] rounded-xl overflow-hidden cursor-col-resize select-none border border-zinc-200"
+        className="relative aspect-[4/3] rounded-xl overflow-hidden cursor-col-resize select-none border"
+      style={{ borderColor: 'var(--card-border)' }}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
@@ -117,9 +118,9 @@ export default function BeforeAfterCard({ title, image, beforeImage, afterImage,
       </div>
 
       {/* Title bar */}
-      <div className="bg-white border border-t-0 border-zinc-200 rounded-b-xl px-5 py-4 flex items-center justify-between">
-        <p className="text-sm font-bold text-zinc-900">{title}</p>
-        <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-400 font-bold">{dragLabel}</p>
+      <div className="theme-transition border border-t-0 rounded-b-xl px-5 py-4 flex items-center justify-between" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
+        <p className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>{title}</p>
+        <p className="text-[10px] uppercase tracking-[0.2em] font-bold" style={{ color: 'var(--text-faint)' }}>{dragLabel}</p>
       </div>
     </div>
   );

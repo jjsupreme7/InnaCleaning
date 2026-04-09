@@ -2,12 +2,13 @@ import { Review } from '@/types';
 
 export default function ReviewCard({ review }: { review: Review }) {
   return (
-    <div className="bg-white border border-zinc-200 shadow-sm rounded-xl p-6">
+    <div className="theme-transition border shadow-sm rounded-xl p-6" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
       <div className="flex gap-1 mb-3">
         {Array.from({ length: 5 }).map((_, i) => (
           <svg
             key={i}
-            className={`w-4 h-4 ${i < review.rating ? 'text-yellow-400' : 'text-zinc-200'}`}
+            className={`w-4 h-4 ${i < review.rating ? 'text-yellow-400' : ''}`}
+            style={i >= review.rating ? { color: 'var(--card-border)' } : undefined}
             fill="currentColor"
             viewBox="0 0 20 20"
           >
@@ -15,12 +16,12 @@ export default function ReviewCard({ review }: { review: Review }) {
           </svg>
         ))}
       </div>
-      <p className="text-zinc-600 text-sm leading-relaxed mb-4 italic">
+      <p className="text-sm leading-relaxed mb-4 italic" style={{ color: 'var(--text-secondary)' }}>
         &ldquo;{review.text}&rdquo;
       </p>
       <div>
-        <p className="font-bold text-zinc-900 text-sm">{review.name}</p>
-        <p className="text-zinc-500 text-xs uppercase tracking-widest">{review.service}</p>
+        <p className="font-bold text-sm" style={{ color: 'var(--text-primary)' }}>{review.name}</p>
+        <p className="text-xs uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>{review.service}</p>
       </div>
     </div>
   );

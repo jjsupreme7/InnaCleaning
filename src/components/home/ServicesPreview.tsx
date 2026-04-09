@@ -34,17 +34,17 @@ export default function ServicesPreview() {
       : services.filter((s) => categoryMap[s.id] === activeFilter);
 
   return (
-    <section className="py-20 md:py-28 bg-white">
+    <section className="theme-transition py-20 md:py-28" style={{ background: 'var(--bg-elevated)' }}>
       <Container>
         {/* Header */}
         <div className="mb-10 text-center max-w-xl mx-auto">
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-red-400">
             {t.services.badge}
           </p>
-          <h2 className="font-display text-3xl font-light text-zinc-900 lg:text-5xl leading-tight tracking-tight">
+          <h2 className="font-display text-3xl font-light lg:text-5xl leading-tight tracking-tight" style={{ color: 'var(--text-primary)' }}>
             {t.services.headline}
           </h2>
-          <p className="mt-4 leading-relaxed text-zinc-500 text-[15px]">
+          <p className="mt-4 leading-relaxed text-[15px]" style={{ color: 'var(--text-muted)' }}>
             {t.services.description}
           </p>
         </div>
@@ -58,8 +58,9 @@ export default function ServicesPreview() {
               className={`min-h-[44px] rounded-full px-5 py-2 text-xs font-semibold tracking-wider transition-all duration-200 ${
                 activeFilter === i
                   ? 'bg-red-50 border border-red-300 text-red-600'
-                  : 'bg-zinc-50 border border-zinc-200 text-zinc-500 hover:border-red-300 hover:text-red-600'
+                  : 'border hover:border-red-300 hover:text-red-600'
               }`}
+              style={activeFilter !== i ? { background: 'var(--card-bg)', borderColor: 'var(--card-border)', color: 'var(--text-muted)' } : undefined}
             >
               {label}
             </button>
@@ -92,12 +93,13 @@ export default function ServicesPreview() {
                     delay: index * 0.1,
                     ease: [0.25, 0.46, 0.45, 0.94],
                   }}
-                  className={`group relative flex flex-col gap-5 rounded-xl p-7 transition-all duration-300 overflow-hidden
+                  className={`theme-transition group relative flex flex-col gap-5 rounded-xl p-7 transition-all duration-300 overflow-hidden
                     hover:-translate-y-1 hover:shadow-xl
                     ${isPopular
                       ? 'border border-red-200 bg-gradient-to-br from-red-50 to-white shadow-sm hover:border-red-300 hover:shadow-red-100/50'
-                      : 'border border-zinc-200 bg-white shadow-sm hover:border-zinc-300 hover:shadow-zinc-200/50'
+                      : 'border shadow-sm'
                     }`}
+                  style={!isPopular ? { background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' } : undefined}
                 >
                   {/* Subtle accent for popular card */}
                   {isPopular && (
@@ -121,31 +123,32 @@ export default function ServicesPreview() {
 
                   {/* Title & description */}
                   <div className="flex flex-col gap-1.5">
-                    <h3 className="text-[22px] font-normal text-zinc-900 tracking-tight">
+                    <h3 className="text-[22px] font-normal tracking-tight" style={{ color: 'var(--text-primary)' }}>
                       {t.servicesItems[service.id as keyof typeof t.servicesItems].title}
                     </h3>
-                    <p className="text-[13px] leading-relaxed text-zinc-500">
+                    <p className="text-[13px] leading-relaxed" style={{ color: 'var(--text-muted)' }}>
                       {t.servicesItems[service.id as keyof typeof t.servicesItems].description.substring(0, 80)}…
                     </p>
                   </div>
 
                   {/* Price */}
                   <div className="flex items-baseline gap-1">
-                    <span className="text-4xl font-light text-zinc-900">${service.startingPrice}</span>
-                    <span className="text-xs text-zinc-400">{t.services.starting}</span>
+                    <span className="text-4xl font-light" style={{ color: 'var(--text-primary)' }}>${service.startingPrice}</span>
+                    <span className="text-xs" style={{ color: 'var(--text-faint)' }}>{t.services.starting}</span>
                   </div>
 
                   {/* Divider */}
                   <div
                     className={`h-px w-full ${
-                      isPopular ? 'bg-red-200' : 'bg-zinc-200'
+                      isPopular ? 'bg-red-200' : ''
                     }`}
+                    style={!isPopular ? { background: 'var(--card-border)' } : undefined}
                   />
 
                   {/* Includes */}
                   <ul className="flex flex-col gap-2.5">
                     {t.servicesItems[service.id as keyof typeof t.servicesItems].includes.slice(0, 3).map((item) => (
-                      <li key={item} className="flex items-center gap-2.5 text-[13px] text-zinc-500">
+                      <li key={item} className="flex items-center gap-2.5 text-[13px]" style={{ color: 'var(--text-muted)' }}>
                         <span
                           className="inline-block h-[5px] w-[5px] shrink-0 rounded-full"
                           style={{ backgroundColor: dotColor }}
@@ -167,7 +170,8 @@ export default function ServicesPreview() {
                     ) : (
                       <a
                         href="/services"
-                        className="flex items-center justify-center rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3.5 text-xs font-semibold uppercase tracking-[0.12em] text-zinc-600 transition-colors hover:border-zinc-300 hover:text-zinc-900"
+                        className="flex items-center justify-center rounded-xl border px-4 py-3.5 text-xs font-semibold uppercase tracking-[0.12em] transition-colors"
+                        style={{ background: 'var(--card-bg)', borderColor: 'var(--card-border)', color: 'var(--text-secondary)' }}
                       >
                         {t.services.learnMore}
                       </a>

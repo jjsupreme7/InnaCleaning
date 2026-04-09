@@ -97,7 +97,8 @@ export default function VideoCard({ src, title, playLabel = 'Tap to play' }: Pro
   return (
     <div>
       <div
-        className="relative aspect-[9/16] rounded-xl overflow-hidden border border-zinc-200 bg-black cursor-pointer group"
+        className="relative aspect-[9/16] rounded-xl overflow-hidden border bg-black cursor-pointer group"
+        style={{ borderColor: 'var(--card-border)' }}
         onClick={toggle}
       >
         <video
@@ -132,9 +133,9 @@ export default function VideoCard({ src, title, playLabel = 'Tap to play' }: Pro
       </div>
 
       {/* Title bar */}
-      <div className="bg-white border border-t-0 border-zinc-200 rounded-b-xl px-4 py-3 flex items-center justify-between">
-        <p className="text-xs font-bold text-zinc-900 truncate">{title}</p>
-        <p className="text-[10px] uppercase tracking-[0.15em] text-zinc-400 font-bold shrink-0 ml-2">{playLabel}</p>
+      <div className="theme-transition border border-t-0 rounded-b-xl px-4 py-3 flex items-center justify-between" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
+        <p className="text-xs font-bold truncate" style={{ color: 'var(--text-primary)' }}>{title}</p>
+        <p className="text-[10px] uppercase tracking-[0.15em] font-bold shrink-0 ml-2" style={{ color: 'var(--text-faint)' }}>{playLabel}</p>
       </div>
 
       {/* Video Lightbox Modal */}

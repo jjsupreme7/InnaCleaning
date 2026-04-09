@@ -66,22 +66,22 @@ export default function PortalPage() {
 
   if (loading) {
     return (
-      <section className="py-16 md:py-24">
+      <section className="theme-transition py-16 md:py-24" style={{ background: 'var(--bg-base)' }}>
         <Container>
-          <p className="text-zinc-500 text-center">{p.loading}</p>
+          <p className="text-center" style={{ color: 'var(--text-muted)' }}>{p.loading}</p>
         </Container>
       </section>
     );
   }
 
   return (
-    <section className="py-16 md:py-24">
+    <section className="theme-transition py-16 md:py-24" style={{ background: 'var(--bg-base)' }}>
       <Container>
         {/* Header */}
         <div className="flex items-center justify-between mb-12">
           <div>
-            <h1 className="text-2xl font-bold uppercase tracking-widest text-zinc-900">{p.title}</h1>
-            <p className="text-zinc-500 text-sm mt-1">{user?.email}</p>
+            <h1 className="text-2xl font-bold uppercase tracking-widest" style={{ color: 'var(--text-primary)' }}>{p.title}</h1>
+            <p className="text-sm mt-1" style={{ color: 'var(--text-muted)' }}>{user?.email}</p>
           </div>
           <div className="flex gap-3">
             <Button href="/booking" variant="primary" size="sm">{p.newBooking}</Button>
@@ -91,23 +91,23 @@ export default function PortalPage() {
 
         {/* Bookings */}
         <div className="mb-12">
-          <h2 className="text-xs uppercase tracking-widest font-bold text-zinc-500 mb-4">{p.bookings}</h2>
+          <h2 className="text-xs uppercase tracking-widest font-bold mb-4" style={{ color: 'var(--text-muted)' }}>{p.bookings}</h2>
           {bookings.length === 0 ? (
-            <div className="border border-zinc-200 bg-white shadow-sm p-8 text-center">
-              <p className="text-zinc-500 text-sm mb-4">{p.noBookings}</p>
+            <div className="theme-transition border shadow-sm p-8 text-center" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
+              <p className="text-sm mb-4" style={{ color: 'var(--text-muted)' }}>{p.noBookings}</p>
               <Button href="/booking" variant="primary" size="md">{p.bookCleaning}</Button>
             </div>
           ) : (
             <div className="space-y-3">
               {bookings.map((b) => (
-                <div key={b.id} className="border border-zinc-200 bg-white shadow-sm p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <div key={b.id} className="theme-transition border shadow-sm p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
                   <div>
-                    <p className="text-zinc-900 font-bold text-sm capitalize">{b.service_type.replace('_', ' ')}</p>
-                    <p className="text-zinc-600 text-xs mt-0.5">{b.address}</p>
+                    <p className="font-bold text-sm capitalize" style={{ color: 'var(--text-primary)' }}>{b.service_type.replace('_', ' ')}</p>
+                    <p className="text-xs mt-0.5" style={{ color: 'var(--text-secondary)' }}>{b.address}</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-zinc-900 text-sm">{new Date(b.preferred_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</p>
-                    <p className="text-zinc-500 text-xs capitalize">{b.preferred_time}</p>
+                    <p className="text-sm" style={{ color: 'var(--text-primary)' }}>{new Date(b.preferred_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</p>
+                    <p className="text-xs capitalize" style={{ color: 'var(--text-muted)' }}>{b.preferred_time}</p>
                   </div>
                 </div>
               ))}
@@ -117,27 +117,27 @@ export default function PortalPage() {
 
         {/* Quotes */}
         <div>
-          <h2 className="text-xs uppercase tracking-widest font-bold text-zinc-500 mb-4">{p.quotes}</h2>
+          <h2 className="text-xs uppercase tracking-widest font-bold mb-4" style={{ color: 'var(--text-muted)' }}>{p.quotes}</h2>
           {quotes.length === 0 ? (
-            <div className="border border-zinc-200 bg-white shadow-sm p-8 text-center">
-              <p className="text-zinc-500 text-sm mb-4">{p.noQuotes}</p>
+            <div className="theme-transition border shadow-sm p-8 text-center" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
+              <p className="text-sm mb-4" style={{ color: 'var(--text-muted)' }}>{p.noQuotes}</p>
               <Button href="/quote" variant="primary" size="md">{p.getQuote}</Button>
             </div>
           ) : (
             <div className="space-y-3">
               {quotes.map((q) => (
-                <div key={q.id} className="border border-zinc-200 bg-white shadow-sm p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <div key={q.id} className="theme-transition border shadow-sm p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
                   <div>
-                    <p className="text-zinc-900 font-bold text-sm capitalize">
+                    <p className="font-bold text-sm capitalize" style={{ color: 'var(--text-primary)' }}>
                       {(q.cleaning_type ?? 'Standard').replace('_', ' ')} — {(q.home_size ?? '').replace('_', ' ')}
                     </p>
-                    <p className="text-zinc-600 text-xs mt-0.5 capitalize">{q.frequency?.replace('_', ' ')}</p>
+                    <p className="text-xs mt-0.5 capitalize" style={{ color: 'var(--text-secondary)' }}>{q.frequency?.replace('_', ' ')}</p>
                   </div>
                   <div className="text-right">
                     {q.estimated_total && (
-                      <p className="text-zinc-900 font-bold text-lg">${q.estimated_total}</p>
+                      <p className="font-bold text-lg" style={{ color: 'var(--text-primary)' }}>${q.estimated_total}</p>
                     )}
-                    <p className="text-zinc-500 text-xs">{new Date(q.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</p>
+                    <p className="text-xs" style={{ color: 'var(--text-muted)' }}>{new Date(q.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</p>
                   </div>
                 </div>
               ))}
@@ -146,7 +146,7 @@ export default function PortalPage() {
         </div>
 
         <p className="text-center mt-12">
-          <Link href="/" className="text-zinc-600 text-xs hover:text-zinc-900 transition-colors uppercase tracking-widest">{p.back}</Link>
+          <Link href="/" className="text-xs hover:text-red-400 transition-colors uppercase tracking-widest" style={{ color: 'var(--text-secondary)' }}>{p.back}</Link>
         </p>
       </Container>
     </section>

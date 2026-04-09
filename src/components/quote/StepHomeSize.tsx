@@ -17,8 +17,8 @@ export default function StepHomeSize({ value, onChange }: Props) {
 
   return (
     <div>
-      <h3 className="text-lg font-bold text-zinc-900 mb-2">{q.homeSizeHeading}</h3>
-      <p className="text-zinc-500 text-sm mb-6">{q.homeSizeSubheading}</p>
+      <h3 className="text-lg font-bold mb-2" style={{ color: 'var(--text-primary)' }}>{q.homeSizeHeading}</h3>
+      <p className="text-sm mb-6" style={{ color: 'var(--text-muted)' }}>{q.homeSizeSubheading}</p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {sizes.map((size) => (
@@ -28,13 +28,14 @@ export default function StepHomeSize({ value, onChange }: Props) {
             className={`p-4 rounded-lg border-2 text-left transition-all duration-300 hover:-translate-y-0.5 ${
               value === size
                 ? 'border-red-500 bg-red-50'
-                : 'border-zinc-300 hover:border-zinc-400'
+                : ''
             }`}
+            style={value !== size ? { borderColor: 'var(--input-border)' } : undefined}
           >
-            <span className="block text-sm font-bold text-zinc-900">
+            <span className="block text-sm font-bold" style={{ color: 'var(--text-primary)' }}>
               {q.sizeLabels[size]}
             </span>
-            <span className="block text-xs text-zinc-500 mt-1">
+            <span className="block text-xs mt-1" style={{ color: 'var(--text-muted)' }}>
               {q.from}{BASE_PRICES[size]}
             </span>
           </button>
