@@ -11,6 +11,7 @@ const footerLinks = [
   { href: '/about' },
   { href: '/faq' },
   { href: '/contact' },
+  { href: '/portal' },
 ];
 
 export default function Footer() {

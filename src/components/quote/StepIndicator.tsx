@@ -22,7 +22,7 @@ export default function StepIndicator({ currentStep }: { currentStep: number }) 
                     ? 'bg-red-600 border-red-600 text-white'
                     : isActive
                     ? 'border-red-600 text-red-500'
-                    : 'border-zinc-700 text-zinc-500'
+                    : 'border-zinc-300 text-zinc-400'
                 }`}
               >
                 {isCompleted ? (
@@ -45,7 +45,7 @@ export default function StepIndicator({ currentStep }: { currentStep: number }) 
             {i < steps.length - 1 && (
               <div
                 className={`w-8 sm:w-16 h-0.5 mx-1 ${
-                  isCompleted ? 'bg-red-600' : 'bg-zinc-700'
+                  isCompleted ? 'bg-red-600' : 'bg-zinc-300'
                 }`}
               />
             )}

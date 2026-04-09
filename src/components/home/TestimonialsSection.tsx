@@ -9,11 +9,11 @@ export default function TestimonialsSection() {
   const { t } = useLanguage();
 
   return (
-    <section className="py-16 md:py-24 bg-zinc-950">
+    <section className="py-20 md:py-28 bg-zinc-50">
       <Container>
         <div className="text-center mb-12">
           <h2 className="text-xs uppercase tracking-widest font-bold text-zinc-500 mb-2">{t.testimonials.title}</h2>
-          <p className="text-2xl font-bold text-white">{t.testimonials.subtitle}</p>
+          <p className="font-display text-2xl font-bold text-zinc-900">{t.testimonials.subtitle}</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

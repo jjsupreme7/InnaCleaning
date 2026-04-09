@@ -1,9 +1,10 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #0a0a0a;
-  --color-foreground: #f4f4f5;
-  --font-sans: var(--font-assistant);
+  --color-background: #FAFAF8;
+  --color-foreground: #1a1a1a;
+  --font-sans: var(--font-dm-sans);
+  --font-display: var(--font-dm-serif);
 }
 
 body {
@@ -13,4 +14,12 @@ body {
 
 html {
   scroll-behavior: smooth;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

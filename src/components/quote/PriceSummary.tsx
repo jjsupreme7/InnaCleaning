@@ -15,7 +15,7 @@ export default function PriceSummary({ breakdown, showBookButton }: Props) {
 
   if (!breakdown) {
     return (
-      <div className="bg-zinc-900 border border-zinc-800 p-6 text-center">
+      <div className="bg-white border border-zinc-200 shadow-sm rounded-xl p-6 text-center">
         <p className="text-zinc-500 text-sm">
           {q.priceSummaryEmpty}
         </p>
@@ -24,30 +24,30 @@ export default function PriceSummary({ breakdown, showBookButton }: Props) {
   }
 
   return (
-    <div className="bg-zinc-900 border border-zinc-800 p-6">
+    <div className="bg-white border border-zinc-200 shadow-sm rounded-xl p-6">
       <h4 className="text-xs uppercase tracking-widest font-bold text-zinc-500 mb-4">
         {q.priceSummaryHeading}
       </h4>
 
       <div className="space-y-2 text-sm">
-        <div className="flex justify-between text-zinc-400">
+        <div className="flex justify-between text-zinc-600">
           <span>{q.basePrice}</span>
           <span>${breakdown.basePrice}</span>
         </div>
         {breakdown.afterType !== breakdown.basePrice && (
-          <div className="flex justify-between text-zinc-400">
+          <div className="flex justify-between text-zinc-600">
             <span>{q.cleaningTypeLabel}</span>
             <span>${breakdown.afterType - breakdown.basePrice > 0 ? '+' : ''}${breakdown.afterType - breakdown.basePrice}</span>
           </div>
         )}
         {breakdown.afterCondition !== breakdown.afterType && (
-          <div className="flex justify-between text-zinc-400">
+          <div className="flex justify-between text-zinc-600">
             <span>{q.conditionLabel}</span>
             <span>+${breakdown.afterCondition - breakdown.afterType}</span>
           </div>
         )}
         {breakdown.addonsTotal > 0 && (
-          <div className="flex justify-between text-zinc-400">
+          <div className="flex justify-between text-zinc-600">
             <span>{q.addonsLabel}</span>
             <span>+${breakdown.addonsTotal}</span>
           </div>
@@ -60,12 +60,12 @@ export default function PriceSummary({ breakdown, showBookButton }: Props) {
         )}
       </div>
 
-      <div className="border-t border-zinc-800 mt-4 pt-4">
+      <div className="border-t border-zinc-200 mt-4 pt-4">
         <div className="flex justify-between items-center">
           <span className="text-xs uppercase tracking-widest font-bold text-zinc-500">
             {q.totalLabel}
           </span>
-          <span className="text-3xl font-bold text-white">
+          <span className="text-3xl font-bold text-zinc-900">
             ${breakdown.total}
           </span>
         </div>

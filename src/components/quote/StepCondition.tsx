@@ -16,7 +16,7 @@ export default function StepCondition({ value, onChange }: Props) {
 
   return (
     <div>
-      <h3 className="text-lg font-bold text-white mb-2">{q.conditionHeading}</h3>
+      <h3 className="text-lg font-bold text-zinc-900 mb-2">{q.conditionHeading}</h3>
       <p className="text-zinc-500 text-sm mb-6">{q.conditionSubheading}</p>
 
       <div className="grid grid-cols-1 gap-3">
@@ -24,13 +24,13 @@ export default function StepCondition({ value, onChange }: Props) {
           <button
             key={id}
             onClick={() => onChange(id)}
-            className={`p-4 border-2 text-left transition-all duration-300 hover:-translate-y-0.5 ${
+            className={`p-4 rounded-lg border-2 text-left transition-all duration-300 hover:-translate-y-0.5 ${
               value === id
-                ? 'border-red-600 bg-red-950'
-                : 'border-zinc-700 hover:border-zinc-600'
+                ? 'border-red-500 bg-red-50'
+                : 'border-zinc-300 hover:border-zinc-400'
             }`}
           >
-            <span className="block text-sm font-bold text-white">
+            <span className="block text-sm font-bold text-zinc-900">
               {q.conditionLabels[id]}
             </span>
             <span className="block text-xs text-zinc-500 mt-1">

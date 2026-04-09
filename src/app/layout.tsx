@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Assistant } from "next/font/google";
+import { DM_Serif_Display, DM_Sans } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
@@ -7,10 +7,16 @@ import Footer from "@/components/layout/Footer";
 import StickyBookButton from "@/components/layout/StickyBookButton";
 import Providers from "./providers";
 
-const assistant = Assistant({
-  variable: "--font-assistant",
+const dmSerif = DM_Serif_Display({
+  variable: "--font-dm-serif",
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: "400",
+});
+
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
 });
 
 export const metadata: Metadata = {
@@ -28,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${assistant.variable} h-full antialiased`}>
+    <html lang="en" className={`${dmSerif.variable} ${dmSans.variable} h-full antialiased`}>
       <head>
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}

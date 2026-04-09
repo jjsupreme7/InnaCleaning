@@ -56,9 +56,9 @@ export default function FAQPage() {
       </section>
 
       {/* FAQ Items */}
-      <section className="py-16 md:py-24 bg-zinc-950">
+      <section className="py-20 md:py-28 bg-white">
         <Container>
-          <div className="max-w-3xl mx-auto border border-zinc-800/70 rounded-sm p-4 md:p-8 relative">
+          <div className="max-w-3xl mx-auto border border-zinc-200 rounded-xl p-4 md:p-8 relative">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-[2px] bg-red-500" />
             {f.items.map((item, i) => (
               <motion.div
@@ -79,8 +79,8 @@ export default function FAQPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-20 bg-zinc-900 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-red-950/20 via-transparent to-transparent" />
+      <section className="relative py-20 md:py-28 bg-zinc-50 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-red-50/60 via-transparent to-transparent" />
         <Container className="relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -92,10 +92,10 @@ export default function FAQPage() {
             <p className="text-sm font-bold uppercase tracking-[0.2em] text-red-400 mb-4">
               {f.stillHave}
             </p>
-            <h2 className="text-2xl md:text-3xl font-bold text-white tracking-[0.1em] uppercase mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-zinc-900 font-display tracking-[0.1em] uppercase mb-4">
               {t.cta.headline}
             </h2>
-            <p className="text-zinc-400 mb-10 leading-relaxed">
+            <p className="text-zinc-600 mb-10 leading-relaxed">
               {t.cta.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

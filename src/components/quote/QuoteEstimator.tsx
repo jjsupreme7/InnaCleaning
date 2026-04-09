@@ -94,10 +94,10 @@ export default function QuoteEstimator() {
     return (
       <div className="text-center py-16">
         <div className="text-5xl mb-4 text-red-500">&#10003;</div>
-        <h3 className="text-2xl font-bold text-white mb-3">{q.savedHeading}</h3>
-        <p className="text-zinc-400 mb-2">
+        <h3 className="text-2xl font-bold text-zinc-900 mb-3">{q.savedHeading}</h3>
+        <p className="text-zinc-600 mb-2">
           {q.savedThanks.replace('{name}', state.name)}{' '}
-          <span className="text-white font-bold">${breakdown?.total}</span>.
+          <span className="text-zinc-900 font-bold">${breakdown?.total}</span>.
         </p>
         <p className="text-zinc-500 text-sm mb-8">
           {q.savedInTouch.replace('{email}', state.email)}

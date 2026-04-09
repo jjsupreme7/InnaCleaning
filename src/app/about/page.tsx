@@ -12,19 +12,19 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="py-16 md:py-24 bg-zinc-900">
+      <section className="py-20 md:py-28 bg-zinc-50">
         <Container>
           <div className="max-w-3xl mx-auto text-center">
-            <div className="border border-zinc-700/60 rounded-sm px-8 py-12 md:px-14 md:py-16 relative">
+            <div className="border border-zinc-200 rounded-xl px-8 py-12 md:px-14 md:py-16 relative">
               {/* Top accent line */}
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-[2px] bg-red-500" />
               <p className="text-red-500 text-sm uppercase tracking-[0.2em] font-bold mb-3">
                 {a.badge}
               </p>
-              <h1 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              <h1 className="text-3xl md:text-4xl font-bold text-zinc-900 font-display mb-6">
                 {a.headline}
               </h1>
-              <p className="text-zinc-400 text-lg leading-relaxed">
+              <p className="text-zinc-600 text-lg leading-relaxed">
                 {a.intro}
               </p>
             </div>
@@ -33,9 +33,9 @@ export default function AboutPage() {
       </section>
 
       {/* Story */}
-      <section className="py-16 md:py-24 bg-zinc-950">
+      <section className="py-20 md:py-28 bg-white">
         <Container>
-          <div className="border border-zinc-800/70 rounded-sm p-4 md:p-8 relative">
+          <div className="border border-zinc-200 rounded-xl p-4 md:p-8 relative">
             {/* Corner accents */}
             <div className="absolute top-0 left-0 w-8 h-[2px] bg-red-500" />
             <div className="absolute top-0 left-0 w-[2px] h-8 bg-red-500" />
@@ -44,7 +44,7 @@ export default function AboutPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               {/* Photo */}
-              <div className="aspect-[4/5] relative overflow-hidden border border-zinc-800/50">
+              <div className="aspect-[4/5] relative overflow-hidden border border-zinc-200">
                 <Image
                   src="/inna-about.jpg"
                   alt="Inna Rohovska — professional cleaner in Western Washington"
@@ -56,10 +56,10 @@ export default function AboutPage() {
               </div>
 
               <div>
-                <h2 className="text-2xl font-bold text-white mb-6 uppercase tracking-widest">
+                <h2 className="text-2xl font-bold text-zinc-900 font-display mb-6 uppercase tracking-widest">
                   {a.storyHeading}
                 </h2>
-                <div className="space-y-4 text-zinc-400 leading-relaxed">
+                <div className="space-y-4 text-zinc-600 leading-relaxed">
                   {a.storyParagraphs.map((p, i) => (
                     <p key={i}>{p}</p>
                   ))}
@@ -83,10 +83,10 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="py-16 md:py-24 bg-zinc-900">
+      <section className="py-20 md:py-28 bg-zinc-50">
         <Container>
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl font-bold text-white mb-10 uppercase tracking-widest text-center">
+            <h2 className="text-2xl font-bold text-zinc-900 font-display mb-10 uppercase tracking-widest text-center">
               {a.valuesHeading}
             </h2>
 
@@ -94,13 +94,13 @@ export default function AboutPage() {
               {a.values.map((val) => (
                 <div
                   key={val.title}
-                  className="text-center border border-zinc-700/50 rounded-sm px-6 py-8 relative group hover:border-zinc-600/70 transition-colors duration-300"
+                  className="text-center border border-zinc-200 rounded-xl px-6 py-8 relative group hover:border-zinc-300 transition-colors duration-300"
                 >
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-[2px] bg-red-500/80 group-hover:w-12 transition-all duration-300" />
-                  <h3 className="text-sm uppercase tracking-widest font-bold text-white mb-3">
+                  <h3 className="text-sm uppercase tracking-widest font-bold text-zinc-900 mb-3">
                     {val.title}
                   </h3>
-                  <p className="text-zinc-400 text-sm leading-relaxed">
+                  <p className="text-zinc-600 text-sm leading-relaxed">
                     {val.desc}
                   </p>
                 </div>
@@ -111,17 +111,17 @@ export default function AboutPage() {
       </section>
 
       {/* Guarantees */}
-      <section className="py-16 md:py-24 bg-zinc-950">
+      <section className="py-20 md:py-28 bg-white">
         <Container>
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-2xl font-bold text-white mb-6 uppercase tracking-widest">
+            <h2 className="text-2xl font-bold text-zinc-900 font-display mb-6 uppercase tracking-widest">
               {a.promiseHeading}
             </h2>
-            <div className="space-y-4 text-sm text-zinc-400">
+            <div className="space-y-4 text-sm text-zinc-600">
               {[a.promise1, a.promise2, a.promise3].map((promise, i) => (
                 <div
                   key={i}
-                  className="border border-zinc-700/60 rounded-sm p-5 flex items-center gap-4 relative hover:border-zinc-600/70 transition-colors duration-300"
+                  className="border border-zinc-200 rounded-xl p-5 flex items-center gap-4 relative hover:border-zinc-300 transition-colors duration-300"
                 >
                   <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[2px] h-6 bg-red-500" />
                   <span className="text-red-500 text-xl">&#10003;</span>

@@ -2,12 +2,12 @@ import { Review } from '@/types';
 
 export default function ReviewCard({ review }: { review: Review }) {
   return (
-    <div className="bg-zinc-900 border border-zinc-800 p-6">
+    <div className="bg-white border border-zinc-200 shadow-sm rounded-xl p-6">
       <div className="flex gap-1 mb-3">
         {Array.from({ length: 5 }).map((_, i) => (
           <svg
             key={i}
-            className={`w-4 h-4 ${i < review.rating ? 'text-yellow-400' : 'text-zinc-700'}`}
+            className={`w-4 h-4 ${i < review.rating ? 'text-yellow-400' : 'text-zinc-200'}`}
             fill="currentColor"
             viewBox="0 0 20 20"
           >
@@ -15,11 +15,11 @@ export default function ReviewCard({ review }: { review: Review }) {
           </svg>
         ))}
       </div>
-      <p className="text-zinc-400 text-sm leading-relaxed mb-4 italic">
+      <p className="text-zinc-600 text-sm leading-relaxed mb-4 italic">
         &ldquo;{review.text}&rdquo;
       </p>
       <div>
-        <p className="font-bold text-white text-sm">{review.name}</p>
+        <p className="font-bold text-zinc-900 text-sm">{review.name}</p>
         <p className="text-zinc-500 text-xs uppercase tracking-widest">{review.service}</p>
       </div>
     </div>

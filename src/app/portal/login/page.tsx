@@ -64,21 +64,21 @@ export default function PortalLoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center p-4">
+    <div className="min-h-screen bg-zinc-50 flex items-center justify-center p-4">
       <div className="w-full max-w-4xl">
         {/* Logo */}
         <div className="text-center mb-8">
-          <Link href="/" className="text-xl font-bold uppercase tracking-[0.15em] text-white">
+          <Link href="/" className="text-xl font-bold uppercase tracking-[0.15em] text-zinc-900">
             Inna Cleaning
           </Link>
         </div>
 
         {/* Card */}
-        <div className="overflow-hidden border border-zinc-800 grid md:grid-cols-2">
+        <div className="overflow-hidden rounded-xl border border-zinc-200 grid md:grid-cols-2">
           {/* Form side */}
-          <div className="bg-zinc-950 p-8 md:p-10">
+          <div className="bg-white p-8 md:p-10">
             <div className="mb-8">
-              <h1 className="text-2xl font-bold text-white">
+              <h1 className="text-2xl font-bold text-zinc-900">
                 {tab === 'login' ? l.welcomeBack : l.createAccount}
               </h1>
               <p className="text-zinc-500 text-sm mt-1">
@@ -87,11 +87,11 @@ export default function PortalLoginPage() {
             </div>
 
             {/* Tab switcher */}
-            <div className="flex border border-zinc-800 mb-7">
+            <div className="flex border border-zinc-200 mb-7">
               <button
                 onClick={() => { setTab('login'); setError(''); setSuccess(''); }}
                 className={`flex-1 py-2.5 text-xs uppercase tracking-widest font-bold transition-colors ${
-                  tab === 'login' ? 'bg-red-600 text-white' : 'text-zinc-500 hover:text-white'
+                  tab === 'login' ? 'bg-red-600 text-white' : 'text-zinc-500 hover:text-zinc-900'
                 }`}
               >
                 {l.logIn}
@@ -99,7 +99,7 @@ export default function PortalLoginPage() {
               <button
                 onClick={() => { setTab('signup'); setError(''); setSuccess(''); }}
                 className={`flex-1 py-2.5 text-xs uppercase tracking-widest font-bold transition-colors ${
-                  tab === 'signup' ? 'bg-red-600 text-white' : 'text-zinc-500 hover:text-white'
+                  tab === 'signup' ? 'bg-red-600 text-white' : 'text-zinc-500 hover:text-zinc-900'
                 }`}
               >
                 {l.signUp}
@@ -112,7 +112,7 @@ export default function PortalLoginPage() {
                 type="button"
                 onClick={() => handleOAuth('google')}
                 disabled={oauthLoading !== null}
-                className="flex items-center justify-center gap-2.5 border border-zinc-700 bg-zinc-900 hover:bg-zinc-800 text-white text-sm font-medium py-3 px-4 transition-colors disabled:opacity-50"
+                className="flex items-center justify-center gap-2.5 border border-zinc-200 bg-zinc-50 hover:bg-zinc-100 text-zinc-800 text-sm font-medium py-3 px-4 transition-colors disabled:opacity-50"
               >
                 {oauthLoading === 'google' ? (
                   <span className="text-xs">…</span>
@@ -132,7 +132,7 @@ export default function PortalLoginPage() {
                 type="button"
                 onClick={() => handleOAuth('apple')}
                 disabled={oauthLoading !== null}
-                className="flex items-center justify-center gap-2.5 border border-zinc-700 bg-zinc-900 hover:bg-zinc-800 text-white text-sm font-medium py-3 px-4 transition-colors disabled:opacity-50"
+                className="flex items-center justify-center gap-2.5 border border-zinc-200 bg-zinc-50 hover:bg-zinc-100 text-zinc-800 text-sm font-medium py-3 px-4 transition-colors disabled:opacity-50"
               >
                 {oauthLoading === 'apple' ? (
                   <span className="text-xs">…</span>
@@ -150,16 +150,16 @@ export default function PortalLoginPage() {
             {/* Divider */}
             <div className="relative text-center mb-6">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-zinc-800" />
+                <div className="w-full border-t border-zinc-200" />
               </div>
-              <span className="relative bg-zinc-950 px-3 text-xs text-zinc-600 uppercase tracking-widest">
+              <span className="relative bg-white px-3 text-xs text-zinc-600 uppercase tracking-widest">
                 {l.continueEmail}
               </span>
             </div>
 
             <form onSubmit={tab === 'login' ? handleLogin : handleSignup} className="space-y-5">
               <div className="space-y-1.5">
-                <label className="block text-xs uppercase tracking-widest font-bold text-zinc-400">
+                <label className="block text-xs uppercase tracking-widest font-bold text-zinc-600">
                   {l.emailLabel}
                 </label>
                 <input
@@ -167,17 +167,17 @@ export default function PortalLoginPage() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full border border-zinc-700 bg-zinc-900 text-white px-4 py-3 text-sm focus:border-red-600 focus:outline-none transition-colors placeholder:text-zinc-600"
+                  className="w-full rounded-lg border border-zinc-300 bg-white text-zinc-900 px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors placeholder:text-zinc-400"
                   placeholder={l.emailPlaceholder}
                 />
               </div>
               <div className="space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <label className="block text-xs uppercase tracking-widest font-bold text-zinc-400">
+                  <label className="block text-xs uppercase tracking-widest font-bold text-zinc-600">
                     {l.passwordLabel}
                   </label>
                   {tab === 'login' && (
-                    <a href="#" className="text-xs text-zinc-500 hover:text-white transition-colors">
+                    <a href="#" className="text-xs text-zinc-500 hover:text-zinc-900 transition-colors">
                       {l.forgotPassword}
                     </a>
                   )}
@@ -187,7 +187,7 @@ export default function PortalLoginPage() {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full border border-zinc-700 bg-zinc-900 text-white px-4 py-3 text-sm focus:border-red-600 focus:outline-none transition-colors placeholder:text-zinc-600"
+                  className="w-full rounded-lg border border-zinc-300 bg-white text-zinc-900 px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors placeholder:text-zinc-400"
                   placeholder="••••••••"
                 />
               </div>
@@ -205,7 +205,7 @@ export default function PortalLoginPage() {
             </form>
 
             <p className="text-center text-xs text-zinc-600 mt-8">
-              <Link href="/" className="hover:text-zinc-400 transition-colors">
+              <Link href="/" className="hover:text-zinc-900 transition-colors">
                 {l.back}
               </Link>
             </p>
@@ -214,7 +214,7 @@ export default function PortalLoginPage() {
           {/* Image side */}
           <div className="relative hidden md:block">
             <Image
-              src="/images/mansion.jpg"
+              src="/images/clean-interior.jpg"
               alt="Luxury home"
               fill
               className="object-cover"
@@ -230,7 +230,7 @@ export default function PortalLoginPage() {
           </div>
         </div>
 
-        <p className="text-center text-xs text-zinc-700 mt-6">
+        <p className="text-center text-xs text-zinc-500 mt-6">
           {l.termsText}{' '}
           <a href="#" className="underline underline-offset-2 hover:text-zinc-500 transition-colors">{l.termsLink}</a>{' '}
           {l.and}{' '}

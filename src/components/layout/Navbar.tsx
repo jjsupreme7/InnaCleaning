@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import type { Lang } from '@/i18n/translations';
 
@@ -54,10 +54,10 @@ export default function Navbar() {
         }}
       >
         {/* Main pill */}
-        <div className="bg-black/40 backdrop-blur-md border border-white/10 rounded-full px-4 py-2 md:px-6 md:py-2.5">
+        <div className="bg-white/80 backdrop-blur-md border border-zinc-200/60 shadow-sm rounded-full px-4 py-2 md:px-6 md:py-2.5">
           <div className="flex w-full items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="text-base md:text-lg font-bold tracking-[0.1em] uppercase text-white hover:text-red-400 transition-colors duration-300">
+            <Link href="/" className="text-base md:text-lg font-bold tracking-[0.1em] uppercase text-zinc-900 hover:text-red-500 transition-colors duration-300">
               Inna Cleaning
             </Link>
 
@@ -67,13 +67,12 @@ export default function Navbar() {
                 { href: '/services', label: t.nav.services },
                 { href: '/about', label: t.nav.about },
                 { href: '/gallery', label: t.nav.gallery },
-                { href: '/faq', label: t.nav.faq },
                 { href: '/contact', label: t.nav.contact },
               ].map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-xs uppercase tracking-wide text-white/70 hover:text-white border border-white/15 hover:border-white/30 rounded-full px-3 py-1.5 transition-all duration-200 font-medium"
+                  className="text-xs uppercase tracking-wide text-zinc-600 hover:text-zinc-900 border border-zinc-200 hover:border-zinc-400 rounded-full px-3 py-1.5 transition-all duration-200 font-medium"
                 >
                   {link.label}
                 </Link>
@@ -83,27 +82,28 @@ export default function Navbar() {
             {/* Desktop CTA + language switcher */}
             <div className="hidden md:flex items-center gap-2">
               {/* Language switcher */}
-              <div className="flex items-center gap-1 border border-white/20 rounded-full px-2 py-1">
+              <div className="flex items-center gap-1 border border-zinc-300 rounded-full px-2 py-1">
                 {LANGS.map((l, i) => (
                   <span key={l.code} className="flex items-center">
                     <button
                       onClick={() => setLang(l.code)}
                       className={`text-[10px] font-bold uppercase tracking-widest px-1 transition-colors ${
-                        lang === l.code ? 'text-white' : 'text-white/40 hover:text-white/70'
+                        lang === l.code ? 'text-zinc-900' : 'text-zinc-400 hover:text-zinc-600'
                       }`}
                     >
                       {l.label}
                     </button>
-                    {i < LANGS.length - 1 && <span className="text-white/20 text-[10px]">|</span>}
+                    {i < LANGS.length - 1 && <span className="text-zinc-300 text-[10px]">|</span>}
                   </span>
                 ))}
               </div>
-              <Link
-                href="/portal"
-                className="text-xs uppercase tracking-widest text-white/70 hover:text-white transition-colors duration-200 font-medium"
+              <a
+                href="tel:+12532156068"
+                className="flex items-center gap-1.5 text-sm text-zinc-600 hover:text-zinc-900 transition-colors"
               >
-                {t.nav.portal}
-              </Link>
+                <Phone size={14} strokeWidth={2} />
+                (253) 215-6068
+              </a>
               <Link
                 href="/booking"
                 className="bg-red-600 hover:bg-red-700 text-white font-bold px-5 py-2 rounded-full text-xs uppercase tracking-widest transition-all duration-300 hover:scale-105"
@@ -115,7 +115,7 @@ export default function Navbar() {
             {/* Mobile toggle */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden text-white hover:scale-110 transition-transform duration-200"
+              className="md:hidden text-zinc-900 hover:scale-110 transition-transform duration-200"
               aria-label="Toggle menu"
             >
               <div className="relative w-6 h-6">
@@ -142,27 +142,25 @@ export default function Navbar() {
             mobileOpen ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-4 scale-95 pointer-events-none'
           }`}
         >
-          <div className="bg-black/60 backdrop-blur-md border border-white/10 rounded-2xl p-4">
+          <div className="bg-white/90 backdrop-blur-md border border-zinc-200 shadow-lg rounded-xl p-4">
             <div className="flex flex-col gap-1">
               {[
                 { href: '/services', label: t.nav.services },
                 { href: '/about', label: t.nav.about },
                 { href: '/gallery', label: t.nav.gallery },
-                { href: '/faq', label: t.nav.faq },
                 { href: '/contact', label: t.nav.contact },
-                { href: '/portal', label: t.nav.portal },
               ].map((link, i) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="text-white/70 hover:text-white hover:bg-white/10 rounded-lg px-3 py-3 text-sm uppercase tracking-widest font-medium transition-all duration-200"
+                  className="text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100 rounded-lg px-3 py-3 text-sm uppercase tracking-widest font-medium transition-all duration-200"
                   style={{ animationDelay: mobileOpen ? `${i * 50 + 50}ms` : '0ms' }}
                 >
                   {link.label}
                 </Link>
               ))}
-              <div className="h-px bg-white/10 my-2" />
+              <div className="h-px bg-zinc-200 my-2" />
               {/* Mobile language switcher */}
               <div className="flex justify-center gap-4 py-2">
                 {LANGS.map((l) => (
@@ -170,14 +168,14 @@ export default function Navbar() {
                     key={l.code}
                     onClick={() => setLang(l.code)}
                     className={`text-sm font-bold uppercase tracking-widest transition-colors ${
-                      lang === l.code ? 'text-white' : 'text-white/40 hover:text-white/70'
+                      lang === l.code ? 'text-zinc-900' : 'text-zinc-400 hover:text-zinc-600'
                     }`}
                   >
                     {l.label}
                   </button>
                 ))}
               </div>
-              <div className="h-px bg-white/10 my-1" />
+              <div className="h-px bg-zinc-200 my-1" />
               <Link
                 href="/booking"
                 onClick={() => setMobileOpen(false)}

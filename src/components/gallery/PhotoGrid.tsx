@@ -22,7 +22,7 @@ export default function PhotoGrid({ photos }: Props) {
           <button
             key={photo.src}
             onClick={() => setLightbox(i)}
-            className="group relative aspect-square overflow-hidden border border-zinc-800 bg-zinc-900 cursor-pointer"
+            className="group relative aspect-square rounded-xl overflow-hidden border border-zinc-200 bg-zinc-50 cursor-pointer"
           >
             <img
               src={photo.src}

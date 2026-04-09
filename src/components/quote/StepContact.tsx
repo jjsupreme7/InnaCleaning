@@ -15,7 +15,7 @@ export default function StepContact({ name, email, onChangeName, onChangeEmail }
 
   return (
     <div>
-      <h3 className="text-lg font-bold text-white mb-2">{q.contactHeading}</h3>
+      <h3 className="text-lg font-bold text-zinc-900 mb-2">{q.contactHeading}</h3>
       <p className="text-zinc-500 text-sm mb-6">{q.contactSubheading}</p>
 
       <div className="space-y-4">
@@ -26,7 +26,7 @@ export default function StepContact({ name, email, onChangeName, onChangeEmail }
             required
             value={name}
             onChange={(e) => onChangeName(e.target.value)}
-            className="w-full border-2 border-zinc-700 bg-zinc-900 text-white px-4 py-3 text-sm focus:border-red-600 focus:outline-none transition-colors"
+            className="w-full rounded-lg border-2 border-zinc-300 bg-white text-zinc-900 px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors"
             placeholder={q.contactNamePlaceholder}
           />
         </div>
@@ -37,7 +37,7 @@ export default function StepContact({ name, email, onChangeName, onChangeEmail }
             required
             value={email}
             onChange={(e) => onChangeEmail(e.target.value)}
-            className="w-full border-2 border-zinc-700 bg-zinc-900 text-white px-4 py-3 text-sm focus:border-red-600 focus:outline-none transition-colors"
+            className="w-full rounded-lg border-2 border-zinc-300 bg-white text-zinc-900 px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors"
             placeholder={q.contactEmailPlaceholder}
           />
         </div>

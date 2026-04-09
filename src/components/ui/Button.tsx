@@ -13,8 +13,8 @@ interface ButtonProps {
 
 const variants = {
   primary: 'bg-red-600 text-white border-red-600 hover:bg-red-700 hover:border-red-700',
-  secondary: 'bg-zinc-900 text-white border-zinc-900 hover:bg-black',
-  outline: 'bg-transparent text-white border-zinc-700 hover:bg-zinc-800 hover:text-white',
+  secondary: 'bg-zinc-800 text-white border-zinc-800 hover:bg-zinc-900',
+  outline: 'bg-transparent text-zinc-800 border-zinc-300 hover:bg-zinc-100 hover:text-zinc-900',
 };
 
 const sizes = {
@@ -33,7 +33,7 @@ export default function Button({
   disabled = false,
   className = '',
 }: ButtonProps) {
-  const baseStyles = `inline-block border-2 uppercase tracking-widest font-bold transition-all duration-300 hover:-translate-y-0.5 text-center ${variants[variant]} ${sizes[size]} ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'} ${className}`;
+  const baseStyles = `inline-block border-2 rounded-lg uppercase tracking-widest font-bold transition-all duration-300 hover:-translate-y-0.5 text-center ${variants[variant]} ${sizes[size]} ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'} ${className}`;
 
   if (href) {
     return (

@@ -13,7 +13,7 @@ export default function ServicesPage() {
 
   return (
     <>
-      <section className="py-16 md:py-24 bg-zinc-900">
+      <section className="py-20 md:py-28 bg-zinc-50">
         <Container>
           <SectionHeading title={sp.title} subtitle={sp.subtitle} />
         </Container>
@@ -24,18 +24,18 @@ export default function ServicesPage() {
         return (
           <section
             key={service.id}
-            className={`py-16 md:py-20 ${i % 2 === 0 ? 'bg-zinc-950' : 'bg-zinc-900'}`}
+            className={`py-20 md:py-28 ${i % 2 === 0 ? 'bg-white' : 'bg-zinc-50'}`}
           >
             <Container>
               <div className="max-w-3xl mx-auto">
-                <div className="border border-zinc-700/50 rounded-sm p-6 md:p-8 relative hover:border-zinc-600/60 transition-colors duration-300">
+                <div className="border border-zinc-200 rounded-xl p-6 md:p-8 relative hover:border-zinc-300 transition-colors duration-300">
                   {/* Left accent bar */}
                   <div className="absolute left-0 top-8 w-[2px] h-12 bg-red-500" />
 
                   <div className="flex items-center gap-4 mb-6">
                     <span className="text-3xl">{service.icon}</span>
                     <div>
-                      <h2 className="text-xl font-bold text-white uppercase tracking-widest">
+                      <h2 className="text-xl font-bold text-zinc-900 font-display uppercase tracking-widest">
                         {content.title}
                       </h2>
                       <p className="text-red-500 font-bold text-sm mt-1">
@@ -44,7 +44,7 @@ export default function ServicesPage() {
                     </div>
                   </div>
 
-                  <p className="text-zinc-400 leading-relaxed mb-6">
+                  <p className="text-zinc-600 leading-relaxed mb-6">
                     {content.description}
                   </p>
 
@@ -54,7 +54,7 @@ export default function ServicesPage() {
                     </h3>
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       {content.includes.map((item) => (
-                        <li key={item} className="flex items-start gap-2 text-sm text-zinc-400">
+                        <li key={item} className="flex items-start gap-2 text-sm text-zinc-600">
                           <svg className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                           </svg>
@@ -74,7 +74,7 @@ export default function ServicesPage() {
         );
       })}
 
-      <section className="py-16 md:py-24 bg-red-700">
+      <section className="py-20 md:py-28 bg-red-700">
         <Container>
           <div className="text-center">
             <h2 className="text-2xl md:text-3xl uppercase tracking-[0.15em] font-bold text-white mb-4">

@@ -42,13 +42,13 @@ export default function ContactPage() {
   };
 
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-20 md:py-28">
       <Container>
         <SectionHeading title={c.title} subtitle={c.subtitle} />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
           {/* Contact Info */}
-          <div className="border border-zinc-700/50 rounded-sm p-6 md:p-8 relative">
+          <div className="border border-zinc-200 rounded-xl p-6 md:p-8 relative">
             <div className="absolute top-0 left-0 w-8 h-[2px] bg-red-500" />
             <div className="absolute top-0 left-0 w-[2px] h-8 bg-red-500" />
 
@@ -59,24 +59,24 @@ export default function ContactPage() {
             <div className="space-y-6">
               <div>
                 <p className="text-xs uppercase tracking-widest font-bold text-zinc-500 mb-1">{c.phone}</p>
-                <a href="tel:+12065551234" className="text-lg font-bold text-white hover:text-red-400 transition-colors">
+                <a href="tel:+12065551234" className="text-lg font-bold text-zinc-900 hover:text-red-400 transition-colors">
                   (206) 555-1234
                 </a>
               </div>
               <div>
                 <p className="text-xs uppercase tracking-widest font-bold text-zinc-500 mb-1">{c.email}</p>
-                <a href="mailto:inna@innacleaning.com" className="text-lg font-bold text-white hover:text-red-400 transition-colors">
+                <a href="mailto:inna@innacleaning.com" className="text-lg font-bold text-zinc-900 hover:text-red-400 transition-colors">
                   inna@innacleaning.com
                 </a>
               </div>
               <div>
                 <p className="text-xs uppercase tracking-widest font-bold text-zinc-500 mb-1">{c.hours}</p>
-                <p className="text-zinc-400 text-sm">{c.hoursWeekday}</p>
-                <p className="text-zinc-400 text-sm">{c.hoursSunday}</p>
+                <p className="text-zinc-600 text-sm">{c.hoursWeekday}</p>
+                <p className="text-zinc-600 text-sm">{c.hoursSunday}</p>
               </div>
               <div>
                 <p className="text-xs uppercase tracking-widest font-bold text-zinc-500 mb-1">{c.serviceArea}</p>
-                <p className="text-zinc-400 text-sm">{c.serviceAreaText}</p>
+                <p className="text-zinc-600 text-sm">{c.serviceAreaText}</p>
               </div>
             </div>
 
@@ -94,14 +94,14 @@ export default function ContactPage() {
           </div>
 
           {/* Contact Form */}
-          <div className="border border-zinc-700/50 rounded-sm p-6 md:p-8 relative">
+          <div className="border border-zinc-200 rounded-xl p-6 md:p-8 relative">
             <div className="absolute bottom-0 right-0 w-8 h-[2px] bg-red-500" />
             <div className="absolute bottom-0 right-0 w-[2px] h-8 bg-red-500" />
             {submitted ? (
-              <div className="text-center py-12 border border-zinc-800 bg-zinc-900">
+              <div className="text-center py-12 border border-zinc-200 bg-zinc-50">
                 <div className="text-3xl mb-3 text-red-500">&#10003;</div>
-                <h3 className="text-lg font-bold text-white mb-2">{c.messageSent}</h3>
-                <p className="text-zinc-400 text-sm mb-4">{c.messageConfirm}</p>
+                <h3 className="text-lg font-bold text-zinc-900 mb-2">{c.messageSent}</h3>
+                <p className="text-zinc-600 text-sm mb-4">{c.messageConfirm}</p>
                 <Button onClick={() => { setSubmitted(false); setName(''); setEmail(''); setMessage(''); }} variant="outline" size="sm">
                   {c.sendAnother}
                 </Button>
@@ -115,7 +115,7 @@ export default function ContactPage() {
                     required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full border-2 border-zinc-700 bg-zinc-900 text-white px-4 py-3 text-sm focus:border-red-600 focus:outline-none transition-colors"
+                    className="w-full rounded-lg border-2 border-zinc-300 bg-white text-zinc-900 px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors"
                     placeholder={c.namePlaceholder}
                   />
                 </div>
@@ -126,7 +126,7 @@ export default function ContactPage() {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full border-2 border-zinc-700 bg-zinc-900 text-white px-4 py-3 text-sm focus:border-red-600 focus:outline-none transition-colors"
+                    className="w-full rounded-lg border-2 border-zinc-300 bg-white text-zinc-900 px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors"
                     placeholder={c.emailPlaceholder}
                   />
                 </div>
@@ -137,7 +137,7 @@ export default function ContactPage() {
                     required
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    className="w-full border-2 border-zinc-700 bg-zinc-900 text-white px-4 py-3 text-sm focus:border-red-600 focus:outline-none transition-colors resize-none"
+                    className="w-full rounded-lg border-2 border-zinc-300 bg-white text-zinc-900 px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors resize-none"
                     placeholder={c.messagePlaceholder}
                   />
                 </div>

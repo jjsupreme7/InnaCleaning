@@ -55,8 +55,8 @@ export default function BookingForm() {
     return (
       <div className="text-center py-12">
         <div className="text-4xl mb-4 text-red-500">&#10003;</div>
-        <h3 className="text-xl font-bold text-white mb-2">{b.received}</h3>
-        <p className="text-zinc-400 mb-6">{b.receivedMsg}</p>
+        <h3 className="text-xl font-bold text-zinc-900 mb-2">{b.received}</h3>
+        <p className="text-zinc-600 mb-6">{b.receivedMsg}</p>
         <Button onClick={() => { setSubmitted(false); setName(''); setPhone(''); setEmail(''); setAddress(''); setServiceType(''); setPreferredDate(''); setPreferredTime(''); setNotes(''); }} variant="outline" size="md">
           {b.submitAnother}
         </Button>
@@ -70,13 +70,13 @@ export default function BookingForm() {
         <div>
           <label className="block text-xs uppercase tracking-widest font-bold text-zinc-500 mb-2">{b.name}</label>
           <input type="text" required value={name} onChange={(e) => setName(e.target.value)}
-            className="w-full border-2 border-zinc-700 bg-zinc-900 text-white px-4 py-3 text-sm focus:border-red-600 focus:outline-none transition-colors"
+            className="w-full rounded-lg border-2 border-zinc-300 bg-white text-zinc-900 px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors"
             placeholder={b.namePlaceholder} />
         </div>
         <div>
           <label className="block text-xs uppercase tracking-widest font-bold text-zinc-500 mb-2">{b.phone}</label>
           <input type="tel" required value={phone} onChange={(e) => setPhone(e.target.value)}
-            className="w-full border-2 border-zinc-700 bg-zinc-900 text-white px-4 py-3 text-sm focus:border-red-600 focus:outline-none transition-colors"
+            className="w-full rounded-lg border-2 border-zinc-300 bg-white text-zinc-900 px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors"
             placeholder={b.phonePlaceholder} />
         </div>
       </div>
@@ -84,14 +84,14 @@ export default function BookingForm() {
       <div>
         <label className="block text-xs uppercase tracking-widest font-bold text-zinc-500 mb-2">{b.email}</label>
         <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)}
-          className="w-full border-2 border-zinc-700 bg-zinc-900 text-white px-4 py-3 text-sm focus:border-red-600 focus:outline-none transition-colors"
+          className="w-full rounded-lg border-2 border-zinc-300 bg-white text-zinc-900 px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors"
           placeholder={b.emailPlaceholder} />
       </div>
 
       <div>
         <label className="block text-xs uppercase tracking-widest font-bold text-zinc-500 mb-2">{b.address}</label>
         <input type="text" required value={address} onChange={(e) => setAddress(e.target.value)}
-          className="w-full border-2 border-zinc-700 bg-zinc-900 text-white px-4 py-3 text-sm focus:border-red-600 focus:outline-none transition-colors"
+          className="w-full rounded-lg border-2 border-zinc-300 bg-white text-zinc-900 px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors"
           placeholder={b.addressPlaceholder} />
       </div>
 
@@ -99,7 +99,7 @@ export default function BookingForm() {
         <div>
           <label className="block text-xs uppercase tracking-widest font-bold text-zinc-500 mb-2">{b.serviceType}</label>
           <select required value={serviceType} onChange={(e) => setServiceType(e.target.value)}
-            className="w-full border-2 border-zinc-700 bg-zinc-900 text-white px-4 py-3 text-sm focus:border-red-600 focus:outline-none transition-colors">
+            className="w-full rounded-lg border-2 border-zinc-300 bg-white text-zinc-900 px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors">
             <option value="">{b.selectService}</option>
             <option value="standard">{b.standard}</option>
             <option value="deep">{b.deep}</option>
@@ -110,14 +110,14 @@ export default function BookingForm() {
         <div>
           <label className="block text-xs uppercase tracking-widest font-bold text-zinc-500 mb-2">{b.preferredDate}</label>
           <input type="date" required value={preferredDate} onChange={(e) => setPreferredDate(e.target.value)}
-            className="w-full border-2 border-zinc-700 bg-zinc-900 text-white px-4 py-3 text-sm focus:border-red-600 focus:outline-none transition-colors" />
+            className="w-full rounded-lg border-2 border-zinc-300 bg-white text-zinc-900 px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors" />
         </div>
       </div>
 
       <div>
         <label className="block text-xs uppercase tracking-widest font-bold text-zinc-500 mb-2">{b.preferredTime}</label>
         <select required value={preferredTime} onChange={(e) => setPreferredTime(e.target.value)}
-          className="w-full border-2 border-zinc-700 bg-zinc-900 text-white px-4 py-3 text-sm focus:border-red-600 focus:outline-none transition-colors">
+          className="w-full rounded-lg border-2 border-zinc-300 bg-white text-zinc-900 px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors">
           <option value="">{b.selectTime}</option>
           <option value="morning">{b.morning}</option>
           <option value="afternoon">{b.afternoon}</option>
@@ -128,7 +128,7 @@ export default function BookingForm() {
       <div>
         <label className="block text-xs uppercase tracking-widest font-bold text-zinc-500 mb-2">{b.notes}</label>
         <textarea rows={3} value={notes} onChange={(e) => setNotes(e.target.value)}
-          className="w-full border-2 border-zinc-700 bg-zinc-900 text-white px-4 py-3 text-sm focus:border-red-600 focus:outline-none transition-colors resize-none"
+          className="w-full rounded-lg border-2 border-zinc-300 bg-white text-zinc-900 px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors resize-none"
           placeholder={b.notesPlaceholder} />
       </div>
 

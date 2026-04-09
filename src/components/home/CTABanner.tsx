@@ -8,7 +8,7 @@ export default function CTABanner() {
   const { t } = useLanguage();
 
   return (
-    <section className="py-16 md:py-24 bg-red-700">
+    <section className="py-20 md:py-28 bg-red-700">
       <Container>
         <div className="text-center">
           <h2 className="text-2xl md:text-3xl uppercase tracking-[0.15em] font-bold text-white mb-4">
