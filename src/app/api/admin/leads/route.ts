@@ -22,7 +22,10 @@ export async function GET(req: Request) {
     }
 
     if (search) {
-      query = query.or(`name.ilike.%${search}%,email.ilike.%${search}%`);
+      const sanitized = search.replace(/[%_,()]/g, '');
+      if (sanitized) {
+        query = query.or(`name.ilike.%${sanitized}%,email.ilike.%${sanitized}%`);
+      }
     }
 
     const statuses = ['new_lead', 'contacted', 'quote_sent', 'follow_up', 'booked', 'lost'] as const;

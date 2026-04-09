@@ -87,12 +87,18 @@ export default function LeadDetailPage() {
 
   const updateStatus = async (status: LeadStatus) => {
     if (!lead) return;
+    const prev = lead;
     setLead({ ...lead, status });
-    await fetch(`/api/admin/leads/${id}`, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ status }),
-    });
+    try {
+      const res = await fetch(`/api/admin/leads/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status }),
+      });
+      if (!res.ok) throw new Error();
+    } catch {
+      setLead(prev);
+    }
   };
 
   const addNote = async () => {
@@ -113,25 +119,37 @@ export default function LeadDetailPage() {
 
   const addTag = async () => {
     if (!newTag.trim() || !lead) return;
+    const prev = lead;
     const tags = [...lead.tags, newTag.trim()];
     setLead({ ...lead, tags });
     setNewTag('');
-    await fetch(`/api/admin/leads/${id}`, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ tags }),
-    });
+    try {
+      const res = await fetch(`/api/admin/leads/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ tags }),
+      });
+      if (!res.ok) throw new Error();
+    } catch {
+      setLead(prev);
+    }
   };
 
   const removeTag = async (tag: string) => {
     if (!lead) return;
+    const prev = lead;
     const tags = lead.tags.filter((t) => t !== tag);
     setLead({ ...lead, tags });
-    await fetch(`/api/admin/leads/${id}`, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ tags }),
-    });
+    try {
+      const res = await fetch(`/api/admin/leads/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ tags }),
+      });
+      if (!res.ok) throw new Error();
+    } catch {
+      setLead(prev);
+    }
   };
 
   if (loading) {

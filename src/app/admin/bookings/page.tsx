@@ -43,12 +43,18 @@ export default function AdminBookingsPage() {
   }, []);
 
   const updateStatus = async (bookingId: string, status: BookingStatus) => {
-    setBookings((prev) => prev.map((b) => (b.id === bookingId ? { ...b, status } : b)));
-    await fetch(`/api/admin/bookings/${bookingId}`, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ status }),
-    });
+    const prev = bookings;
+    setBookings((cur) => cur.map((b) => (b.id === bookingId ? { ...b, status } : b)));
+    try {
+      const res = await fetch(`/api/admin/bookings/${bookingId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status }),
+      });
+      if (!res.ok) throw new Error();
+    } catch {
+      setBookings(prev);
+    }
   };
 
   return (

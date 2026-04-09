@@ -67,22 +67,30 @@ export default function AdminLeadsPage() {
   }, [fetchLeads]);
 
   const updateStatus = async (leadId: string, newStatus: LeadStatus) => {
-    setLeads((prev) => prev.map((l) => (l.id === leadId ? { ...l, status: newStatus } : l)));
-    setCounts((prev) => {
+    const prevLeads = leads;
+    const prevCounts = counts;
+    setLeads((cur) => cur.map((l) => (l.id === leadId ? { ...l, status: newStatus } : l)));
+    setCounts((cur) => {
       const old = leads.find((l) => l.id === leadId);
-      if (!old) return prev;
+      if (!old) return cur;
       return {
-        ...prev,
-        [old.status]: Math.max(0, (prev[old.status] ?? 0) - 1),
-        [newStatus]: (prev[newStatus] ?? 0) + 1,
+        ...cur,
+        [old.status]: Math.max(0, (cur[old.status] ?? 0) - 1),
+        [newStatus]: (cur[newStatus] ?? 0) + 1,
       };
     });
 
-    await fetch(`/api/admin/leads/${leadId}`, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ status: newStatus }),
-    });
+    try {
+      const res = await fetch(`/api/admin/leads/${leadId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status: newStatus }),
+      });
+      if (!res.ok) throw new Error();
+    } catch {
+      setLeads(prevLeads);
+      setCounts(prevCounts);
+    }
   };
 
   return (
