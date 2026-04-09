@@ -1,6 +1,15 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import type { BookingStatus } from '@/types';
+
+const BOOKING_STATUSES: { key: BookingStatus; label: string; color: string }[] = [
+  { key: 'pending', label: 'Pending', color: 'bg-yellow-600/20 text-yellow-400' },
+  { key: 'confirmed', label: 'Confirmed', color: 'bg-blue-600/20 text-blue-400' },
+  { key: 'completed', label: 'Completed', color: 'bg-green-600/20 text-green-400' },
+  { key: 'canceled', label: 'Canceled', color: 'bg-zinc-600/20 text-zinc-500' },
+];
 
 interface Booking {
   id: string;
@@ -12,6 +21,8 @@ interface Booking {
   preferred_date: string;
   preferred_time: string;
   notes: string | null;
+  status: BookingStatus;
+  lead_id: string | null;
   created_at: string;
 }
 
@@ -30,6 +41,21 @@ export default function AdminBookingsPage() {
       .catch(() => setError('Failed to load bookings.'))
       .finally(() => setLoading(false));
   }, []);
+
+  const updateStatus = async (bookingId: string, status: BookingStatus) => {
+    const prev = bookings;
+    setBookings((cur) => cur.map((b) => (b.id === bookingId ? { ...b, status } : b)));
+    try {
+      const res = await fetch(`/api/admin/bookings/${bookingId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status }),
+      });
+      if (!res.ok) throw new Error();
+    } catch {
+      setBookings(prev);
+    }
+  };
 
   return (
     <div>
@@ -51,10 +77,27 @@ export default function AdminBookingsPage() {
             <div key={b.id} className="bg-zinc-900 border border-zinc-800 p-6">
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <p className="text-white font-bold">{b.name}</p>
+                  {b.lead_id ? (
+                    <Link href={`/admin/leads/${b.lead_id}`} className="text-white font-bold hover:text-red-400 transition-colors">
+                      {b.name}
+                    </Link>
+                  ) : (
+                    <p className="text-white font-bold">{b.name}</p>
+                  )}
                   <p className="text-zinc-400 text-sm">{b.email} · {b.phone}</p>
                 </div>
-                <p className="text-zinc-600 text-xs">{new Date(b.created_at).toLocaleDateString()}</p>
+                <div className="flex items-center gap-3">
+                  <select
+                    value={b.status}
+                    onChange={(e) => updateStatus(b.id, e.target.value as BookingStatus)}
+                    className="bg-zinc-800 border border-zinc-700 text-zinc-300 text-xs px-2 py-1 focus:outline-none focus:border-red-600 cursor-pointer"
+                  >
+                    {BOOKING_STATUSES.map((s) => (
+                      <option key={s.key} value={s.key}>{s.label}</option>
+                    ))}
+                  </select>
+                  <p className="text-zinc-600 text-xs">{new Date(b.created_at).toLocaleDateString()}</p>
+                </div>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
                 <div>

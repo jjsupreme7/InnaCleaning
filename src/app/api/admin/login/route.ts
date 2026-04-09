@@ -10,8 +10,8 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Email and password are required.' }, { status: 400 });
     }
 
-    const adminEmail = process.env.ADMIN_EMAIL;
-    const hash = process.env.ADMIN_PASSWORD_HASH;
+    const adminEmail = process.env.ADMIN_EMAIL?.trim();
+    const hash = process.env.ADMIN_PASSWORD_HASH?.trim();
 
     if (!adminEmail || !hash) {
       return NextResponse.json({ error: 'Admin auth not configured.' }, { status: 500 });
