@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { supabase } from '@/lib/supabase';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 const NOTIFY_EMAILS = [
   'jjgcallen11@gmail.com',
@@ -28,6 +28,11 @@ export async function POST(req: NextRequest) {
     }
 
     // Send email notifications to both addresses
+    if (!resend) {
+      console.warn('RESEND_API_KEY not set — skipping email notification');
+      return NextResponse.json({ success: true });
+    }
+
     const { error: emailError } = await resend.emails.send({
       from: 'Inna Cleaning <onboarding@resend.dev>',
       to: NOTIFY_EMAILS,
