@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Container from '@/components/ui/Container';
 import SectionHeading from '@/components/ui/SectionHeading';
 import Button from '@/components/ui/Button';
@@ -13,10 +14,28 @@ export default function ServicesPage() {
 
   return (
     <>
-      <section className="py-20 md:py-28 bg-zinc-50">
-        <Container>
-          <SectionHeading title={sp.title} subtitle={sp.subtitle} />
-        </Container>
+      {/* Hero Banner */}
+      <section className="relative h-[40vh] min-h-[320px] max-h-[480px] flex items-end overflow-hidden">
+        <Image
+          src="/images/clean-interior.jpg"
+          alt="Sparkling clean home interior"
+          fill
+          className="object-cover object-center"
+          priority
+          quality={80}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10" />
+
+        <div className="relative z-10 w-full pb-10">
+          <Container>
+            <p className="text-sm font-bold uppercase tracking-[0.3em] text-red-400 mb-3">
+              {sp.title}
+            </p>
+            <h1 className="text-3xl md:text-5xl font-bold text-white font-display">
+              {sp.subtitle}
+            </h1>
+          </Container>
+        </div>
       </section>
 
       {services.map((service, i) => {
