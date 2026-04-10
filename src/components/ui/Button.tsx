@@ -14,7 +14,7 @@ interface ButtonProps {
 const variants = {
   primary: 'bg-red-600 text-white border-red-600 hover:bg-red-700 hover:border-red-700',
   secondary: 'bg-zinc-800 text-white border-zinc-800 hover:bg-zinc-900',
-  outline: 'bg-transparent text-zinc-800 border-zinc-300 hover:bg-zinc-100 hover:text-zinc-900',
+  outline: 'bg-transparent border-[var(--card-border)] text-[var(--text-primary)] hover:bg-[var(--card-bg)] hover:border-[var(--text-secondary)]',
 };
 
 const sizes = {
