@@ -7,6 +7,7 @@ import { services } from '@/data/services';
 import { Sparkles, Paintbrush, Package, Home, Check, Minus } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { motion, AnimatePresence } from 'motion/react';
+import GlowCard from '@/components/ui/GlowCard';
 
 const categoryMap: Record<string, number> = {
   standard: 1,
@@ -170,8 +171,10 @@ export default function ServicesPreview() {
                     delay: index * 0.1,
                     ease: [0.25, 0.46, 0.45, 0.94],
                   }}
-                  className={`theme-transition group relative flex flex-col gap-5 rounded-xl p-7 transition-all duration-300 overflow-hidden
-                    hover:-translate-y-1 hover:shadow-xl
+                >
+                <GlowCard
+                  className={`theme-transition group relative flex flex-col gap-5 rounded-xl p-7 transition-all duration-300
+                    hover:-translate-y-1 hover:shadow-xl h-full
                     ${isPopular
                       ? 'border border-red-200 bg-gradient-to-br from-red-50 to-white shadow-sm hover:border-red-300 hover:shadow-red-100/50'
                       : 'border shadow-sm'
@@ -261,6 +264,7 @@ export default function ServicesPreview() {
                       </a>
                     )}
                   </div>
+                </GlowCard>
                 </motion.div>
               );
             })}
