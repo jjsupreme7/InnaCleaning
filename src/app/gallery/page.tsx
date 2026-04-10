@@ -33,15 +33,15 @@ const VIDEOS = [
   { src: '/videos/gallery/clip-01.mp4', titleKey: 0 },
   { src: '/videos/gallery/clip-02.mp4', titleKey: 1 },
   { src: '/videos/gallery/clip-03.mp4', titleKey: 2 },
-  { src: '/videos/gallery/clip-04.mp4', titleKey: 3 },
-  { src: '/videos/gallery/clip-05.mp4', titleKey: 4 },
-  { src: '/videos/gallery/clip-06.mp4', titleKey: 5 },
-  { src: '/videos/gallery/clip-07.mp4', titleKey: 6 },
-  { src: '/videos/gallery/clip-08.mp4', titleKey: 7 },
-  { src: '/videos/gallery/clip-09.mp4', titleKey: 8 },
+  { src: '/videos/gallery/clip-04.mp4', titleKey: 3, poster: '/images/gallery/video-stills/clip-04.jpg' },
+  { src: '/videos/gallery/clip-05.mp4', titleKey: 4, poster: '/images/gallery/video-stills/clip-05.jpg' },
+  { src: '/videos/gallery/clip-06.mp4', titleKey: 5, poster: '/images/gallery/video-stills/clip-06.jpg' },
+  { src: '/videos/gallery/clip-07.mp4', titleKey: 6, poster: '/images/gallery/video-stills/clip-07.jpg' },
+  { src: '/videos/gallery/clip-08.mp4', titleKey: 7, poster: '/images/gallery/video-stills/clip-08.jpg' },
+  { src: '/videos/gallery/clip-09.mp4', titleKey: 8, poster: '/images/gallery/video-stills/clip-09.jpg' },
   { src: '/videos/gallery/clip-10.mp4', titleKey: 9 },
-  { src: '/videos/gallery/clip-11.mp4', titleKey: 10 },
-  { src: '/videos/gallery/clip-12.mp4', titleKey: 11 },
+  { src: '/videos/gallery/clip-11.mp4', titleKey: 10, poster: '/images/gallery/video-stills/clip-11.jpg' },
+  { src: '/videos/gallery/clip-12.mp4', titleKey: 11, poster: '/images/gallery/video-stills/clip-12.jpg' },
 ];
 
 export default function GalleryPage() {
@@ -185,6 +185,7 @@ export default function GalleryPage() {
             <VideoCard
               key={video.src}
               src={video.src}
+              poster={video.poster}
               title={g.videoItems[video.titleKey] || `Clip ${i + 1}`}
               playLabel={g.tapToPlay}
             />

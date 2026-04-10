@@ -16,4 +16,12 @@ Cleaning service website for Inna Cleaning with quote estimator, i18n support, a
 - Google Analytics integration
 
 ## Session Start
-Run `/context` at the start of each session to load the Obsidian vault and check [[InnaCleaning]] for recent work, decisions, and context from past sessions. Use `/save` to log any significant work done during this session.
+At the start of each session, load this project's context from Obsidian:
+```bash
+obsidian read file="InnaCleaning" vault="Obsidian Vault"
+```
+Also check today's daily note for any relevant entries:
+```bash
+obsidian daily:read vault="Obsidian Vault"
+```
+Use `/save` to log any significant work done during this session.
