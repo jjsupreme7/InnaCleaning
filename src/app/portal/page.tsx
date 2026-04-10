@@ -16,8 +16,16 @@ interface Booking {
   preferred_time: string;
   address: string;
   notes: string | null;
+  status: string | null;
   created_at: string;
 }
+
+const STATUS_STYLES: Record<string, { bg: string; text: string; label: string }> = {
+  pending: { bg: 'rgba(245,158,11,0.15)', text: '#f59e0b', label: 'Pending' },
+  confirmed: { bg: 'rgba(34,197,94,0.15)', text: '#22c55e', label: 'Confirmed' },
+  completed: { bg: 'rgba(59,130,246,0.15)', text: '#3b82f6', label: 'Completed' },
+  cancelled: { bg: 'rgba(239,68,68,0.15)', text: '#ef4444', label: 'Cancelled' },
+};
 
 interface Quote {
   id: string;
@@ -45,14 +53,14 @@ export default function PortalPage() {
         return;
       }
       setUser(session.user);
-      fetchData();
+      fetchData(session.user.email!);
     });
   }, [router]);
 
-  const fetchData = async () => {
+  const fetchData = async (email: string) => {
     const [{ data: b }, { data: q }] = await Promise.all([
-      supabase.from('inna_bookings').select('id, service_type, preferred_date, preferred_time, address, notes, created_at').order('created_at', { ascending: false }),
-      supabase.from('inna_quotes').select('id, home_size, cleaning_type, frequency, estimated_total, created_at').order('created_at', { ascending: false }),
+      supabase.from('inna_bookings').select('id, service_type, preferred_date, preferred_time, address, notes, status, created_at').eq('email', email).order('created_at', { ascending: false }),
+      supabase.from('inna_quotes').select('id, home_size, cleaning_type, frequency, estimated_total, created_at').eq('email', email).order('created_at', { ascending: false }),
     ]);
     setBookings(b ?? []);
     setQuotes(q ?? []);
@@ -100,9 +108,20 @@ export default function PortalPage() {
           ) : (
             <div className="space-y-3">
               {bookings.map((b) => (
-                <div key={b.id} className="theme-transition border shadow-sm p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
+                <div key={b.id} className="theme-transition border shadow-sm rounded-xl p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
                   <div>
-                    <p className="font-bold text-sm capitalize" style={{ color: 'var(--text-primary)' }}>{b.service_type.replace('_', ' ')}</p>
+                    <div className="flex items-center gap-2.5">
+                      <p className="font-bold text-sm capitalize" style={{ color: 'var(--text-primary)' }}>{b.service_type.replace('_', ' ')}</p>
+                      {(() => {
+                        const status = b.status || 'pending';
+                        const s = STATUS_STYLES[status] || STATUS_STYLES.pending;
+                        return (
+                          <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full" style={{ background: s.bg, color: s.text }}>
+                            {s.label}
+                          </span>
+                        );
+                      })()}
+                    </div>
                     <p className="text-xs mt-0.5" style={{ color: 'var(--text-secondary)' }}>{b.address}</p>
                   </div>
                   <div className="text-right">

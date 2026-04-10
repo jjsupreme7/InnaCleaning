@@ -53,7 +53,7 @@ export default function PortalLoginPage() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider,
       options: {
-        redirectTo: `${window.location.origin}/portal`,
+        redirectTo: `${window.location.origin}/auth/callback?next=/portal`,
       },
     });
     if (error) {
