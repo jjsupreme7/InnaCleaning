@@ -3,6 +3,8 @@
 import Image from 'next/image';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
+import FlipCard from '@/components/ui/FlipCard';
+import { Shield, Leaf, Star, MapPin } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function AboutPage() {
@@ -43,17 +45,85 @@ export default function AboutPage() {
             <div className="absolute bottom-0 right-0 w-[2px] h-8 bg-red-500" />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              {/* Photo */}
-              <div className="aspect-[4/5] relative overflow-hidden border" style={{ borderColor: 'var(--card-border)' }}>
-                <Image
-                  src="/inna-about.jpg"
-                  alt="Inna Rohovska — professional cleaner in Western Washington"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  priority
-                />
-              </div>
+              {/* Flip Card */}
+              <FlipCard
+                trigger="hover"
+                direction="horizontal"
+                duration={700}
+                perspective={1200}
+                className="aspect-[4/5] cursor-pointer"
+                front={
+                  <div className="w-full h-full relative overflow-hidden rounded-xl shadow-lg shadow-black/15">
+                    <Image
+                      src="/inna-about.jpg"
+                      alt="Inna Rohovska — professional cleaner in Western Washington"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      priority
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <p className="text-white text-2xl font-bold font-display">Inna Rohovska</p>
+                      <p className="text-white/70 text-sm mt-1 flex items-center gap-1.5">
+                        <MapPin className="w-3.5 h-3.5" strokeWidth={2} />
+                        Western Washington
+                      </p>
+                    </div>
+                    <div className="absolute top-4 right-4 bg-red-600 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full">
+                      Owner
+                    </div>
+                  </div>
+                }
+                back={
+                  <div
+                    className="w-full h-full rounded-xl border shadow-lg shadow-black/15 flex flex-col items-center justify-center p-8 text-center"
+                    style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}
+                  >
+                    <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-red-500 mb-4 relative">
+                      <Image
+                        src="/inna-about.jpg"
+                        alt="Inna"
+                        fill
+                        className="object-cover"
+                        sizes="80px"
+                      />
+                    </div>
+                    <p className="text-xl font-bold font-display mb-1" style={{ color: 'var(--text-primary)' }}>Inna Rohovska</p>
+                    <p className="text-xs uppercase tracking-widest text-red-500 font-bold mb-6">Professional Cleaner</p>
+
+                    <div className="grid grid-cols-3 gap-4 w-full mb-8">
+                      <div>
+                        <p className="text-2xl font-bold text-red-500">5+</p>
+                        <p className="text-[11px] mt-0.5" style={{ color: 'var(--text-muted)' }}>Years Experience</p>
+                      </div>
+                      <div>
+                        <p className="text-2xl font-bold text-red-500">327+</p>
+                        <p className="text-[11px] mt-0.5" style={{ color: 'var(--text-muted)' }}>Homes Cleaned</p>
+                      </div>
+                      <div>
+                        <p className="text-2xl font-bold text-red-500">5.0</p>
+                        <p className="text-[11px] mt-0.5" style={{ color: 'var(--text-muted)' }}>Avg Rating</p>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col gap-2.5 w-full">
+                      <div className="flex items-center gap-3 text-sm" style={{ color: 'var(--text-secondary)' }}>
+                        <Shield className="w-4 h-4 text-red-500 shrink-0" strokeWidth={2} />
+                        <span>Fully Insured & Bonded</span>
+                      </div>
+                      <div className="flex items-center gap-3 text-sm" style={{ color: 'var(--text-secondary)' }}>
+                        <Leaf className="w-4 h-4 text-red-500 shrink-0" strokeWidth={2} />
+                        <span>Eco-Friendly Products</span>
+                      </div>
+                      <div className="flex items-center gap-3 text-sm" style={{ color: 'var(--text-secondary)' }}>
+                        <Star className="w-4 h-4 text-red-500 shrink-0" strokeWidth={2} />
+                        <span>100% Satisfaction Guarantee</span>
+                      </div>
+                    </div>
+                  </div>
+                }
+              />
 
               <div>
                 <h2 className="text-2xl font-bold font-display mb-6 uppercase tracking-widest" style={{ color: 'var(--text-primary)' }}>
