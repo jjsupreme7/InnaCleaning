@@ -24,12 +24,11 @@ export default function FeaturesSection() {
             </h2>
             <p className="mt-4 leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{t.features.description}</p>
 
-            <div className="mt-10 grid gap-6 sm:grid-cols-3">
+            <div className="mt-10 grid gap-x-8 gap-y-6 sm:grid-cols-2">
               {t.features.items.map((feature, i) => {
                 const Icon = icons[i];
-                const isFirst = i === 0;
                 return (
-                  <div key={i} className={`flex gap-4 ${isFirst ? 'sm:col-span-2' : ''}`}>
+                  <div key={i} className="flex gap-4">
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border" style={{ borderColor: 'var(--card-border)', background: 'var(--bg-elevated)' }}>
                       <Icon className="h-5 w-5 text-red-500" />
                     </div>
@@ -44,12 +43,13 @@ export default function FeaturesSection() {
           </div>
 
           <div className="grid grid-cols-2 gap-4 lg:mt-12">
-            <div className="col-span-2 aspect-video relative overflow-hidden rounded-xl">
+            <div className="col-span-2 relative overflow-hidden rounded-xl">
               <Image
-                src="/images/gallery/inna/stove-after.jpg"
-                alt="Spotless stove after professional cleaning"
-                fill
-                className="object-cover"
+                src="/images/gallery/inna/towel-basket.jpg"
+                alt="Neatly rolled towels in a basket after cleaning"
+                width={800}
+                height={1000}
+                className="w-full h-auto object-contain rounded-xl"
               />
             </div>
             <div className="flex flex-col justify-center rounded-xl bg-red-600 p-6">
