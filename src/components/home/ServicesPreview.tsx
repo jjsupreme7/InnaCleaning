@@ -203,25 +203,25 @@ export default function ServicesPreview() {
 
                   {/* Title & description */}
                   <div className="flex flex-col gap-1.5">
-                    <h3 className="text-[22px] font-normal tracking-tight" style={{ color: 'var(--text-primary)' }}>
+                    <h3 className="text-[22px] font-normal tracking-tight" style={{ color: isPopular ? '#1a1a1a' : 'var(--text-primary)' }}>
                       {t.servicesItems[service.id as keyof typeof t.servicesItems].title}
                     </h3>
-                    <p className="text-[13px] leading-relaxed" style={{ color: 'var(--text-muted)' }}>
+                    <p className="text-[13px] leading-relaxed" style={{ color: isPopular ? '#6b7280' : 'var(--text-muted)' }}>
                       {t.servicesItems[service.id as keyof typeof t.servicesItems].description.substring(0, 80)}…
                     </p>
                   </div>
 
                   {/* Price */}
                   <div className="flex items-baseline gap-2">
-                    <span className="text-4xl font-light" style={{ color: 'var(--text-primary)' }}>
+                    <span className="text-4xl font-light" style={{ color: isPopular ? '#1a1a1a' : 'var(--text-primary)' }}>
                       ${displayPrice}
                     </span>
                     {pricingMode === 'recurring' && (
-                      <span className="text-lg line-through" style={{ color: 'var(--text-faint)' }}>
+                      <span className="text-lg line-through" style={{ color: isPopular ? '#9ca3af' : 'var(--text-faint)' }}>
                         ${service.startingPrice}
                       </span>
                     )}
-                    <span className="text-xs" style={{ color: 'var(--text-faint)' }}>{t.services.starting}</span>
+                    <span className="text-xs" style={{ color: isPopular ? '#9ca3af' : 'var(--text-faint)' }}>{t.services.starting}</span>
                   </div>
 
                   {/* Divider */}
@@ -235,7 +235,7 @@ export default function ServicesPreview() {
                   {/* Includes */}
                   <ul className="flex flex-col gap-2.5">
                     {t.servicesItems[service.id as keyof typeof t.servicesItems].includes.slice(0, 3).map((item) => (
-                      <li key={item} className="flex items-center gap-2.5 text-[13px]" style={{ color: 'var(--text-muted)' }}>
+                      <li key={item} className="flex items-center gap-2.5 text-[13px]" style={{ color: isPopular ? '#4b5563' : 'var(--text-muted)' }}>
                         <span
                           className="inline-block h-[5px] w-[5px] shrink-0 rounded-full"
                           style={{ backgroundColor: dotColor }}

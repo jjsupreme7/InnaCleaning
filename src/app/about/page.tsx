@@ -70,18 +70,6 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* Visual Break — Sunset Lake */}
-      <section className="relative h-[35vh] min-h-[240px] max-h-[400px] overflow-hidden">
-        <Image
-          src="/images/sunset-lake.jpg"
-          alt="Peaceful misty lake at sunset"
-          fill
-          className="object-cover object-center"
-          quality={85}
-        />
-        <div className="absolute inset-0 bg-black/30" />
-      </section>
-
       {/* Values */}
       <section className="theme-transition py-20 md:py-28" style={{ background: 'var(--section-alt)' }}>
         <Container>
