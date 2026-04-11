@@ -6,6 +6,7 @@ import Container from '@/components/ui/Container';
 import FAQItemComponent from '@/components/faq/FAQItem';
 import Button from '@/components/ui/Button';
 import { useLanguage } from '@/contexts/LanguageContext';
+import BorderBeam from '@/components/ui/BorderBeam';
 
 export default function FAQPage() {
   const { t } = useLanguage();
@@ -59,6 +60,7 @@ export default function FAQPage() {
       <section className="theme-transition py-20 md:py-28" style={{ background: 'var(--bg-elevated)' }}>
         <Container>
           <div className="max-w-3xl mx-auto border rounded-xl p-4 md:p-8 relative" style={{ borderColor: 'var(--card-border)' }}>
+            <BorderBeam />
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-[2px] bg-red-500" />
             {f.items.map((item, i) => (
               <motion.div

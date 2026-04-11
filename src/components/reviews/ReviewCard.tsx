@@ -1,8 +1,10 @@
 import { Review } from '@/types';
+import BorderBeam from '@/components/ui/BorderBeam';
 
 export default function ReviewCard({ review }: { review: Review }) {
   return (
     <div className="relative theme-transition border shadow-sm rounded-xl p-6" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
+      <BorderBeam />
       {/* Decorative quote mark */}
       <div className="absolute top-4 right-4 text-4xl font-display leading-none opacity-10" style={{ color: 'var(--text-primary)' }} aria-hidden="true">
         &ldquo;

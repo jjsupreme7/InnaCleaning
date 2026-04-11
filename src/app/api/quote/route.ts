@@ -185,7 +185,7 @@ export async function POST(req: NextRequest) {
             </p>
           </div>
         `,
-        replyTo: NOTIFY_EMAILS[1],
+        replyTo: NOTIFY_EMAILS[0],
       });
 
       const [ownerResult, customerResult] = await Promise.all([ownerEmail, customerEmail]);

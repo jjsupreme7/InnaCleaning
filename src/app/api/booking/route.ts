@@ -95,7 +95,7 @@ export async function POST(req: NextRequest) {
             <p style="color: #999; font-size: 12px; text-align: center;">Inna Cleaning — Professional Home Cleaning in Seattle</p>
           </div>
         `,
-        replyTo: NOTIFY_EMAILS[1],
+        replyTo: NOTIFY_EMAILS[0],
       });
 
       const [ownerResult, customerResult] = await Promise.all([ownerEmail, customerEmail]);

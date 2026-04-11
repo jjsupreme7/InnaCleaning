@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { supabase } from '@/lib/supabase';
 import { useLanguage } from '@/contexts/LanguageContext';
+import BorderBeam from '@/components/ui/BorderBeam';
 
 export default function PortalLoginPage() {
   const router = useRouter();
@@ -107,7 +108,8 @@ export default function PortalLoginPage() {
         </div>
 
         {/* Card */}
-        <div className="overflow-hidden rounded-xl border grid md:grid-cols-2" style={{ borderColor: 'var(--card-border)' }}>
+        <div className="relative overflow-hidden rounded-xl border grid md:grid-cols-2" style={{ borderColor: 'var(--card-border)' }}>
+          <BorderBeam />
           {/* Form side */}
           <div className="theme-transition p-8 md:p-10" style={{ background: 'var(--bg-elevated)' }}>
             <div className="mb-8">

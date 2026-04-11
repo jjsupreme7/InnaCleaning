@@ -6,6 +6,7 @@ import Button from '@/components/ui/Button';
 import FlipCard from '@/components/ui/FlipCard';
 import { Shield, Leaf, Star, MapPin } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import BorderBeam from '@/components/ui/BorderBeam';
 
 export default function AboutPage() {
   const { t } = useLanguage();
@@ -18,6 +19,7 @@ export default function AboutPage() {
         <Container>
           <div className="max-w-3xl mx-auto text-center">
             <div className="theme-transition border rounded-xl px-8 py-12 md:px-14 md:py-16 relative" style={{ borderColor: 'var(--card-border)' }}>
+              <BorderBeam />
               {/* Top accent line */}
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-[2px] bg-red-500" />
               <p className="text-red-500 text-sm uppercase tracking-[0.2em] font-bold mb-3">
@@ -38,6 +40,7 @@ export default function AboutPage() {
       <section className="theme-transition py-20 md:py-28" style={{ background: 'var(--bg-elevated)' }}>
         <Container>
           <div className="theme-transition border rounded-xl p-4 md:p-8 relative" style={{ borderColor: 'var(--card-border)' }}>
+            <BorderBeam />
             {/* Corner accents */}
             <div className="absolute top-0 left-0 w-8 h-[2px] bg-red-500" />
             <div className="absolute top-0 left-0 w-[2px] h-8 bg-red-500" />
@@ -155,6 +158,7 @@ export default function AboutPage() {
                   className="theme-transition text-center border rounded-xl px-6 py-8 relative group transition-colors duration-300"
                   style={{ borderColor: 'var(--card-border)' }}
                 >
+                  <BorderBeam />
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-[2px] bg-red-500/80 group-hover:w-12 transition-all duration-300" />
                   <h3 className="text-sm uppercase tracking-widest font-bold mb-3" style={{ color: 'var(--text-primary)' }}>
                     {val.title}
@@ -183,6 +187,7 @@ export default function AboutPage() {
                   className="theme-transition border rounded-xl p-5 flex items-center gap-4 relative transition-colors duration-300"
                   style={{ borderColor: 'var(--card-border)' }}
                 >
+                  <BorderBeam />
                   <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[2px] h-6 bg-red-500" />
                   <span className="text-red-500 text-xl">&#10003;</span>
                   <span>{promise}</span>

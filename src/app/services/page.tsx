@@ -6,6 +6,7 @@ import Button from '@/components/ui/Button';
 import { services } from '@/data/services';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Sparkles, Paintbrush, PackageOpen, Home } from 'lucide-react';
+import BorderBeam from '@/components/ui/BorderBeam';
 
 const SERVICE_ICONS: Record<string, React.ComponentType<{ className?: string; strokeWidth?: number }>> = {
   standard: Sparkles,
@@ -84,6 +85,7 @@ export default function ServicesPage() {
                     borderColor: isPopular ? 'rgba(239,68,68,0.3)' : 'var(--card-border)',
                   }}
                 >
+                  <BorderBeam />
                   {/* Left accent bar */}
                   <div className={`absolute left-0 top-8 w-[2px] h-12 ${isPopular ? 'bg-red-500' : 'bg-red-400'}`} />
 

@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Container from '@/components/ui/Container';
 import { Shield, Leaf, Clock, Star, Sparkles, Lock } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import BorderBeam from '@/components/ui/BorderBeam';
 
 const icons = [Shield, Leaf, Clock, Star, Sparkles, Lock];
 
@@ -56,7 +57,8 @@ export default function FeaturesSection() {
               <p className="text-4xl font-bold text-white">5+</p>
               <p className="mt-1 text-sm text-red-100">{t.features.yearsExp}</p>
             </div>
-            <div className="flex flex-col justify-center rounded-xl border p-6" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
+            <div className="relative flex flex-col justify-center rounded-xl border p-6" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
+              <BorderBeam />
               <p className="text-4xl font-bold" style={{ color: 'var(--text-primary)' }}>99.8%</p>
               <p className="mt-1 text-sm" style={{ color: 'var(--text-secondary)' }}>{t.features.complaints}</p>
             </div>

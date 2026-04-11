@@ -8,6 +8,7 @@ import type { User } from '@supabase/supabase-js';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
 import { useLanguage } from '@/contexts/LanguageContext';
+import BorderBeam from '@/components/ui/BorderBeam';
 
 interface Booking {
   id: string;
@@ -129,14 +130,16 @@ export default function PortalPage() {
         <div className="mb-12">
           <h2 className="text-xs uppercase tracking-widest font-bold mb-4" style={{ color: 'var(--text-muted)' }}>{p.bookings}</h2>
           {bookings.length === 0 ? (
-            <div className="theme-transition border shadow-sm p-8 text-center" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
+            <div className="relative theme-transition border shadow-sm rounded-xl p-8 text-center" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
+              <BorderBeam />
               <p className="text-sm mb-4" style={{ color: 'var(--text-muted)' }}>{p.noBookings}</p>
               <Button href="/booking" variant="primary" size="md">{p.bookCleaning}</Button>
             </div>
           ) : (
             <div className="space-y-3">
               {bookings.map((b) => (
-                <div key={b.id} className="theme-transition border shadow-sm rounded-xl p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
+                <div key={b.id} className="relative theme-transition border shadow-sm rounded-xl p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
+                  <BorderBeam />
                   <div>
                     <div className="flex items-center gap-2.5">
                       <p className="font-bold text-sm capitalize" style={{ color: 'var(--text-primary)' }}>{b.service_type.replace('_', ' ')}</p>
@@ -166,14 +169,16 @@ export default function PortalPage() {
         <div>
           <h2 className="text-xs uppercase tracking-widest font-bold mb-4" style={{ color: 'var(--text-muted)' }}>{p.quotes}</h2>
           {quotes.length === 0 ? (
-            <div className="theme-transition border shadow-sm p-8 text-center" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
+            <div className="relative theme-transition border shadow-sm rounded-xl p-8 text-center" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
+              <BorderBeam />
               <p className="text-sm mb-4" style={{ color: 'var(--text-muted)' }}>{p.noQuotes}</p>
               <Button href="/quote" variant="primary" size="md">{p.getQuote}</Button>
             </div>
           ) : (
             <div className="space-y-3">
               {quotes.map((q) => (
-                <div key={q.id} className="theme-transition border shadow-sm p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
+                <div key={q.id} className="relative theme-transition border shadow-sm rounded-xl p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
+                  <BorderBeam />
                   <div>
                     <p className="font-bold text-sm capitalize" style={{ color: 'var(--text-primary)' }}>
                       {(q.cleaning_type ?? 'Standard').replace('_', ' ')} — {(q.home_size ?? '').replace('_', ' ')}
@@ -195,7 +200,8 @@ export default function PortalPage() {
         {/* Change Password */}
         <div className="mt-12">
           <h2 className="text-xs uppercase tracking-widest font-bold mb-4" style={{ color: 'var(--text-muted)' }}>Change Password</h2>
-          <div className="theme-transition border shadow-sm rounded-xl p-6" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
+          <div className="relative theme-transition border shadow-sm rounded-xl p-6" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
+            <BorderBeam />
             <div className="grid gap-4 sm:grid-cols-2 max-w-lg">
               <div className="space-y-1.5">
                 <label className="block text-xs uppercase tracking-widest font-bold" style={{ color: 'var(--text-secondary)' }}>New Password</label>

@@ -6,6 +6,7 @@ import Container from '@/components/ui/Container';
 import SectionHeading from '@/components/ui/SectionHeading';
 import Button from '@/components/ui/Button';
 import { useLanguage } from '@/contexts/LanguageContext';
+import BorderBeam from '@/components/ui/BorderBeam';
 
 export default function ContactPage() {
   const { t } = useLanguage();
@@ -73,6 +74,7 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
           {/* Contact Info */}
           <div className="theme-transition border rounded-xl p-6 md:p-8 relative" style={{ borderColor: 'var(--card-border)' }}>
+            <BorderBeam />
             <div className="absolute top-0 left-0 w-8 h-[2px] bg-red-500" />
             <div className="absolute top-0 left-0 w-[2px] h-8 bg-red-500" />
 
@@ -119,6 +121,7 @@ export default function ContactPage() {
 
           {/* Contact Form */}
           <div className="theme-transition border rounded-xl p-6 md:p-8 relative" style={{ borderColor: 'var(--card-border)' }}>
+            <BorderBeam />
             <div className="absolute bottom-0 right-0 w-8 h-[2px] bg-red-500" />
             <div className="absolute bottom-0 right-0 w-[2px] h-8 bg-red-500" />
             {submitted ? (

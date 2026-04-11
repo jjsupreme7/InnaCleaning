@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useRef } from 'react';
+import BorderBeam from '@/components/ui/BorderBeam';
 
 interface GlowCardProps {
   children: React.ReactNode;
@@ -26,6 +27,7 @@ export default function GlowCard({ children, className = '', style }: GlowCardPr
       className={`glow-card ${className}`}
       style={style}
     >
+      <BorderBeam />
       {children}
     </div>
   );

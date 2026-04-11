@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
 import { useLanguage } from '@/contexts/LanguageContext';
+import BorderBeam from '@/components/ui/BorderBeam';
 
 export default function IntroSection() {
   const { t } = useLanguage();
@@ -55,7 +56,8 @@ export default function IntroSection() {
               <p className="text-4xl font-bold text-white">5★</p>
               <p className="mt-1 text-sm text-red-100">{t.intro.rating}</p>
             </div>
-            <div className="flex flex-col justify-center rounded-xl border p-6" style={{ background: 'var(--card-bg)', borderColor: 'var(--card-border)' }}>
+            <div className="relative flex flex-col justify-center rounded-xl border p-6" style={{ background: 'var(--card-bg)', borderColor: 'var(--card-border)' }}>
+              <BorderBeam />
               <p className="text-4xl font-bold" style={{ color: 'var(--text-primary)' }}>327+</p>
               <p className="mt-1 text-sm" style={{ color: 'var(--text-secondary)' }}>{t.intro.homes}</p>
             </div>

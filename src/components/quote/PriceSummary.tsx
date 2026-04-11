@@ -3,6 +3,7 @@
 import { PriceBreakdown } from '@/types';
 import Button from '@/components/ui/Button';
 import { useLanguage } from '@/contexts/LanguageContext';
+import BorderBeam from '@/components/ui/BorderBeam';
 
 interface Props {
   breakdown: PriceBreakdown | null;
@@ -15,7 +16,8 @@ export default function PriceSummary({ breakdown, showBookButton }: Props) {
 
   if (!breakdown) {
     return (
-      <div className="theme-transition border shadow-sm rounded-xl p-6 text-center" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
+      <div className="relative theme-transition border shadow-sm rounded-xl p-6 text-center" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
+        <BorderBeam />
         <p className="text-sm" style={{ color: 'var(--text-muted)' }}>
           {q.priceSummaryEmpty}
         </p>
@@ -24,7 +26,8 @@ export default function PriceSummary({ breakdown, showBookButton }: Props) {
   }
 
   return (
-    <div className="theme-transition border shadow-sm rounded-xl p-6" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
+    <div className="relative theme-transition border shadow-sm rounded-xl p-6" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
+      <BorderBeam />
       <h4 className="text-xs uppercase tracking-widest font-bold mb-4" style={{ color: 'var(--text-muted)' }}>
         {q.priceSummaryHeading}
       </h4>
