@@ -30,9 +30,13 @@ export default function PortalLoginPage() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    const { emailVal, passVal } = getFormValues(e);
+    if (!emailVal || !passVal) {
+      setError('Please enter your email and password.');
+      return;
+    }
     setLoading(true);
     setError('');
-    const { emailVal, passVal } = getFormValues(e);
     const { error } = await supabase.auth.signInWithPassword({ email: emailVal, password: passVal });
     if (error) {
       setError(error.message);
@@ -44,10 +48,14 @@ export default function PortalLoginPage() {
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
+    const { emailVal, passVal } = getFormValues(e);
+    if (!emailVal || !passVal) {
+      setError('Please enter your email and password.');
+      return;
+    }
     setLoading(true);
     setError('');
     setSuccess('');
-    const { emailVal, passVal } = getFormValues(e);
     const { error } = await supabase.auth.signUp({ email: emailVal, password: passVal });
     if (error) {
       setError(error.message);
@@ -241,7 +249,6 @@ export default function PortalLoginPage() {
                 </label>
                 <input
                   type="email"
-                  required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full rounded-lg border px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors"
@@ -267,7 +274,6 @@ export default function PortalLoginPage() {
                 </div>
                 <input
                   type="password"
-                  required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="w-full rounded-lg border px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors"
