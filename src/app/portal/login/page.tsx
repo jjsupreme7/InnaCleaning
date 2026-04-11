@@ -19,6 +19,7 @@ export default function PortalLoginPage() {
   const [oauthLoading, setOauthLoading] = useState<'google' | 'apple' | null>(null);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [resetLoading, setResetLoading] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -45,6 +46,25 @@ export default function PortalLoginPage() {
       setSuccess(l.confirmEmail);
     }
     setLoading(false);
+  };
+
+  const handleForgotPassword = async () => {
+    if (!email) {
+      setError('Please enter your email address first.');
+      return;
+    }
+    setResetLoading(true);
+    setError('');
+    setSuccess('');
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/portal`,
+    });
+    if (error) {
+      setError(error.message);
+    } else {
+      setSuccess('Password reset link sent — check your email.');
+    }
+    setResetLoading(false);
   };
 
   const handleOAuth = async (provider: 'google' | 'apple') => {
@@ -182,9 +202,15 @@ export default function PortalLoginPage() {
                     {l.passwordLabel}
                   </label>
                   {tab === 'login' && (
-                    <a href="#" className="text-xs transition-colors" style={{ color: 'var(--text-muted)' }}>
-                      {l.forgotPassword}
-                    </a>
+                    <button
+                      type="button"
+                      onClick={handleForgotPassword}
+                      disabled={resetLoading}
+                      className="text-xs transition-colors hover:text-red-400 disabled:opacity-50"
+                      style={{ color: 'var(--text-muted)' }}
+                    >
+                      {resetLoading ? '…' : l.forgotPassword}
+                    </button>
                   )}
                 </div>
                 <input
