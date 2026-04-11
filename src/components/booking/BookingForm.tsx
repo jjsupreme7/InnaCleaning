@@ -4,11 +4,15 @@ import { useState } from 'react';
 import Button from '@/components/ui/Button';
 import { useLanguage } from '@/contexts/LanguageContext';
 
-export default function BookingForm() {
+export default function BookingForm({ onSubmitChange }: { onSubmitChange?: (submitted: boolean) => void }) {
   const { t } = useLanguage();
   const b = t.booking;
 
-  const [submitted, setSubmitted] = useState(false);
+  const [submitted, setSubmittedState] = useState(false);
+  const setSubmitted = (val: boolean) => {
+    setSubmittedState(val);
+    onSubmitChange?.(val);
+  };
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
