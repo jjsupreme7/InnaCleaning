@@ -12,7 +12,7 @@ export default function PortalLoginPage() {
   const { t } = useLanguage();
   const l = t.login;
 
-  const [tab, setTab] = useState<'login' | 'signup'>('login');
+  const [tab, setTab] = useState<'login' | 'signup' | 'forgot'>('login');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -99,13 +99,57 @@ export default function PortalLoginPage() {
           <div className="theme-transition p-8 md:p-10" style={{ background: 'var(--bg-elevated)' }}>
             <div className="mb-8">
               <h1 className="text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>
-                {tab === 'login' ? l.welcomeBack : l.createAccount}
+                {tab === 'forgot' ? 'Reset Password' : tab === 'login' ? l.welcomeBack : l.createAccount}
               </h1>
               <p className="text-sm mt-1" style={{ color: 'var(--text-muted)' }}>
-                {tab === 'login' ? l.loginSubtitle : l.signupSubtitle}
+                {tab === 'forgot' ? 'Enter your email and we\'ll send you a reset link.' : tab === 'login' ? l.loginSubtitle : l.signupSubtitle}
               </p>
             </div>
 
+            {tab === 'forgot' ? (
+              <>
+                <div className="space-y-5">
+                  <div className="space-y-1.5">
+                    <label className="block text-xs uppercase tracking-widest font-bold" style={{ color: 'var(--text-secondary)' }}>
+                      {l.emailLabel}
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="w-full rounded-lg border px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors"
+                      style={{ background: 'var(--input-bg)', borderColor: 'var(--input-border)', color: 'var(--text-primary)' }}
+                      placeholder={l.emailPlaceholder}
+                    />
+                  </div>
+
+                  {error && <p className="text-red-400 text-sm">{error}</p>}
+                  {success && <p className="text-green-400 text-sm">{success}</p>}
+
+                  <button
+                    type="button"
+                    onClick={handleForgotPassword}
+                    disabled={resetLoading}
+                    className="w-full bg-red-600 hover:bg-red-700 text-white text-xs uppercase tracking-widest font-bold py-3.5 transition-colors disabled:opacity-50"
+                  >
+                    {resetLoading ? '...' : 'Send Reset Link'}
+                  </button>
+                </div>
+
+                <p className="text-center text-xs mt-8">
+                  <button
+                    type="button"
+                    onClick={() => { setTab('login'); setError(''); setSuccess(''); }}
+                    className="transition-colors hover:text-red-400"
+                    style={{ color: 'var(--text-secondary)' }}
+                  >
+                    Back to login
+                  </button>
+                </p>
+              </>
+            ) : (
+            <>
             {/* Tab switcher */}
             <div className="flex border mb-7" style={{ borderColor: 'var(--card-border)' }}>
               <button
@@ -204,12 +248,11 @@ export default function PortalLoginPage() {
                   {tab === 'login' && (
                     <button
                       type="button"
-                      onClick={handleForgotPassword}
-                      disabled={resetLoading}
-                      className="text-xs transition-colors hover:text-red-400 disabled:opacity-50"
+                      onClick={() => { setTab('forgot'); setError(''); setSuccess(''); }}
+                      className="text-xs transition-colors hover:text-red-400"
                       style={{ color: 'var(--text-muted)' }}
                     >
-                      {resetLoading ? '…' : l.forgotPassword}
+                      {l.forgotPassword}
                     </button>
                   )}
                 </div>
@@ -241,6 +284,8 @@ export default function PortalLoginPage() {
                 {l.back}
               </Link>
             </p>
+            </>
+            )}
           </div>
 
           {/* Image side */}
