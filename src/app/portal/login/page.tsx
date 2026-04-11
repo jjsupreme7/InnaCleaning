@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -13,31 +13,26 @@ export default function PortalLoginPage() {
   const l = t.login;
 
   const [tab, setTab] = useState<'login' | 'signup' | 'forgot'>('login');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+  const [forgotEmail, setForgotEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [oauthLoading, setOauthLoading] = useState<'google' | 'apple' | null>(null);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [resetLoading, setResetLoading] = useState(false);
 
-  const getFormValues = (e: React.FormEvent) => {
-    const form = e.target as HTMLFormElement;
-    const emailVal = (form.querySelector('input[type="email"]') as HTMLInputElement)?.value || email;
-    const passVal = (form.querySelector('input[type="password"]') as HTMLInputElement)?.value || password;
-    return { emailVal, passVal };
-  };
-
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    const { emailVal, passVal } = getFormValues(e);
-    if (!emailVal || !passVal) {
+    const email = emailRef.current?.value || '';
+    const password = passwordRef.current?.value || '';
+    if (!email || !password) {
       setError('Please enter your email and password.');
       return;
     }
     setLoading(true);
     setError('');
-    const { error } = await supabase.auth.signInWithPassword({ email: emailVal, password: passVal });
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) {
       setError(error.message);
     } else {
@@ -48,15 +43,16 @@ export default function PortalLoginPage() {
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
-    const { emailVal, passVal } = getFormValues(e);
-    if (!emailVal || !passVal) {
+    const email = emailRef.current?.value || '';
+    const password = passwordRef.current?.value || '';
+    if (!email || !password) {
       setError('Please enter your email and password.');
       return;
     }
     setLoading(true);
     setError('');
     setSuccess('');
-    const { error } = await supabase.auth.signUp({ email: emailVal, password: passVal });
+    const { error } = await supabase.auth.signUp({ email, password });
     if (error) {
       setError(error.message);
     } else {
@@ -66,14 +62,14 @@ export default function PortalLoginPage() {
   };
 
   const handleForgotPassword = async () => {
-    if (!email) {
-      setError('Please enter your email address first.');
+    if (!forgotEmail) {
+      setError('Please enter your email address.');
       return;
     }
     setResetLoading(true);
     setError('');
     setSuccess('');
-    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+    const { error } = await supabase.auth.resetPasswordForEmail(forgotEmail, {
       redirectTo: `${window.location.origin}/portal/reset-password`,
     });
     if (error) {
@@ -132,9 +128,8 @@ export default function PortalLoginPage() {
                     </label>
                     <input
                       type="email"
-                      required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      value={forgotEmail}
+                      onChange={(e) => setForgotEmail(e.target.value)}
                       className="w-full rounded-lg border px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors"
                       style={{ background: 'var(--input-bg)', borderColor: 'var(--input-border)', color: 'var(--text-primary)' }}
                       placeholder={l.emailPlaceholder}
@@ -248,9 +243,10 @@ export default function PortalLoginPage() {
                   {l.emailLabel}
                 </label>
                 <input
+                  ref={emailRef}
                   type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  name="email"
+                  autoComplete="email"
                   className="w-full rounded-lg border px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors"
                   style={{ background: 'var(--input-bg)', borderColor: 'var(--input-border)', color: 'var(--text-primary)' }}
                   placeholder={l.emailPlaceholder}
@@ -273,9 +269,10 @@ export default function PortalLoginPage() {
                   )}
                 </div>
                 <input
+                  ref={passwordRef}
                   type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  name="password"
+                  autoComplete="current-password"
                   className="w-full rounded-lg border px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors"
                   style={{ background: 'var(--input-bg)', borderColor: 'var(--input-border)', color: 'var(--text-primary)' }}
                   placeholder="••••••••"
