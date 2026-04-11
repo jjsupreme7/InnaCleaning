@@ -59,7 +59,7 @@ export async function proxy(req: NextRequest) {
   }
 
   // Portal auth — redirect to login if no Supabase session
-  if (pathname.startsWith('/portal') && pathname !== '/portal/login') {
+  if (pathname.startsWith('/portal') && pathname !== '/portal/login' && !pathname.startsWith('/portal/reset-password')) {
     if (!hasSupabaseSession(req)) {
       return NextResponse.redirect(new URL('/portal/login', req.url));
     }

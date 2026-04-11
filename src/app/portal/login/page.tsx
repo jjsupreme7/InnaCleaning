@@ -57,7 +57,7 @@ export default function PortalLoginPage() {
     setError('');
     setSuccess('');
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/portal`,
+      redirectTo: `${window.location.origin}/portal/reset-password`,
     });
     if (error) {
       setError(error.message);
