@@ -21,11 +21,19 @@ export default function PortalLoginPage() {
   const [success, setSuccess] = useState('');
   const [resetLoading, setResetLoading] = useState(false);
 
+  const getFormValues = (e: React.FormEvent) => {
+    const form = e.target as HTMLFormElement;
+    const emailVal = (form.querySelector('input[type="email"]') as HTMLInputElement)?.value || email;
+    const passVal = (form.querySelector('input[type="password"]') as HTMLInputElement)?.value || password;
+    return { emailVal, passVal };
+  };
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError('');
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    const { emailVal, passVal } = getFormValues(e);
+    const { error } = await supabase.auth.signInWithPassword({ email: emailVal, password: passVal });
     if (error) {
       setError(error.message);
     } else {
@@ -39,7 +47,8 @@ export default function PortalLoginPage() {
     setLoading(true);
     setError('');
     setSuccess('');
-    const { error } = await supabase.auth.signUp({ email, password });
+    const { emailVal, passVal } = getFormValues(e);
+    const { error } = await supabase.auth.signUp({ email: emailVal, password: passVal });
     if (error) {
       setError(error.message);
     } else {
