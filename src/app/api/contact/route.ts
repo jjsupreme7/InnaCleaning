@@ -6,7 +6,7 @@ const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KE
 
 const NOTIFY_EMAILS = [
   'jjgcallen11@gmail.com',
-  'tania1rogovska@gmail.com',
+  // 'tania1rogovska@gmail.com', // TODO: re-enable once custom domain is set up in Resend
 ];
 
 export async function POST(req: NextRequest) {
