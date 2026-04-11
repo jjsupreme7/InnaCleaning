@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
-import { supabase } from '@/lib/supabase';
+import { getSupabase } from '@/lib/supabase/server';
 import { linkOrCreateLead } from '@/lib/crm/link-lead';
 
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
@@ -56,6 +56,7 @@ export async function POST(req: NextRequest) {
 
     const leadId = await linkOrCreateLead({ name, email, source: 'quote' });
 
+    const supabase = getSupabase();
     const { data, error } = await supabase
       .from('inna_quotes')
       .insert({ name, email, home_size, cleaning_type, condition, addons: addons || null, frequency, estimated_total: estimated_total || null, lead_id: leadId })

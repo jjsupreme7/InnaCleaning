@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { getSupabase } from '@/lib/supabase/server';
 import { linkOrCreateLead } from '@/lib/crm/link-lead';
 
 export async function POST(req: NextRequest) {
@@ -12,6 +12,7 @@ export async function POST(req: NextRequest) {
 
     const leadId = await linkOrCreateLead({ name, email, phone, address, source: 'booking' });
 
+    const supabase = getSupabase();
     const { data, error } = await supabase
       .from('inna_bookings')
       .insert({ name, phone, email, address, service_type, preferred_date, preferred_time, notes: notes || null, lead_id: leadId })

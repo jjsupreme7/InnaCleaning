@@ -45,6 +45,34 @@ export default function PortalPage() {
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [quotes, setQuotes] = useState<Quote[]>([]);
   const [loading, setLoading] = useState(true);
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [passwordLoading, setPasswordLoading] = useState(false);
+  const [passwordError, setPasswordError] = useState('');
+  const [passwordSuccess, setPasswordSuccess] = useState('');
+
+  const handleChangePassword = async () => {
+    setPasswordError('');
+    setPasswordSuccess('');
+    if (newPassword.length < 6) {
+      setPasswordError('Password must be at least 6 characters.');
+      return;
+    }
+    if (newPassword !== confirmPassword) {
+      setPasswordError('Passwords do not match.');
+      return;
+    }
+    setPasswordLoading(true);
+    const { error } = await supabase.auth.updateUser({ password: newPassword });
+    if (error) {
+      setPasswordError(error.message);
+    } else {
+      setPasswordSuccess('Password updated successfully.');
+      setNewPassword('');
+      setConfirmPassword('');
+    }
+    setPasswordLoading(false);
+  };
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -162,6 +190,48 @@ export default function PortalPage() {
               ))}
             </div>
           )}
+        </div>
+
+        {/* Change Password */}
+        <div className="mt-12">
+          <h2 className="text-xs uppercase tracking-widest font-bold mb-4" style={{ color: 'var(--text-muted)' }}>Change Password</h2>
+          <div className="theme-transition border shadow-sm rounded-xl p-6" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
+            <div className="grid gap-4 sm:grid-cols-2 max-w-lg">
+              <div className="space-y-1.5">
+                <label className="block text-xs uppercase tracking-widest font-bold" style={{ color: 'var(--text-secondary)' }}>New Password</label>
+                <input
+                  type="password"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  className="w-full rounded-lg border px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors"
+                  style={{ background: 'var(--input-bg)', borderColor: 'var(--input-border)', color: 'var(--text-primary)' }}
+                  placeholder="••••••••"
+                />
+              </div>
+              <div className="space-y-1.5">
+                <label className="block text-xs uppercase tracking-widest font-bold" style={{ color: 'var(--text-secondary)' }}>Confirm Password</label>
+                <input
+                  type="password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  className="w-full rounded-lg border px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors"
+                  style={{ background: 'var(--input-bg)', borderColor: 'var(--input-border)', color: 'var(--text-primary)' }}
+                  placeholder="••••••••"
+                />
+              </div>
+            </div>
+            {passwordError && <p className="text-red-400 text-sm mt-3">{passwordError}</p>}
+            {passwordSuccess && <p className="text-green-400 text-sm mt-3">{passwordSuccess}</p>}
+            <div className="mt-4">
+              <button
+                onClick={handleChangePassword}
+                disabled={passwordLoading}
+                className="bg-red-600 hover:bg-red-700 text-white text-xs uppercase tracking-widest font-bold px-6 py-3 transition-colors disabled:opacity-50"
+              >
+                {passwordLoading ? '...' : 'Update Password'}
+              </button>
+            </div>
+          </div>
         </div>
 
         <p className="text-center mt-12">
