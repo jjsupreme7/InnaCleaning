@@ -29,13 +29,6 @@ function isLocalPreview(req: NextRequest): boolean {
   return hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '::1';
 }
 
-function hasSupabaseSession(req: NextRequest): boolean {
-  const cookies = req.cookies.getAll();
-  return cookies.some(
-    (c) => c.name.includes('auth-token') || (c.name.includes('sb-') && c.name.includes('-auth'))
-  );
-}
-
 export async function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
@@ -58,16 +51,13 @@ export async function proxy(req: NextRequest) {
     }
   }
 
-  // Portal auth — redirect to login if no Supabase session
-  if (pathname.startsWith('/portal') && pathname !== '/portal/login' && !pathname.startsWith('/portal/reset-password')) {
-    if (!hasSupabaseSession(req)) {
-      return NextResponse.redirect(new URL('/portal/login', req.url));
-    }
-  }
+  // Portal auth is handled client-side in portal/page.tsx
+  // Supabase JS v2 stores sessions in localStorage, not cookies,
+  // so server-side proxy cannot check auth state
 
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ['/admin/:path*', '/api/admin/:path*', '/portal/:path*'],
+  matcher: ['/admin/:path*', '/api/admin/:path*'],
 };
