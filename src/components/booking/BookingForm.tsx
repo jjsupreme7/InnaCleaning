@@ -123,10 +123,10 @@ export default function BookingForm({ onSubmitChange }: { onSubmitChange?: (subm
             className="w-full rounded-lg border-2 px-4 py-3 text-sm focus:border-red-500 focus:outline-none transition-colors"
             style={inputStyle}>
             <option value="">{b.selectService}</option>
-            <option value="kitchen">Kitchen Cleaning</option>
-            <option value="bathrooms">Bathroom Cleaning</option>
-            <option value="bedrooms">Bedroom Cleaning</option>
-            <option value="livingAreas">Living Area Cleaning</option>
+            <option value="standard">{b.standard}</option>
+            <option value="deep">{b.deep}</option>
+            <option value="move">{b.moveInOut}</option>
+            <option value="airbnb">{b.airbnb}</option>
           </select>
         </div>
         <div>
