@@ -123,6 +123,14 @@ export default function AdminBookingsPage() {
                   <p className="text-zinc-400 text-sm">{b.notes}</p>
                 </div>
               )}
+              <div className="mt-4 pt-4 border-t border-zinc-800">
+                <Link
+                  href={`/admin/bookings/${b.id}/report`}
+                  className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white text-xs font-bold uppercase tracking-widest px-4 py-2 transition-colors"
+                >
+                  {b.status === 'completed' ? 'View / Edit Report' : 'Complete & Report'}
+                </Link>
+              </div>
             </div>
           ))}
         </div>

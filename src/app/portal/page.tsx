@@ -10,6 +10,15 @@ import Button from '@/components/ui/Button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import BorderBeam from '@/components/ui/BorderBeam';
 
+interface CleaningReport {
+  id: string;
+  booking_id: string;
+  completed_tasks: string[];
+  photos: string[];
+  notes: string | null;
+  completed_at: string;
+}
+
 interface Booking {
   id: string;
   service_type: string;
@@ -45,6 +54,8 @@ export default function PortalPage() {
   const [user, setUser] = useState<User | null>(null);
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [quotes, setQuotes] = useState<Quote[]>([]);
+  const [reports, setReports] = useState<Record<string, CleaningReport>>({});
+  const [expandedReport, setExpandedReport] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -93,6 +104,21 @@ export default function PortalPage() {
     ]);
     setBookings(b ?? []);
     setQuotes(q ?? []);
+
+    // Fetch reports for any completed bookings
+    const completedIds = (b ?? []).filter((row) => row.status === 'completed').map((row) => row.id);
+    if (completedIds.length > 0) {
+      const { data: r } = await supabase
+        .from('inna_cleaning_reports')
+        .select('id, booking_id, completed_tasks, photos, notes, completed_at')
+        .in('booking_id', completedIds);
+      const byBookingId: Record<string, CleaningReport> = {};
+      (r ?? []).forEach((report) => {
+        byBookingId[report.booking_id] = report;
+      });
+      setReports(byBookingId);
+    }
+
     setLoading(false);
   };
 
@@ -137,30 +163,89 @@ export default function PortalPage() {
             </div>
           ) : (
             <div className="space-y-3">
-              {bookings.map((b) => (
-                <div key={b.id} className="relative theme-transition border shadow-sm rounded-xl p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
-                  <BorderBeam />
-                  <div>
-                    <div className="flex items-center gap-2.5">
-                      <p className="font-bold text-sm capitalize" style={{ color: 'var(--text-primary)' }}>{b.service_type.replace('_', ' ')}</p>
-                      {(() => {
-                        const status = b.status || 'pending';
-                        const s = STATUS_STYLES[status] || STATUS_STYLES.pending;
-                        return (
-                          <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full" style={{ background: s.bg, color: s.text }}>
-                            {s.label}
-                          </span>
-                        );
-                      })()}
+              {bookings.map((b) => {
+                const report = reports[b.id];
+                const isExpanded = expandedReport === b.id;
+                return (
+                  <div key={b.id} className="relative theme-transition border shadow-sm rounded-xl overflow-hidden" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
+                    <BorderBeam />
+                    <div className="relative p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                      <div>
+                        <div className="flex items-center gap-2.5">
+                          <p className="font-bold text-sm capitalize" style={{ color: 'var(--text-primary)' }}>{b.service_type.replace('_', ' ')}</p>
+                          {(() => {
+                            const status = b.status || 'pending';
+                            const s = STATUS_STYLES[status] || STATUS_STYLES.pending;
+                            return (
+                              <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full" style={{ background: s.bg, color: s.text }}>
+                                {s.label}
+                              </span>
+                            );
+                          })()}
+                        </div>
+                        <p className="text-xs mt-0.5" style={{ color: 'var(--text-secondary)' }}>{b.address}</p>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="text-right">
+                          <p className="text-sm" style={{ color: 'var(--text-primary)' }}>{new Date(b.preferred_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</p>
+                          <p className="text-xs capitalize" style={{ color: 'var(--text-muted)' }}>{b.preferred_time}</p>
+                        </div>
+                        {report && (
+                          <button
+                            type="button"
+                            onClick={() => setExpandedReport(isExpanded ? null : b.id)}
+                            className="text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full border border-red-500/30 text-red-500 hover:bg-red-500/10 transition-colors"
+                          >
+                            {isExpanded ? 'Hide Report' : 'View Report'}
+                          </button>
+                        )}
+                      </div>
                     </div>
-                    <p className="text-xs mt-0.5" style={{ color: 'var(--text-secondary)' }}>{b.address}</p>
+                    {report && isExpanded && (
+                      <div className="relative border-t px-5 py-5" style={{ borderColor: 'var(--card-border)', background: 'var(--bg-subtle)' }}>
+                        <p className="text-xs uppercase tracking-widest font-bold mb-3" style={{ color: 'var(--text-muted)' }}>
+                          Completed {new Date(report.completed_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                        </p>
+                        {report.completed_tasks.length > 0 && (
+                          <div className="mb-4">
+                            <p className="text-xs uppercase tracking-widest font-bold mb-2" style={{ color: 'var(--text-muted)' }}>What was done</p>
+                            <ul className="space-y-1.5">
+                              {report.completed_tasks.map((task) => (
+                                <li key={task} className="flex items-start gap-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
+                                  <svg className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                  </svg>
+                                  {task}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                        {report.photos.length > 0 && (
+                          <div className="mb-4">
+                            <p className="text-xs uppercase tracking-widest font-bold mb-2" style={{ color: 'var(--text-muted)' }}>Photos</p>
+                            <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
+                              {report.photos.map((url) => (
+                                /* eslint-disable-next-line @next/next/no-img-element */
+                                <a key={url} href={url} target="_blank" rel="noreferrer" className="block aspect-square overflow-hidden rounded-lg border" style={{ borderColor: 'var(--card-border)' }}>
+                                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                                  <img src={url} alt="Cleaning photo" className="w-full h-full object-cover hover:scale-105 transition-transform" loading="lazy" />
+                                </a>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                        {report.notes && (
+                          <div>
+                            <p className="text-xs uppercase tracking-widest font-bold mb-2" style={{ color: 'var(--text-muted)' }}>Notes from Inna</p>
+                            <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{report.notes}</p>
+                          </div>
+                        )}
+                      </div>
+                    )}
                   </div>
-                  <div className="text-right">
-                    <p className="text-sm" style={{ color: 'var(--text-primary)' }}>{new Date(b.preferred_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</p>
-                    <p className="text-xs capitalize" style={{ color: 'var(--text-muted)' }}>{b.preferred_time}</p>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
         </div>
