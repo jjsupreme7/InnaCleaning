@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { getSupabase } from '@/lib/supabase/server';
 import { linkOrCreateLead } from '@/lib/crm/link-lead';
+import { validateAndUseReferralCode, consumeReferralRewardCredit } from '@/lib/crm/referral';
 
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
@@ -19,7 +20,7 @@ const SERVICE_LABELS: Record<string, string> = {
 
 export async function POST(req: NextRequest) {
   try {
-    const { name, phone, email, address, service_type, preferred_date, preferred_time, notes } = await req.json();
+    const { name, phone, email, address, service_type, preferred_date, preferred_time, notes, referral_code } = await req.json();
 
     if (!name || !phone || !email || !address || !service_type || !preferred_date || !preferred_time) {
       return NextResponse.json({ error: 'All required fields must be filled out.' }, { status: 400 });
@@ -27,10 +28,43 @@ export async function POST(req: NextRequest) {
 
     const leadId = await linkOrCreateLead({ name, email, phone, address, source: 'booking' });
 
+    // Validate referral code (if provided). This increments the code's use count.
+    // If the code belongs to THIS customer (self-referral), reject it.
+    let referralCodeId: string | null = null;
+    if (referral_code && typeof referral_code === 'string' && referral_code.trim()) {
+      const result = await validateAndUseReferralCode(referral_code);
+      if (!result) {
+        return NextResponse.json({ error: 'Invalid or expired referral code.' }, { status: 400 });
+      }
+      if (leadId && result.leadId === leadId) {
+        return NextResponse.json({ error: 'You cannot use your own referral code.' }, { status: 400 });
+      }
+      referralCodeId = result.codeId;
+    }
+
+    // If this customer has earned reward credits from prior referrals, consume one
+    // and mark this booking as a reward booking (15% off, handled at invoice time).
+    let rewardApplied = false;
+    if (leadId) {
+      rewardApplied = await consumeReferralRewardCredit(leadId);
+    }
+
     const supabase = getSupabase();
     const { data, error } = await supabase
       .from('inna_bookings')
-      .insert({ name, phone, email, address, service_type, preferred_date, preferred_time, notes: notes || null, lead_id: leadId })
+      .insert({
+        name,
+        phone,
+        email,
+        address,
+        service_type,
+        preferred_date,
+        preferred_time,
+        notes: notes || null,
+        lead_id: leadId,
+        referral_code_id: referralCodeId,
+        referral_reward_applied: rewardApplied,
+      })
       .select('id')
       .single();
 

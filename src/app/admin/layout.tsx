@@ -10,6 +10,7 @@ const navItems = [
   { href: '/admin/users', label: 'Portal Users' },
   { href: '/admin/bookings', label: 'Bookings' },
   { href: '/admin/quotes', label: 'Quotes' },
+  { href: '/admin/referrals', label: 'Referrals' },
   { href: '/admin/contacts', label: 'Messages' },
   { href: '/admin/analytics', label: 'Analytics' },
 ];
