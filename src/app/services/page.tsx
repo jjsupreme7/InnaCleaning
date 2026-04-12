@@ -1,11 +1,12 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
 import { services } from '@/data/services';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Sparkles, Paintbrush, PackageOpen, Home } from 'lucide-react';
+import { Sparkles, Paintbrush, PackageOpen, Home, ChevronDown } from 'lucide-react';
 import BorderBeam from '@/components/ui/BorderBeam';
 
 const SERVICE_ICONS: Record<string, React.ComponentType<{ className?: string; strokeWidth?: number }>> = {
@@ -14,6 +15,155 @@ const SERVICE_ICONS: Record<string, React.ComponentType<{ className?: string; st
   move: PackageOpen,
   airbnb: Home,
 };
+
+const CATEGORY_ORDER = ['kitchen', 'bathrooms', 'bedrooms', 'livingAreas', 'additional', 'finalTouch'] as const;
+
+type ServiceContent = {
+  title: string;
+  description: string;
+  includes: readonly string[];
+  details?: Record<string, readonly string[]>;
+};
+
+function ServiceCard({
+  service,
+  content,
+  isPopular,
+  categories,
+  whatsIncluded,
+  getQuote,
+  viewBreakdown,
+  hideDetails,
+  bgStyle,
+}: {
+  service: { id: string; startingPrice: number };
+  content: ServiceContent;
+  isPopular: boolean;
+  categories: Record<string, string>;
+  whatsIncluded: string;
+  getQuote: string;
+  viewBreakdown: string;
+  hideDetails: string;
+  bgStyle: string;
+}) {
+  const [expanded, setExpanded] = useState(false);
+  const Icon = SERVICE_ICONS[service.id] || Sparkles;
+  const details = content.details ?? null;
+
+  return (
+    <section
+      className="py-20 md:py-28 theme-transition"
+      style={{ background: bgStyle }}
+    >
+      <Container>
+        <div className="max-w-3xl mx-auto">
+          <div
+            className="rounded-xl p-6 md:p-8 relative group transition-all duration-300 theme-transition"
+            style={{
+              background: 'var(--card-bg)',
+              borderWidth: 1,
+              borderStyle: 'solid',
+              borderColor: isPopular ? 'rgba(239,68,68,0.3)' : 'var(--card-border)',
+            }}
+          >
+            <BorderBeam />
+            <div className={`absolute left-0 top-8 w-[2px] h-12 ${isPopular ? 'bg-red-500' : 'bg-red-400'}`} />
+
+            {isPopular && (
+              <div className="absolute -top-3 right-6 bg-red-600 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">
+                Most Popular
+              </div>
+            )}
+
+            <div className="flex items-center gap-4 mb-6">
+              <Icon className="w-7 h-7 text-red-500" strokeWidth={1.5} />
+              <div>
+                <h2 className="text-xl font-bold font-display uppercase tracking-widest" style={{ color: 'var(--text-primary)' }}>
+                  {content.title}
+                </h2>
+                <p className="text-red-500 font-bold text-sm mt-1">
+                  Starting at ${service.startingPrice}
+                </p>
+              </div>
+            </div>
+
+            <p className="leading-relaxed mb-6" style={{ color: 'var(--text-secondary)' }}>
+              {content.description}
+            </p>
+
+            <div className="mb-6">
+              <h3 className="text-xs uppercase tracking-widest font-bold mb-3" style={{ color: 'var(--text-muted)' }}>
+                {whatsIncluded}
+              </h3>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {content.includes.map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
+                    <svg className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {details && (
+              <>
+                <button
+                  onClick={() => setExpanded(!expanded)}
+                  className="flex items-center gap-2 text-sm font-bold text-red-500 hover:text-red-600 transition-colors mb-6"
+                >
+                  <ChevronDown
+                    size={16}
+                    className={`transition-transform duration-300 ${expanded ? 'rotate-180' : ''}`}
+                  />
+                  {expanded ? hideDetails : viewBreakdown}
+                </button>
+
+                <div
+                  className="transition-all duration-500 ease-in-out overflow-hidden"
+                  style={{
+                    maxHeight: expanded ? '2000px' : '0px',
+                    opacity: expanded ? 1 : 0,
+                  }}
+                >
+                  <div className="space-y-6 pb-6 pt-2">
+                      {CATEGORY_ORDER.map((cat) => {
+                        const items = details[cat];
+                        if (!items?.length) return null;
+                        return (
+                          <div key={cat}>
+                            <h4 className="text-sm font-bold mb-2 flex items-center gap-2" style={{ color: 'var(--text-primary)' }}>
+                              <div className="w-1 h-4 bg-red-500 rounded-full" />
+                              {categories[cat] || cat}
+                            </h4>
+                            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pl-3">
+                              {items.map((item) => (
+                                <li key={item} className="flex items-start gap-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
+                                  <svg className="w-3.5 h-3.5 text-red-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                  </svg>
+                                  {item}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        );
+                      })}
+                  </div>
+                </div>
+              </>
+            )}
+
+            <Button href="/quote" variant="primary" size="md">
+              {getQuote}
+            </Button>
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
 
 export default function ServicesPage() {
   const { t } = useLanguage();
@@ -65,76 +215,22 @@ export default function ServicesPage() {
 
       {/* ── Service Cards ── */}
       {services.map((service, i) => {
-        const content = si[service.id as keyof typeof si];
+        const content = si[service.id as keyof typeof si] as ServiceContent;
         const isPopular = service.id === 'deep';
 
         return (
-          <section
+          <ServiceCard
             key={service.id}
-            className="py-20 md:py-28 theme-transition"
-            style={{ background: i % 2 === 0 ? 'var(--bg-elevated)' : 'var(--section-alt)' }}
-          >
-            <Container>
-              <div className="max-w-3xl mx-auto">
-                <div
-                  className="rounded-xl p-6 md:p-8 relative group transition-all duration-300 theme-transition"
-                  style={{
-                    background: 'var(--card-bg)',
-                    borderWidth: 1,
-                    borderStyle: 'solid',
-                    borderColor: isPopular ? 'rgba(239,68,68,0.3)' : 'var(--card-border)',
-                  }}
-                >
-                  <BorderBeam />
-                  {/* Left accent bar */}
-                  <div className={`absolute left-0 top-8 w-[2px] h-12 ${isPopular ? 'bg-red-500' : 'bg-red-400'}`} />
-
-                  {/* Popular badge */}
-                  {isPopular && (
-                    <div className="absolute -top-3 right-6 bg-red-600 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">
-                      Most Popular
-                    </div>
-                  )}
-
-                  <div className="flex items-center gap-4 mb-6">
-                    {(() => { const Icon = SERVICE_ICONS[service.id] || Sparkles; return <Icon className="w-7 h-7 text-red-500" strokeWidth={1.5} />; })()}
-                    <div>
-                      <h2 className="text-xl font-bold font-display uppercase tracking-widest" style={{ color: 'var(--text-primary)' }}>
-                        {content.title}
-                      </h2>
-                      <p className="text-red-500 font-bold text-sm mt-1">
-                        Starting at ${service.startingPrice}
-                      </p>
-                    </div>
-                  </div>
-
-                  <p className="leading-relaxed mb-6" style={{ color: 'var(--text-secondary)' }}>
-                    {content.description}
-                  </p>
-
-                  <div className="mb-8">
-                    <h3 className="text-xs uppercase tracking-widest font-bold mb-3" style={{ color: 'var(--text-muted)' }}>
-                      {sp.whatsIncluded}
-                    </h3>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                      {content.includes.map((item) => (
-                        <li key={item} className="flex items-start gap-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
-                          <svg className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <Button href="/quote" variant="primary" size="md">
-                    {sp.getQuote}
-                  </Button>
-                </div>
-              </div>
-            </Container>
-          </section>
+            service={service}
+            content={content}
+            isPopular={isPopular}
+            categories={sp.categories}
+            whatsIncluded={sp.whatsIncluded}
+            getQuote={sp.getQuote}
+            viewBreakdown={sp.viewBreakdown}
+            hideDetails={sp.hideDetails}
+            bgStyle={i % 2 === 0 ? 'var(--bg-elevated)' : 'var(--section-alt)'}
+          />
         );
       })}
 
