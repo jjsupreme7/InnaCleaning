@@ -18,27 +18,37 @@ const SERVICE_ICONS: Record<string, React.ComponentType<{ className?: string; st
 
 const CATEGORY_ORDER = ['kitchen', 'bathrooms', 'bedrooms', 'livingAreas', 'additional', 'finalTouch'] as const;
 
+type ServiceContent = {
+  title: string;
+  description: string;
+  includes: readonly string[];
+  details?: Record<string, readonly string[]>;
+};
+
 function ServiceCard({
   service,
   content,
   isPopular,
-  details,
   categories,
   whatsIncluded,
   getQuote,
+  viewBreakdown,
+  hideDetails,
   bgStyle,
 }: {
   service: { id: string; startingPrice: number };
-  content: { title: string; description: string; includes: readonly string[] };
+  content: ServiceContent;
   isPopular: boolean;
-  details: Record<string, readonly string[]> | null;
   categories: Record<string, string>;
   whatsIncluded: string;
   getQuote: string;
+  viewBreakdown: string;
+  hideDetails: string;
   bgStyle: string;
 }) {
   const [expanded, setExpanded] = useState(false);
   const Icon = SERVICE_ICONS[service.id] || Sparkles;
+  const details = content.details ?? null;
 
   return (
     <section
@@ -107,7 +117,7 @@ function ServiceCard({
                     size={16}
                     className={`transition-transform duration-300 ${expanded ? 'rotate-180' : ''}`}
                   />
-                  {expanded ? 'Hide details' : 'View full breakdown'}
+                  {expanded ? hideDetails : viewBreakdown}
                 </button>
 
                 <div
@@ -205,9 +215,8 @@ export default function ServicesPage() {
 
       {/* ── Service Cards ── */}
       {services.map((service, i) => {
-        const content = si[service.id as keyof typeof si];
+        const content = si[service.id as keyof typeof si] as ServiceContent;
         const isPopular = service.id === 'deep';
-        const details = 'details' in content ? (content as unknown as { details: Record<string, readonly string[]> }).details : null;
 
         return (
           <ServiceCard
@@ -215,10 +224,11 @@ export default function ServicesPage() {
             service={service}
             content={content}
             isPopular={isPopular}
-            details={details}
             categories={sp.categories}
             whatsIncluded={sp.whatsIncluded}
             getQuote={sp.getQuote}
+            viewBreakdown={sp.viewBreakdown}
+            hideDetails={sp.hideDetails}
             bgStyle={i % 2 === 0 ? 'var(--bg-elevated)' : 'var(--section-alt)'}
           />
         );
