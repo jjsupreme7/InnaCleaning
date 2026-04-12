@@ -46,6 +46,15 @@ interface Quote {
   created_at: string;
 }
 
+interface ReferralCode {
+  id: string;
+  code: string;
+  discount_percent: number;
+  max_uses: number;
+  uses_count: number;
+  active: boolean;
+}
+
 export default function PortalPage() {
   const router = useRouter();
   const { t } = useLanguage();
@@ -56,6 +65,9 @@ export default function PortalPage() {
   const [quotes, setQuotes] = useState<Quote[]>([]);
   const [reports, setReports] = useState<Record<string, CleaningReport>>({});
   const [expandedReport, setExpandedReport] = useState<string | null>(null);
+  const [referralCode, setReferralCode] = useState<ReferralCode | null>(null);
+  const [referralCredits, setReferralCredits] = useState(0);
+  const [copiedLink, setCopiedLink] = useState(false);
   const [loading, setLoading] = useState(true);
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -94,8 +106,31 @@ export default function PortalPage() {
       }
       setUser(session.user);
       fetchData(session.user.email!);
+      fetchReferralCode(session.access_token);
     });
   }, [router]);
+
+  const fetchReferralCode = async (accessToken: string) => {
+    try {
+      const res = await fetch('/api/portal/referral-code', {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      });
+      if (!res.ok) return;
+      const data = await res.json();
+      setReferralCode(data.code);
+      setReferralCredits(data.referral_credits ?? 0);
+    } catch {
+      // silently fail — referral section just won't show
+    }
+  };
+
+  const handleCopyLink = () => {
+    if (!referralCode) return;
+    const url = `${window.location.origin}/booking?ref=${referralCode.code}`;
+    navigator.clipboard.writeText(url);
+    setCopiedLink(true);
+    setTimeout(() => setCopiedLink(false), 2000);
+  };
 
   const fetchData = async (email: string) => {
     const [{ data: b }, { data: q }] = await Promise.all([
@@ -151,6 +186,42 @@ export default function PortalPage() {
             <Button onClick={handleLogout} variant="outline" size="sm">{p.logOut}</Button>
           </div>
         </div>
+
+        {/* Referral Code */}
+        {referralCode && (
+          <div className="mb-12">
+            <h2 className="text-xs uppercase tracking-widest font-bold mb-4" style={{ color: 'var(--text-muted)' }}>Your Referral Code</h2>
+            <div className="relative theme-transition border shadow-sm rounded-xl p-6" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
+              <BorderBeam />
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div>
+                  <p className="text-xs uppercase tracking-widest font-bold mb-1" style={{ color: 'var(--text-muted)' }}>Share with friends — they get {referralCode.discount_percent}% off</p>
+                  <p className="text-3xl font-bold tracking-wider font-mono" style={{ color: 'var(--text-primary)' }}>{referralCode.code}</p>
+                  <p className="text-xs mt-2" style={{ color: 'var(--text-muted)' }}>
+                    {referralCode.uses_count} of {referralCode.max_uses} uses
+                    {!referralCode.active && ' · Inactive'}
+                  </p>
+                </div>
+                <button
+                  onClick={handleCopyLink}
+                  disabled={!referralCode.active}
+                  className="inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white text-xs font-bold uppercase tracking-widest px-5 py-3 rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {copiedLink ? '✓ Copied!' : 'Copy Share Link'}
+                </button>
+              </div>
+              {referralCredits > 0 && (
+                <div className="mt-5 pt-5 border-t flex items-center gap-3" style={{ borderColor: 'var(--card-border)' }}>
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-500/10 text-green-500 text-lg font-bold">★</div>
+                  <div>
+                    <p className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>You&apos;ve earned {referralCredits} reward credit{referralCredits === 1 ? '' : 's'}</p>
+                    <p className="text-xs" style={{ color: 'var(--text-muted)' }}>Your next {referralCredits} booking{referralCredits === 1 ? '' : 's'} get 15% off automatically</p>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
 
         {/* Bookings */}
         <div className="mb-12">
