@@ -12,10 +12,10 @@ const NOTIFY_EMAILS = [
 ];
 
 const SERVICE_LABELS: Record<string, string> = {
-  standard: 'Standard Cleaning',
-  deep: 'Deep Cleaning',
-  move_in_out: 'Move-In / Move-Out',
-  airbnb: 'Airbnb / Short-Term Rental',
+  kitchen: 'Kitchen Cleaning',
+  bathrooms: 'Bathroom Cleaning',
+  bedrooms: 'Bedroom Cleaning',
+  livingAreas: 'Living Area Cleaning',
 };
 
 export async function POST(req: NextRequest) {

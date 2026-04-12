@@ -6,14 +6,14 @@ import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
 import { services } from '@/data/services';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Sparkles, Paintbrush, PackageOpen, Home, ChevronDown } from 'lucide-react';
+import { Sparkles, ChefHat, Bath, Bed, Sofa, ChevronDown } from 'lucide-react';
 import BorderBeam from '@/components/ui/BorderBeam';
 
 const SERVICE_ICONS: Record<string, React.ComponentType<{ className?: string; strokeWidth?: number }>> = {
-  standard: Sparkles,
-  deep: Paintbrush,
-  move: PackageOpen,
-  airbnb: Home,
+  kitchen: ChefHat,
+  bathrooms: Bath,
+  bedrooms: Bed,
+  livingAreas: Sofa,
 };
 
 const CATEGORY_ORDER = [
@@ -225,7 +225,7 @@ export default function ServicesPage() {
       {/* ── Service Cards ── */}
       {services.map((service, i) => {
         const content = si[service.id as keyof typeof si] as ServiceContent;
-        const isPopular = service.id === 'deep';
+        const isPopular = service.id === 'kitchen';
 
         return (
           <ServiceCard
