@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import Container from '@/components/ui/Container';
 import SectionHeading from '@/components/ui/SectionHeading';
 import BookingForm from '@/components/booking/BookingForm';
@@ -18,7 +18,10 @@ export default function BookingPage() {
           subtitle={submitted ? undefined : t.booking.subtitle}
         />
         <div className="max-w-2xl mx-auto">
-          <BookingForm onSubmitChange={setSubmitted} />
+          {/* Suspense required because BookingForm uses useSearchParams for the ?ref= prefill */}
+          <Suspense fallback={<div className="h-96" />}>
+            <BookingForm onSubmitChange={setSubmitted} />
+          </Suspense>
         </div>
       </Container>
     </section>
