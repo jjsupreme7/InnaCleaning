@@ -16,7 +16,16 @@ const SERVICE_ICONS: Record<string, React.ComponentType<{ className?: string; st
   airbnb: Home,
 };
 
-const CATEGORY_ORDER = ['kitchen', 'bathrooms', 'bedrooms', 'livingAreas', 'additional', 'finalTouch'] as const;
+const CATEGORY_ORDER = [
+  'kitchen',
+  'bathrooms',
+  'bedroomsLiving',
+  'livingBedrooms',
+  'bedrooms',
+  'livingAreas',
+  'additional',
+  'finalTouch',
+] as const;
 
 type ServiceContent = {
   title: string;

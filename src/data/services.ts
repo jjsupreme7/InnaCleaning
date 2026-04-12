@@ -9,7 +9,7 @@ export const services: Service[] = [
       'Dusting all surfaces (furniture, shelves, baseboards, décor)',
       'Vacuuming floors and carpets',
       'Mopping all hard floors',
-      'Kitchen cleaning (countertops, appliances, sink, stovetop, microwave)',
+      'Kitchen cleaning (countertops, exterior of appliances, sink, stovetop, microwave outside/inside light clean)',
       'Bathroom cleaning (toilets, showers, tubs, sinks, mirrors)',
       'Wiping mirrors and glass surfaces',
       'Trash removal',
@@ -24,9 +24,9 @@ export const services: Service[] = [
     title: 'Deep Cleaning',
     description: 'An intensive, top-to-bottom cleaning that reaches every corner. Ideal for homes that need extra attention.',
     includes: [
-      'Detailed dusting including baseboards, window sills, blinds, and décor',
+      'Detailed dusting of all surfaces including baseboards, window sills, blinds, and décor',
       'Cleaning behind and under accessible furniture',
-      'Deep vacuuming of carpets and rugs (edges and corners)',
+      'Deep vacuuming of carpets and rugs (including edges and corners)',
       'Thorough mopping of all floors',
     ],
     startingPrice: 120,
@@ -38,7 +38,7 @@ export const services: Service[] = [
     description: 'Complete cleaning of all empty spaces — get your home spotless for new tenants or leave it pristine when you move.',
     includes: [
       'Complete cleaning of all empty spaces',
-      'Detailed dust removal from all surfaces, baseboards, and edges',
+      'Detailed dust removal from all surfaces, baseboards, window sills, and edges',
       'Cleaning inside closets, shelves, and storage areas',
       'Vacuuming and mopping all floors',
       'Removing dust, debris, and buildup left from moving',
@@ -51,7 +51,7 @@ export const services: Service[] = [
     title: 'Airbnb / Short-Term Rental',
     description: 'Full cleaning and reset of the property between guests. Keep your ratings high with a consistently spotless space.',
     includes: [
-      'Full cleaning and reset between guests',
+      'Full cleaning and reset of the property between guests',
       'Dusting all surfaces, furniture, and décor',
       'Vacuuming and mopping all floors',
       'Cleaning and sanitizing high-touch areas',

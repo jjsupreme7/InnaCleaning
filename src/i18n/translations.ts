@@ -125,8 +125,10 @@ export const translations = {
       categories: {
         kitchen: 'Kitchen',
         bathrooms: 'Bathrooms',
-        bedrooms: 'Bedrooms & Living Areas',
+        bedrooms: 'Bedrooms',
         livingAreas: 'Living Areas',
+        bedroomsLiving: 'Bedrooms & Living Areas',
+        livingBedrooms: 'Living Areas & Bedrooms',
         additional: 'Additional Details',
         finalTouch: 'Final Touch / Guest-Ready Setup',
       },
@@ -139,7 +141,7 @@ export const translations = {
           'Dusting all surfaces (furniture, shelves, baseboards, décor)',
           'Vacuuming floors and carpets',
           'Mopping all hard floors',
-          'Kitchen cleaning (countertops, exterior of appliances, sink, stovetop, microwave)',
+          'Kitchen cleaning (countertops, exterior of appliances, sink, stovetop, microwave outside/inside light clean)',
           'Bathroom cleaning (toilets, showers, tubs, sinks, mirrors)',
           'Wiping mirrors and glass surfaces',
           'Trash removal',
@@ -178,7 +180,7 @@ export const translations = {
             'Cabinet fronts wiped',
             'Inside cabinets (light cleaning if accessible)',
           ],
-          bedrooms: [
+          bedroomsLiving: [
             'Detailed dusting of furniture, shelves, décor',
             'Vacuuming under beds (if accessible)',
             'Cleaning baseboards and edges',
@@ -226,7 +228,7 @@ export const translations = {
             'Cleaning inside cabinets and drawers',
             'Detailed cleaning of all surfaces and edges',
           ],
-          bedrooms: [
+          livingBedrooms: [
             'Cleaning inside closets and shelves',
             'Detailed dusting of all surfaces',
             'Baseboards, doors, frames, and handles cleaned',
@@ -674,8 +676,10 @@ export const translations = {
       categories: {
         kitchen: 'Кухня',
         bathrooms: 'Ванные комнаты',
-        bedrooms: 'Спальни и гостиные',
+        bedrooms: 'Спальни',
         livingAreas: 'Жилые зоны',
+        bedroomsLiving: 'Спальни и гостиные',
+        livingBedrooms: 'Жилые зоны и спальни',
         additional: 'Дополнительно',
         finalTouch: 'Финальный штрих / Подготовка для гостей',
       },
@@ -688,7 +692,7 @@ export const translations = {
           'Протирание всех поверхностей (мебель, полки, плинтусы, декор)',
           'Уборка пылесосом полов и ковров',
           'Мытьё всех твёрдых полов',
-          'Уборка кухни (столешницы, внешняя поверхность техники, мойка, плита, микроволновка)',
+          'Уборка кухни (столешницы, внешняя поверхность техники, мойка, плита, микроволновка снаружи/внутри лёгкая уборка)',
           'Уборка ванной (унитазы, душевые, ванны, раковины, зеркала)',
           'Протирание зеркал и стеклянных поверхностей',
           'Вынос мусора',
@@ -727,7 +731,7 @@ export const translations = {
             'Протирка фасадов шкафов',
             'Внутри шкафов (лёгкая чистка, если доступны)',
           ],
-          bedrooms: [
+          bedroomsLiving: [
             'Детальная протирка мебели, полок, декора',
             'Уборка пылесосом под кроватями (если доступны)',
             'Чистка плинтусов и краёв',
@@ -775,7 +779,7 @@ export const translations = {
             'Чистка внутри шкафов и ящиков',
             'Детальная чистка всех поверхностей и краёв',
           ],
-          bedrooms: [
+          livingBedrooms: [
             'Чистка внутри шкафов и полок',
             'Детальная протирка всех поверхностей',
             'Чистка плинтусов, дверей, рам и ручек',
@@ -1216,8 +1220,10 @@ export const translations = {
       categories: {
         kitchen: 'Кухня',
         bathrooms: 'Ванні кімнати',
-        bedrooms: 'Спальні та вітальні',
+        bedrooms: 'Спальні',
         livingAreas: 'Житлові зони',
+        bedroomsLiving: 'Спальні та вітальні',
+        livingBedrooms: 'Житлові зони та спальні',
         additional: 'Додатково',
         finalTouch: 'Фінальний штрих / Підготовка для гостей',
       },
@@ -1230,7 +1236,7 @@ export const translations = {
           'Протирання всіх поверхонь (меблі, полиці, плінтуси, декор)',
           'Прибирання пилососом підлог і килимів',
           'Миття всіх твердих підлог',
-          'Прибирання кухні (стільниці, зовнішня поверхня техніки, мийка, плита, мікрохвильовка)',
+          'Прибирання кухні (стільниці, зовнішня поверхня техніки, мийка, плита, мікрохвильовка зовні/всередині легке чищення)',
           'Прибирання ванної (унітази, душові, ванни, раковини, дзеркала)',
           'Протирання дзеркал і скляних поверхонь',
           'Вивезення сміття',
@@ -1269,7 +1275,7 @@ export const translations = {
             'Протирання фасадів шаф',
             'Всередині шаф (легке чищення, якщо доступні)',
           ],
-          bedrooms: [
+          bedroomsLiving: [
             'Детальне протирання меблів, полиць, декору',
             'Прибирання пилососом під ліжками (якщо доступні)',
             'Чищення плінтусів і країв',
@@ -1317,7 +1323,7 @@ export const translations = {
             'Чищення всередині шаф і ящиків',
             'Детальне чищення всіх поверхонь і країв',
           ],
-          bedrooms: [
+          livingBedrooms: [
             'Чищення всередині шаф і полиць',
             'Детальне протирання всіх поверхонь',
             'Чищення плінтусів, дверей, рам і ручок',
