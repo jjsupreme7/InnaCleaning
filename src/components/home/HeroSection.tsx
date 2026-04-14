@@ -37,7 +37,7 @@ export default function HeroSection() {
           <h1 className="font-display text-4xl font-bold leading-tight text-white md:text-6xl lg:text-7xl">
             {t.hero.headline}
             <br />
-            <span className="inline-flex overflow-hidden pl-[0.05em]">
+            <span className="inline-flex overflow-hidden pl-[0.05em] pr-[0.2em] pb-[0.2em] leading-[1.15]">
               <RotatingText
                 texts={t.hero.rotating as unknown as string[]}
                 rotationInterval={2500}
