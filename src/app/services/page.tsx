@@ -1,32 +1,22 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
 import { services } from '@/data/services';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { ChefHat, Bath, Bed, Sofa, Home, Sparkles } from 'lucide-react';
+import { Sparkles, Paintbrush, PackageOpen, Home, ChevronDown } from 'lucide-react';
 import BorderBeam from '@/components/ui/BorderBeam';
 
 const SERVICE_ICONS: Record<string, React.ComponentType<{ className?: string; strokeWidth?: number }>> = {
-  kitchen: ChefHat,
-  bathrooms: Bath,
-  bedrooms: Bed,
-  livingAreas: Sofa,
+  standard: Sparkles,
+  deep: Paintbrush,
+  move: PackageOpen,
   airbnb: Home,
-  additional: Sparkles,
 };
 
-const CATEGORY_ORDER = [
-  'kitchen',
-  'bathrooms',
-  'bedroomsLiving',
-  'livingBedrooms',
-  'bedrooms',
-  'livingAreas',
-  'additional',
-  'finalTouch',
-] as const;
+const CATEGORY_ORDER = ['kitchen', 'bathrooms', 'bedrooms', 'livingAreas', 'additional', 'finalTouch'] as const;
 
 type ServiceContent = {
   title: string;
@@ -42,6 +32,8 @@ function ServiceCard({
   categories,
   whatsIncluded,
   getQuote,
+  viewBreakdown,
+  hideDetails,
   bgStyle,
 }: {
   service: { id: string; startingPrice: number };
@@ -50,9 +42,12 @@ function ServiceCard({
   categories: Record<string, string>;
   whatsIncluded: string;
   getQuote: string;
+  viewBreakdown: string;
+  hideDetails: string;
   bgStyle: string;
 }) {
-  const Icon = SERVICE_ICONS[service.id] || ChefHat;
+  const [expanded, setExpanded] = useState(false);
+  const Icon = SERVICE_ICONS[service.id] || Sparkles;
   const details = content.details ?? null;
 
   return (
@@ -113,31 +108,51 @@ function ServiceCard({
             </div>
 
             {details && (
-              <div className="space-y-6 mb-6 pt-2 border-t" style={{ borderColor: 'var(--card-border)' }}>
-                <div className="pt-6" />
-                {CATEGORY_ORDER.map((cat) => {
-                  const items = details[cat];
-                  if (!items?.length) return null;
-                  return (
-                    <div key={cat}>
-                      <h4 className="text-sm font-bold mb-3 flex items-center gap-2 uppercase tracking-widest" style={{ color: 'var(--text-primary)' }}>
-                        <div className="w-1 h-4 bg-red-500 rounded-full" />
-                        {categories[cat] || cat}
-                      </h4>
-                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pl-3">
-                        {items.map((item) => (
-                          <li key={item} className="flex items-start gap-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
-                            <svg className="w-3.5 h-3.5 text-red-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                            </svg>
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  );
-                })}
-              </div>
+              <>
+                <button
+                  onClick={() => setExpanded(!expanded)}
+                  className="flex items-center gap-2 text-sm font-bold text-red-500 hover:text-red-600 transition-colors mb-6"
+                >
+                  <ChevronDown
+                    size={16}
+                    className={`transition-transform duration-300 ${expanded ? 'rotate-180' : ''}`}
+                  />
+                  {expanded ? hideDetails : viewBreakdown}
+                </button>
+
+                <div
+                  className="transition-all duration-500 ease-in-out overflow-hidden"
+                  style={{
+                    maxHeight: expanded ? '2000px' : '0px',
+                    opacity: expanded ? 1 : 0,
+                  }}
+                >
+                  <div className="space-y-6 pb-6 pt-2">
+                      {CATEGORY_ORDER.map((cat) => {
+                        const items = details[cat];
+                        if (!items?.length) return null;
+                        return (
+                          <div key={cat}>
+                            <h4 className="text-sm font-bold mb-2 flex items-center gap-2" style={{ color: 'var(--text-primary)' }}>
+                              <div className="w-1 h-4 bg-red-500 rounded-full" />
+                              {categories[cat] || cat}
+                            </h4>
+                            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pl-3">
+                              {items.map((item) => (
+                                <li key={item} className="flex items-start gap-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
+                                  <svg className="w-3.5 h-3.5 text-red-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                  </svg>
+                                  {item}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        );
+                      })}
+                  </div>
+                </div>
+              </>
             )}
 
             <Button href="/quote" variant="primary" size="md">
@@ -201,7 +216,7 @@ export default function ServicesPage() {
       {/* ── Service Cards ── */}
       {services.map((service, i) => {
         const content = si[service.id as keyof typeof si] as ServiceContent;
-        const isPopular = service.id === 'kitchen';
+        const isPopular = service.id === 'deep';
 
         return (
           <ServiceCard
@@ -212,6 +227,8 @@ export default function ServicesPage() {
             categories={sp.categories}
             whatsIncluded={sp.whatsIncluded}
             getQuote={sp.getQuote}
+            viewBreakdown={sp.viewBreakdown}
+            hideDetails={sp.hideDetails}
             bgStyle={i % 2 === 0 ? 'var(--bg-elevated)' : 'var(--section-alt)'}
           />
         );

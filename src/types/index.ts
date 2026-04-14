@@ -32,12 +32,13 @@ export interface PriceBreakdown {
   total: number;
 }
 
-export type ServiceId = 'kitchen' | 'bathrooms' | 'bedrooms' | 'livingAreas' | 'airbnb' | 'additional';
-
-export interface ServiceMeta {
-  id: ServiceId;
+export interface Service {
+  id: string;
+  title: string;
+  description: string;
+  includes: string[];
   startingPrice: number;
-  icon: 'ChefHat' | 'Bath' | 'Bed' | 'Sofa' | 'Home' | 'Sparkles';
+  icon: string;
 }
 
 export interface Review {
