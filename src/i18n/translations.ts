@@ -8,7 +8,7 @@ export const translations = {
       gallery: 'Gallery',
       faq: 'FAQ',
       contact: 'Contact',
-      portal: 'My Portal',
+      portal: 'Portal',
       bookNow: 'Book Now',
     },
     hero: {
@@ -559,7 +559,7 @@ export const translations = {
       gallery: 'Галерея',
       faq: 'Вопросы',
       contact: 'Контакты',
-      portal: 'Мой кабинет',
+      portal: 'Кабинет',
       bookNow: 'Забронировать',
     },
     hero: {
@@ -1101,7 +1101,7 @@ export const translations = {
       gallery: 'Галерея',
       faq: 'Питання',
       contact: 'Контакти',
-      portal: 'Мій кабінет',
+      portal: 'Кабінет',
       bookNow: 'Забронювати',
     },
     hero: {
