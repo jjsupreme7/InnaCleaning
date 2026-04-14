@@ -133,13 +133,13 @@ export const translations = {
     },
     servicesItems: {
       standard: {
-        title: 'Standard Cleaning',
+        title: 'Regular Cleaning',
         description: 'A thorough cleaning of your entire home, perfect for regular upkeep and maintaining a fresh, tidy space.',
         includes: [
           'Dusting all surfaces (furniture, shelves, baseboards, décor)',
           'Vacuuming floors and carpets',
           'Mopping all hard floors',
-          'Kitchen cleaning (countertops, exterior of appliances, sink, stovetop, microwave)',
+          'Kitchen cleaning (countertops, exterior of appliances, sink, stovetop, microwave outside/inside light clean)',
           'Bathroom cleaning (toilets, showers, tubs, sinks, mirrors)',
           'Wiping mirrors and glass surfaces',
           'Trash removal',
@@ -401,7 +401,7 @@ export const translations = {
       addressPlaceholder: '123 Main St, Seattle, WA',
       serviceType: 'Service Type',
       selectService: 'Select a service',
-      standard: 'Standard Cleaning',
+      standard: 'Regular Cleaning',
       deep: 'Deep Cleaning',
       moveInOut: 'Move-In / Move-Out',
       airbnb: 'Airbnb / Short-Term Rental',
@@ -486,7 +486,7 @@ export const translations = {
         '4bed_plus': '4+ Bedrooms',
       },
       typeLabels: {
-        standard: 'Standard Cleaning',
+        standard: 'Regular Cleaning',
         deep: 'Deep Cleaning',
         move_in_out: 'Move-In / Move-Out',
         airbnb: 'Airbnb / Short-Term Rental',
@@ -682,13 +682,13 @@ export const translations = {
     },
     servicesItems: {
       standard: {
-        title: 'Стандартная уборка',
+        title: 'Обычная уборка',
         description: 'Тщательная уборка всего дома — идеально для регулярного поддержания порядка и свежести.',
         includes: [
           'Протирание всех поверхностей (мебель, полки, плинтусы, декор)',
           'Уборка пылесосом полов и ковров',
           'Мытьё всех твёрдых полов',
-          'Уборка кухни (столешницы, внешняя поверхность техники, мойка, плита, микроволновка)',
+          'Уборка кухни (столешницы, внешняя поверхность техники, мойка, плита, микроволновка снаружи/внутри лёгкая уборка)',
           'Уборка ванной (унитазы, душевые, ванны, раковины, зеркала)',
           'Протирание зеркал и стеклянных поверхностей',
           'Вынос мусора',
@@ -946,7 +946,7 @@ export const translations = {
       addressPlaceholder: '123 Main St, Seattle, WA',
       serviceType: 'Тип услуги',
       selectService: 'Выберите услугу',
-      standard: 'Стандартная уборка',
+      standard: 'Обычная уборка',
       deep: 'Генеральная уборка',
       moveInOut: 'Уборка при переезде',
       airbnb: 'Airbnb / Краткосрочная аренда',
@@ -1030,7 +1030,7 @@ export const translations = {
         '4bed_plus': '4+ спален',
       },
       typeLabels: {
-        standard: 'Стандартная',
+        standard: 'Обычная',
         deep: 'Генеральная',
         move_in_out: 'При переезде',
         airbnb: 'Airbnb',
@@ -1224,13 +1224,13 @@ export const translations = {
     },
     servicesItems: {
       standard: {
-        title: 'Стандартне прибирання',
+        title: 'Звичайне прибирання',
         description: 'Ретельне прибирання всього будинку — ідеально для регулярного підтримання порядку та свіжості.',
         includes: [
           'Протирання всіх поверхонь (меблі, полиці, плінтуси, декор)',
           'Прибирання пилососом підлог і килимів',
           'Миття всіх твердих підлог',
-          'Прибирання кухні (стільниці, зовнішня поверхня техніки, мийка, плита, мікрохвильовка)',
+          'Прибирання кухні (стільниці, зовнішня поверхня техніки, мийка, плита, мікрохвильовка зовні/всередині легке чищення)',
           'Прибирання ванної (унітази, душові, ванни, раковини, дзеркала)',
           'Протирання дзеркал і скляних поверхонь',
           'Вивезення сміття',
@@ -1488,7 +1488,7 @@ export const translations = {
       addressPlaceholder: '123 Main St, Seattle, WA',
       serviceType: 'Тип послуги',
       selectService: 'Оберіть послугу',
-      standard: 'Стандартне прибирання',
+      standard: 'Звичайне прибирання',
       deep: 'Генеральне прибирання',
       moveInOut: 'Прибирання при переїзді',
       airbnb: 'Airbnb / Короткострокова оренда',
@@ -1572,7 +1572,7 @@ export const translations = {
         '4bed_plus': '4+ спалень',
       },
       typeLabels: {
-        standard: 'Стандартне',
+        standard: 'Звичайне',
         deep: 'Генеральне',
         move_in_out: 'При переїзді',
         airbnb: 'Airbnb',
