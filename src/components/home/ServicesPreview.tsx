@@ -60,8 +60,12 @@ function buildCompareData(servicesItems: Record<string, { title: string; include
     featureMap.get(feat)?.add('move');
   }
 
-  // Airbnb turnover cleaning starts from the Regular tier baseline
+  // Airbnb turnover cleaning includes Regular + Deep Cleaning as its baseline
   for (const feat of standardFeats) {
+    featureMap.get(feat)?.add('airbnb');
+  }
+  for (const feat of deepFeats) {
+    if (feat.toLowerCase().startsWith('everything in ')) continue;
     featureMap.get(feat)?.add('airbnb');
   }
 
