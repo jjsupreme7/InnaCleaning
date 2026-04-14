@@ -3,29 +3,25 @@
 import { useState } from 'react';
 import Container from '@/components/ui/Container';
 import { services } from '@/data/services';
-import { ChefHat, Bath, Bed, Sofa, Home, Sparkles } from 'lucide-react';
+import { Sparkles, Paintbrush, PackageOpen, Home } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { motion, AnimatePresence } from 'motion/react';
 import GlowCard from '@/components/ui/GlowCard';
 
 const categoryMap: Record<string, number> = {
-  kitchen: 1,
-  bathrooms: 2,
-  bedrooms: 3,
-  livingAreas: 4,
-  airbnb: 5,
-  additional: 6,
+  standard: 1,
+  deep: 2,
+  move: 3,
+  airbnb: 4,
 };
 
-const popularId = 'kitchen';
+const popularId = 'deep';
 
-const serviceIcons: Record<string, { icon: typeof ChefHat; color: string; bg: string }> = {
-  kitchen: { icon: ChefHat, color: '#f87171', bg: 'rgba(248,113,113,0.12)' },
-  bathrooms: { icon: Bath, color: '#f87171', bg: 'rgba(248,113,113,0.08)' },
-  bedrooms: { icon: Bed, color: '#f87171', bg: 'rgba(248,113,113,0.08)' },
-  livingAreas: { icon: Sofa, color: '#f87171', bg: 'rgba(248,113,113,0.08)' },
+const serviceIcons: Record<string, { icon: typeof Sparkles; color: string; bg: string }> = {
+  standard: { icon: Sparkles, color: '#f87171', bg: 'rgba(248,113,113,0.08)' },
+  deep: { icon: Paintbrush, color: '#f87171', bg: 'rgba(248,113,113,0.12)' },
+  move: { icon: PackageOpen, color: '#f87171', bg: 'rgba(248,113,113,0.08)' },
   airbnb: { icon: Home, color: '#FFB020', bg: 'rgba(255,176,32,0.12)' },
-  additional: { icon: Sparkles, color: '#f87171', bg: 'rgba(248,113,113,0.08)' },
 };
 
 export default function ServicesPreview() {
