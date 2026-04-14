@@ -59,8 +59,8 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="mailto:inna@innacleaning.com" className="hover:text-white transition-colors">
-                  inna@innacleaning.com
+                <a href="mailto:jjgcallen11@gmail.com" className="hover:text-white transition-colors">
+                  jjgcallen11@gmail.com
                 </a>
               </li>
               <li className="mt-1">Seattle, WA &amp; surrounding areas</li>

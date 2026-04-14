@@ -91,8 +91,8 @@ export default function ContactPage() {
               </div>
               <div>
                 <p className="text-xs uppercase tracking-widest font-bold mb-1" style={{ color: 'var(--text-muted)' }}>{c.email}</p>
-                <a href="mailto:inna@innacleaning.com" className="text-lg font-bold hover:text-red-400 transition-colors" style={{ color: 'var(--text-primary)' }}>
-                  inna@innacleaning.com
+                <a href="mailto:jjgcallen11@gmail.com" className="text-lg font-bold hover:text-red-400 transition-colors" style={{ color: 'var(--text-primary)' }}>
+                  jjgcallen11@gmail.com
                 </a>
               </div>
               <div>
