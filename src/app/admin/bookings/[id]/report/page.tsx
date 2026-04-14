@@ -3,8 +3,123 @@
 import { useEffect, useRef, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { services } from '@/data/services';
 import { Check, Camera, X, ArrowLeft, Loader2 } from 'lucide-react';
+
+// Cleaner checklists keyed by booking tier. The /services marketing page is
+// organized by room, but the booking form still writes tier ids
+// (standard/deep/move/airbnb), so the on-site punch list stays tier-based.
+// English only.
+const TIER_CHECKLISTS: Record<string, string[]> = {
+  standard: [
+    'Dusting all surfaces (furniture, shelves, baseboards, décor)',
+    'Vacuuming floors and carpets',
+    'Mopping all hard floors',
+    'Kitchen cleaning (countertops, exterior of appliances, sink, stovetop, microwave outside/inside light clean)',
+    'Bathroom cleaning (toilets, showers, tubs, sinks, mirrors)',
+    'Wiping mirrors and glass surfaces',
+    'Trash removal',
+    'Light organizing (tidying up surfaces)',
+    'Spot cleaning doors, handles, and light switches',
+  ],
+  deep: [
+    'Detailed dusting of all surfaces including baseboards, window sills, blinds, and décor',
+    'Cleaning behind and under accessible furniture',
+    'Deep vacuuming of carpets and rugs (including edges and corners)',
+    'Thorough mopping of all floors',
+    'Deep cleaning of countertops and backsplash',
+    'Cleaning inside and outside of microwave',
+    'Exterior cleaning of all appliances (fridge, oven, dishwasher)',
+    'Detailed cleaning of stovetop and around burners',
+    'Sink scrubbing and polishing',
+    'Cabinet fronts wiped and degreased',
+    'Spot cleaning inside cabinets and drawers (if accessible)',
+    'Removal of grease buildup and food residue',
+    'Deep scrubbing of showers, tubs, and tiles',
+    'Removing soap scum and buildup',
+    'Cleaning grout (light detailing)',
+    'Toilet deep cleaning (inside, outside, base)',
+    'Sink and countertop deep clean',
+    'Mirrors polished',
+    'Fixtures cleaned and shined',
+    'Cabinet fronts wiped',
+    'Inside cabinets (light cleaning if accessible)',
+    'Detailed dusting of furniture, shelves, décor',
+    'Vacuuming under beds (if accessible)',
+    'Cleaning baseboards and edges',
+    'Light stain/spot removal on surfaces',
+    'Doors, frames, and handles cleaned',
+    'Light switches wiped',
+    'Interior windows (reachable areas)',
+    'Trash removal',
+    'Detailed attention to corners, edges, and hard-to-reach areas',
+    'Light organizing of surfaces',
+  ],
+  move: [
+    'Complete cleaning of all empty spaces',
+    'Detailed dust removal from all surfaces, baseboards, window sills, and edges',
+    'Cleaning inside closets, shelves, and storage areas',
+    'Vacuuming and mopping all floors',
+    'Removing dust, debris, and buildup left from moving',
+    'Deep cleaning inside and outside of all cabinets and drawers',
+    'Cleaning inside and outside of refrigerator (if empty)',
+    'Deep cleaning inside oven',
+    'Cleaning inside and outside of microwave',
+    'Cleaning dishwasher (inside and outside)',
+    'Scrubbing and sanitizing sink and countertops',
+    'Degreasing stovetop, backsplash, and surrounding areas',
+    'Removing grease buildup and residue',
+    'Cleaning all cabinet fronts and handles',
+    'Deep scrubbing of showers, tubs, and tiles',
+    'Removing soap scum, hard water stains, and buildup',
+    'Cleaning and sanitizing toilets (inside, outside, and base)',
+    'Cleaning sinks and countertops',
+    'Mirrors polished',
+    'Fixtures cleaned and shined',
+    'Cleaning inside cabinets and drawers',
+    'Detailed cleaning of all surfaces and edges',
+    'Cleaning inside closets and shelves',
+    'Detailed dusting of all surfaces',
+    'Baseboards, doors, frames, and handles cleaned',
+    'Light switches and outlets wiped',
+    'Interior windows and window tracks (reachable areas)',
+    'Spot cleaning walls (light marks)',
+    'Removing cobwebs',
+  ],
+  airbnb: [
+    'Full cleaning and reset of the property between guests',
+    'Dusting all surfaces, furniture, and décor',
+    'Vacuuming and mopping all floors',
+    'Cleaning and sanitizing high-touch areas',
+    'Trash removal and replacement of liners',
+    'Cleaning countertops and backsplash',
+    'Wiping exterior of all appliances',
+    'Cleaning inside microwave',
+    'Sink cleaning and sanitizing',
+    'Checking and light cleaning inside fridge (if needed)',
+    'Restocking essentials (if provided by host)',
+    'Ensuring kitchen is guest-ready and presentable',
+    'Full cleaning and sanitizing of toilet, shower, tub, and sink',
+    'Mirrors polished',
+    'Fixtures cleaned and shined',
+    'Restocking toiletries (if provided)',
+    'Replacing and neatly arranging towels',
+    'Changing bed linens',
+    'Making beds to a hotel-style standard',
+    'Light dusting of furniture and décor',
+    'Checking under beds (quick check for items)',
+    'Dusting and wiping all surfaces',
+    'Arranging pillows, blankets, and décor',
+    'Light organizing to create a clean and welcoming space',
+    'Neatly folding and arranging towels',
+    'Setting up beds and pillows attractively',
+    'Ensuring the home looks fresh, clean, and inviting',
+    'Reporting any damages or missing items (if needed)',
+  ],
+};
+
+function buildChecklist(serviceId: string): string[] {
+  return TIER_CHECKLISTS[serviceId] ?? [];
+}
 
 interface Booking {
   id: string;
@@ -50,9 +165,7 @@ export default function CleaningReportPage() {
         const b: Booking = bookingData.booking;
         setBooking(b);
 
-        // Build checklist from the service type's includes
-        const svc = services.find((s) => s.id === b.service_type);
-        setChecklist(svc?.includes ?? []);
+        setChecklist(buildChecklist(b.service_type));
 
         // If a report already exists, pre-populate the form
         if (reportRes.ok) {
