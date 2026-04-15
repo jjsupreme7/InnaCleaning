@@ -79,7 +79,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-zinc-800 pt-6 text-center text-xs uppercase tracking-widest text-zinc-700">
+        <div className="mt-10 border-t border-zinc-800 pt-6 text-center text-xs uppercase tracking-widest text-zinc-400">
           &copy; {new Date().getFullYear()} Inna Cleaning. {t.footer.rights}
         </div>
       </Container>
