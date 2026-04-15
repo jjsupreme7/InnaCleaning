@@ -258,6 +258,7 @@ export default function ServicesPreview() {
                     {isPopular ? (
                       <a
                         href="/services"
+                        aria-label={`${t.services.learnMore} — ${t.servicesItems[service.id as keyof typeof t.servicesItems].title}`}
                         className="flex items-center justify-center rounded-xl bg-red-600 px-4 py-3.5 text-xs font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:bg-red-700"
                       >
                         {t.services.learnMore}
@@ -265,6 +266,7 @@ export default function ServicesPreview() {
                     ) : (
                       <a
                         href="/services"
+                        aria-label={`${t.services.learnMore} — ${t.servicesItems[service.id as keyof typeof t.servicesItems].title}`}
                         className="flex items-center justify-center rounded-xl border px-4 py-3.5 text-xs font-semibold uppercase tracking-[0.12em] transition-colors"
                         style={{ background: 'var(--card-bg)', borderColor: 'var(--card-border)', color: 'var(--text-secondary)' }}
                       >

@@ -25,7 +25,7 @@ export default function Footer() {
             <p className="text-lg font-bold uppercase tracking-[0.1em] text-white">
               Inna Cleaning
             </p>
-            <p className="mt-3 text-sm leading-relaxed text-zinc-500">
+            <p className="mt-3 text-sm leading-relaxed text-zinc-400">
               {t.footer.description}
             </p>
           </div>
@@ -39,7 +39,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-zinc-500 transition-colors hover:text-white"
+                    className="text-sm text-zinc-400 transition-colors hover:text-white"
                   >
                     {t.footer.links[i]}
                   </Link>
@@ -52,7 +52,7 @@ export default function Footer() {
             <h3 className="mb-4 text-sm font-bold uppercase tracking-widest text-white">
               {t.footer.contact}
             </h3>
-            <ul className="flex flex-col gap-2 text-sm text-zinc-500">
+            <ul className="flex flex-col gap-2 text-sm text-zinc-400">
               <li>
                 <a href="tel:+12065551234" className="hover:text-white transition-colors">
                   (206) 555-1234
@@ -71,7 +71,7 @@ export default function Footer() {
             <h3 className="mb-4 text-sm font-bold uppercase tracking-widest text-white">
               {t.footer.hours}
             </h3>
-            <ul className="flex flex-col gap-2 text-sm text-zinc-500">
+            <ul className="flex flex-col gap-2 text-sm text-zinc-400">
               <li>{t.footer.weekdays}</li>
               <li>{t.footer.saturday}</li>
               <li className="mt-1 font-bold text-white">{t.footer.sunday}</li>
