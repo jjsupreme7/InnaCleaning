@@ -92,7 +92,7 @@ export default function ServicesPreview() {
       <Container>
         {/* Header */}
         <div className="mb-10 text-center max-w-xl mx-auto">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-red-400">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-red-600">
             {t.services.badge}
           </p>
           <h2 className="font-display text-3xl font-light lg:text-5xl leading-tight tracking-tight" style={{ color: 'var(--text-primary)' }}>
@@ -126,7 +126,7 @@ export default function ServicesPreview() {
               style={pricingMode !== 'recurring' ? { color: 'var(--text-muted)' } : undefined}
             >
               Recurring
-              <span className="ml-2 text-[10px] bg-green-600 text-white px-2 py-0.5 rounded-full">Save 15%</span>
+              <span className="ml-2 text-[10px] bg-green-700 text-white px-2 py-0.5 rounded-full font-bold">Save 15%</span>
             </button>
           </div>
         </div>
@@ -139,8 +139,8 @@ export default function ServicesPreview() {
               onClick={() => setActiveFilter(i)}
               className={`min-h-[44px] rounded-full px-5 py-2 text-xs font-semibold tracking-wider transition-all duration-200 ${
                 activeFilter === i
-                  ? 'bg-red-50 border border-red-300 text-red-600'
-                  : 'border hover:border-red-300 hover:text-red-600'
+                  ? 'bg-red-50 border border-red-300 text-red-700'
+                  : 'border hover:border-red-300 hover:text-red-700'
               }`}
               style={activeFilter !== i ? { background: 'var(--card-bg)', borderColor: 'var(--card-border)', color: 'var(--text-muted)' } : undefined}
             >
@@ -282,7 +282,7 @@ export default function ServicesPreview() {
         {/* ── Compare Plans Table ── */}
         <div className="mt-20">
           <div className="text-center mb-10">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-red-400">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-red-600">
               Side by Side
             </p>
             <h3

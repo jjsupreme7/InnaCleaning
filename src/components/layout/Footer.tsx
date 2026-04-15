@@ -31,9 +31,9 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-bold uppercase tracking-widest text-white">
+            <h3 className="mb-4 text-sm font-bold uppercase tracking-widest text-white">
               {t.footer.quickLinks}
-            </h4>
+            </h3>
             <ul className="flex flex-col gap-2">
               {footerLinks.map((link, i) => (
                 <li key={link.href}>
@@ -49,9 +49,9 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-bold uppercase tracking-widest text-white">
+            <h3 className="mb-4 text-sm font-bold uppercase tracking-widest text-white">
               {t.footer.contact}
-            </h4>
+            </h3>
             <ul className="flex flex-col gap-2 text-sm text-zinc-500">
               <li>
                 <a href="tel:+12065551234" className="hover:text-white transition-colors">
@@ -68,9 +68,9 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-bold uppercase tracking-widest text-white">
+            <h3 className="mb-4 text-sm font-bold uppercase tracking-widest text-white">
               {t.footer.hours}
-            </h4>
+            </h3>
             <ul className="flex flex-col gap-2 text-sm text-zinc-500">
               <li>{t.footer.weekdays}</li>
               <li>{t.footer.saturday}</li>

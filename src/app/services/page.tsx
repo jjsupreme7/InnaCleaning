@@ -198,7 +198,7 @@ export default function ServicesPage() {
             <div className="max-w-2xl">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-8 h-[2px] bg-red-400" />
-                <p className="text-sm font-bold uppercase tracking-[0.3em] text-red-400">
+                <p className="text-sm font-bold uppercase tracking-[0.3em] text-red-600">
                   {sp.title}
                 </p>
               </div>
@@ -246,7 +246,7 @@ export default function ServicesPage() {
             <h2 className="text-2xl md:text-3xl uppercase tracking-[0.15em] font-bold text-white font-display mb-4">
               {sp.ctaHeadline}
             </h2>
-            <p className="text-red-100 text-lg mb-8">
+            <p className="text-white text-lg mb-8">
               {sp.ctaDesc}
             </p>
             <Button href="/quote" variant="secondary" size="lg">

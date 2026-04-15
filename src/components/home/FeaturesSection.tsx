@@ -17,7 +17,7 @@ export default function FeaturesSection() {
       <Container>
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 lg:items-start">
           <div>
-            <p className="mb-2 text-sm font-bold uppercase tracking-[0.2em] text-red-500">
+            <p className="mb-2 text-sm font-bold uppercase tracking-[0.2em] text-red-600">
               {t.features.badge}
             </p>
             <h2 className="font-display text-3xl font-bold lg:text-4xl" style={{ color: 'var(--text-primary)' }}>
@@ -55,7 +55,7 @@ export default function FeaturesSection() {
             </div>
             <div className="flex flex-col justify-center rounded-xl bg-red-600 p-6">
               <p className="text-4xl font-bold text-white">5+</p>
-              <p className="mt-1 text-sm text-red-100">{t.features.yearsExp}</p>
+              <p className="mt-1 text-sm text-white">{t.features.yearsExp}</p>
             </div>
             <div className="relative flex flex-col justify-center rounded-xl border p-6" style={{ background: 'var(--bg-elevated)', borderColor: 'var(--card-border)' }}>
               <BorderBeam />

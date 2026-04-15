@@ -12,10 +12,12 @@ export default function HeroSection() {
     <section className="relative flex min-h-[90vh] items-end overflow-hidden pb-16 pt-24 lg:min-h-screen lg:items-center lg:pb-0 lg:pt-0">
       <Image
         src="/images/clean-interior.jpg"
-        alt="Clean interior"
+        alt="Sunlit, professionally cleaned living room interior"
         fill
+        sizes="100vw"
         className="object-cover object-center"
         priority
+        fetchPriority="high"
         quality={85}
       />
       <div className="absolute inset-0 bg-black/40" />

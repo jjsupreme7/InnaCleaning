@@ -32,7 +32,7 @@ export default function FAQPage() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-sm font-bold uppercase tracking-[0.3em] text-red-400 mb-3"
+              className="text-sm font-bold uppercase tracking-[0.3em] text-red-600 mb-3"
             >
               FAQ
             </motion.p>

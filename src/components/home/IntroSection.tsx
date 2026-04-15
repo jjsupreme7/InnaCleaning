@@ -14,7 +14,7 @@ export default function IntroSection() {
       <Container>
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:items-center">
           <div>
-            <p className="mb-2 text-sm font-bold uppercase tracking-[0.2em] text-red-500">
+            <p className="mb-2 text-sm font-bold uppercase tracking-[0.2em] text-red-600">
               {t.intro.badge}
             </p>
             <h2 className="font-display text-3xl font-bold leading-snug lg:text-4xl" style={{ color: 'var(--text-primary)' }}>
@@ -54,7 +54,7 @@ export default function IntroSection() {
             </div>
             <div className="flex flex-col justify-center rounded-xl bg-red-600 p-6">
               <p className="text-4xl font-bold text-white">5★</p>
-              <p className="mt-1 text-sm text-red-100">{t.intro.rating}</p>
+              <p className="mt-1 text-sm text-white">{t.intro.rating}</p>
             </div>
             <div className="relative flex flex-col justify-center rounded-xl border p-6" style={{ background: 'var(--card-bg)', borderColor: 'var(--card-border)' }}>
               <BorderBeam />

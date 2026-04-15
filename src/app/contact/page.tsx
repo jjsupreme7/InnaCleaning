@@ -59,7 +59,7 @@ export default function ContactPage() {
 
       <div className="relative z-10 w-full pb-10">
         <Container>
-          <p className="text-sm font-bold uppercase tracking-[0.3em] text-red-400 mb-3">
+          <p className="text-sm font-bold uppercase tracking-[0.3em] text-red-600 mb-3">
             {c.title}
           </p>
           <h1 className="text-3xl md:text-5xl font-bold text-white font-display">
