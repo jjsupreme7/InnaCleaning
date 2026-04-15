@@ -64,6 +64,16 @@ export const translations = {
     areas: {
       title: 'Service Areas',
       subtitle: 'Proudly serving the greater Seattle area',
+      checker: {
+        label: 'Check if we serve your ZIP code',
+        placeholder: 'Enter your ZIP code',
+        button: 'Check',
+        invalid: 'Please enter a valid 5-digit ZIP code.',
+        covered: "Great news — we serve {city}!",
+        coveredCta: 'Get your free quote',
+        uncovered: "We don't service that ZIP yet.",
+        uncoveredCta: 'Contact us anyway',
+      },
     },
     cta: {
       headline: 'Ready for a Sparkling Clean Home?',
@@ -615,6 +625,16 @@ export const translations = {
     areas: {
       title: 'Зоны обслуживания',
       subtitle: 'Обслуживаем район Большого Сиэтла',
+      checker: {
+        label: 'Проверьте, обслуживаем ли мы ваш индекс',
+        placeholder: 'Введите почтовый индекс',
+        button: 'Проверить',
+        invalid: 'Пожалуйста, введите корректный 5-значный индекс.',
+        covered: 'Отличная новость — мы обслуживаем {city}!',
+        coveredCta: 'Получить бесплатную оценку',
+        uncovered: 'Мы пока не обслуживаем этот индекс.',
+        uncoveredCta: 'Всё равно связаться с нами',
+      },
     },
     cta: {
       headline: 'Готовы к безупречной чистоте?',
@@ -1157,6 +1177,16 @@ export const translations = {
     areas: {
       title: 'Зони обслуговування',
       subtitle: 'Обслуговуємо район Великого Сіетла',
+      checker: {
+        label: 'Перевірте, чи обслуговуємо ваш індекс',
+        placeholder: 'Введіть поштовий індекс',
+        button: 'Перевірити',
+        invalid: 'Будь ласка, введіть коректний 5-значний індекс.',
+        covered: 'Чудова новина — ми обслуговуємо {city}!',
+        coveredCta: 'Отримати безкоштовну оцінку',
+        uncovered: 'Ми поки не обслуговуємо цей індекс.',
+        uncoveredCta: "Усе одно зв'язатися з нами",
+      },
     },
     cta: {
       headline: 'Готові до бездоганної чистоти?',
