@@ -9,6 +9,7 @@ import type { Lang } from '@/i18n/translations';
 
 const LANGS: { code: Lang; label: string }[] = [
   { code: 'en', label: 'EN' },
+  { code: 'es', label: 'ES' },
   { code: 'ru', label: 'RU' },
   { code: 'uk', label: 'UK' },
 ];
